@@ -5,29 +5,68 @@ form {
   form table tr.alt td {
     background-color: #DCF2FD; }
 
+.sidebar {
+  float: left;
+  width: 200px;
+  background-color: #96D56C;
+  margin: 15px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; }
+  .sidebar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+    .sidebar ul li {
+      border-bottom: 1px solid white;
+      padding: 5px;
+      color: #016999;
+      font-size: 10px;
+      position: relative; }
+      .sidebar ul li ul {
+        position: absolute;
+        top: 0;
+        left: 200px;
+        width: 200px;
+        background-color: #96D56C; }
+    .sidebar ul li#logout {
+      text-align: right;
+      padding-top: 15px;
+      padding-bottom: 15px; }
+      .sidebar ul li#logout a {
+        padding: 5px;
+        margin-top: 15px;
+        background-color: #0171A9;
+        color: white;
+        text-decoration: none;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        text-transform: uppercase; }
+
 body, td, h2 {
   font-family: verdana,arial,helvetica; }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #FFF8DB; }
+  background-color: #FFFFFF; }
 
-.header .time {
-  background-color: #006EAD;
-  color: #FFFFFF;
-  border-top: 1px solid #FFF8DB;
-  border-bottom: 1px solid #FFF8DB;
-  outline: 1px solid #006EAD;
-  font-size: 10px;
-  line-height: 18px; }
-.header h1 {
-  background-image: url(../images/cello_header.jpg);
-  height: 110px;
-  width: 175px;
-  text-indent: -9999px;
-  margin: 0;
-  padding: 0; }
+.header {
+  border-bottom: 10px solid #0080BD; }
+  .header .time {
+    background-color: #006EAD;
+    color: #FFFFFF;
+    border-top: 1px solid #FFF8DB;
+    border-bottom: 1px solid #FFF8DB;
+    outline: 1px solid #006EAD;
+    font-size: 10px;
+    line-height: 18px; }
+  .header h1 {
+    background-image: url(../images/cello_header.jpg);
+    height: 110px;
+    width: 175px;
+    text-indent: -9999px;
+    margin: 0;
+    padding: 0; }
 
 .main form.new_user_session {
   margin-left: 110px; }

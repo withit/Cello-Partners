@@ -3,13 +3,10 @@
   %head
     %title Cello Paper
     = stylesheet_link_tag 'application'
+    = javascript_include_tag :defaults, :cache => true
   %body
     .header
       %h1 Cello
-      .time
-        = Time.now.strftime('%m %b %Y CCT:%H:%M %p')
-    .main
-      = yield
     - if current_user
       .sidebar
         %ul
@@ -17,13 +14,15 @@
             %li
               = h menu_item.label
               - unless menu_item.children.empty?
-                %ul
+                %ul{:style => 'display: none;'}
                   - menu_item.children.each do |child|
                     %li
                       - if !child.url
                         = h child.label 
                       - else
                         = link_to h(child.label), instance_eval(&child.url)
-          %li= link_to 'Logout', logout_path
+          %li#logout= link_to 'Logout', logout_path
+    .main
+      = yield
 
     
