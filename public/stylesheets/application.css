@@ -1,3 +1,10 @@
+form {
+  color: #42809F; }
+  form table td {
+    background-color: #D6ECC6; }
+  form table tr.alt td {
+    background-color: #DCF2FD; }
+
 body, td, h2 {
   font-family: verdana,arial,helvetica; }
 
