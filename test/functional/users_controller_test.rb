@@ -46,4 +46,18 @@ class UsersControllerTest < ActionController::TestCase
     
   end
   
+  context "showing search form" do
+    setup{ get :search, {}, authenticated_session}
+    
+    should_respond_with :success
+    should_render_template :search
+  end
+  
+  context "showing search results" do
+    setup{ get :index, {:search => {}}, authenticated_session}
+    
+    should_assign_to(:users)
+    should_render_template :index
+  end
+  
 end
