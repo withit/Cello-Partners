@@ -1,0 +1,41 @@
+body, td, h2 {
+  font-family: verdana,arial,helvetica; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #FFF8DB; }
+
+.header .time {
+  background-color: #006EAD;
+  color: #FFFFFF;
+  border-top: 1px solid #FFF8DB;
+  border-bottom: 1px solid #FFF8DB;
+  outline: 1px solid #006EAD;
+  font-size: 10px;
+  line-height: 18px; }
+.header h1 {
+  background-image: url(../images/cello_header.jpg);
+  height: 110px;
+  width: 175px;
+  text-indent: -9999px;
+  margin: 0;
+  padding: 0; }
+
+.main form.new_user_session {
+  margin-left: 110px; }
+  .main form.new_user_session h2 {
+    color: white;
+    background-color: #006EAD;
+    font-size: 11pt;
+    width: 225px;
+    padding: 2px; }
+  .main form.new_user_session label, .main form.new_user_session input[type=text], .main form.new_user_session input[type=password] {
+    float: left;
+    width: 125px; }
+  .main form.new_user_session label {
+    clear: left;
+    width: 100px; }
+  .main form.new_user_session input[type=submit] {
+    clear: left;
+    float: left; }

@@ -1,0 +1,2 @@
+class FlashesController < ApplicationController
+end

@@ -1,0 +1,39 @@
+%h1 New User Account Details
+%p 
+  Fields marked with 
+  %span *
+  are required fields
+- form_for @user do |f|
+  %table
+    %tr
+      %td= f.label :username
+      %td= f.text_field :username
+    %tr
+      %td= f.label :new_password
+      %td= f.password_field :new_password
+    %tr
+      %td= f.label :new_password_confirmation
+      %td= f.password_field :new_password_confirmation
+    %tr
+      %td= f.label :first_name
+      %td= f.text_field :first_name
+    %tr
+      %td= f.label :last_name
+      %td= f.text_field :last_name
+    %tr
+      %td= f.label :job_title
+      %td= f.text_field :job_title
+    %tr
+      %td= f.label :organisation
+      %td
+    %tr
+      %td= f.label :phone
+      %td
+        = f.text_field :phone
+        = f.label :email
+        = f.text_field :email
+    %tr
+      %td= f.label :comments
+      %td= f.text_area :comments
+    %tr
+      %td= f.submit 'Proceed >>'
