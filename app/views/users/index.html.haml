@@ -1,0 +1,16 @@
+%h1 User Management: Edit User
+%p Click on a name below to edit the user details
+%p=page_entries_info @users
+%table
+  %tr
+    %th Name
+    %th Username
+    %th Organisation
+    %th Email
+  - @users.each do |user|
+    %tr
+      %td= link_to "#{user.first_name} #{user.last_name}", [:edit, user]
+      %td= link_to user.username,[:edit, user]
+      %td= user.organisation_name
+      %td= user.email
+= will_paginate @users

@@ -74,4 +74,10 @@ class User < ActiveRecord::Base
     self.Password = Digest::MD5.hexdigest(new_password) unless new_password.blank?
   end
   
+  belongs_to :organisation, :foreign_key => 'Organisation'
+  
+  def organisation_name
+    organisation && organisation.name
+  end
+  
 end

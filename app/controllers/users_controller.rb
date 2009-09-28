@@ -28,5 +28,11 @@ class UsersController < ApplicationController
   end
   
   def search
+    @search = User.search
+  end
+  
+  def index
+    @search = User.organisation_id_not_null.search(params[:search].merge({:User_ID_greater_than => 1}))
+    @users = @search.paginate(:page => params[:page], :per_page => 25)
   end
 end

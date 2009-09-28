@@ -1,18 +1,19 @@
 %h1 User management: Edit User
 %p Please select from the options below to edit a user's details.
-%table
-  %tr
-    %th Find User
-    %th
-  %tr
-    %td First Name
-    %td
-  %tr
-    %td Last Name
-    %td
-  %tr
-    %td Username
-    %td
-  %tr
-    %td
-    %td Find User
+- form_for @search, :url => users_path do |f|
+  %table
+    %tr
+      %th Find User
+      %th
+    %tr
+      %td First Name
+      %td= f.text_field :FirstName_begins_with
+    %tr
+      %td Last Name
+      %td= f.text_field :LastName_begins_with
+    %tr
+      %td Username
+      %td= f.text_field :Username_begins_with
+    %tr
+      %td
+      %td= f.submit "Find User"
