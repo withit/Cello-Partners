@@ -1,9 +1,12 @@
 form {
   color: #42809F; }
-  form table td {
-    background-color: #D6ECC6; }
-  form table tr.alt td {
-    background-color: #DCF2FD; }
+
+table th {
+  text-align: left; }
+table td {
+  background-color: #D6ECC6; }
+table tr.alt td {
+  background-color: #DCF2FD; }
 
 .sidebar {
   float: left;
@@ -42,6 +45,34 @@ form {
         -webkit-border-radius: 5px;
         text-transform: uppercase; }
 
+form.new_user_session {
+  margin: 40px auto;
+  background-color: #96D56C;
+  overflow: auto;
+  width: 300px;
+  height: 200px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px; }
+  form.new_user_session h2 {
+    color: white;
+    background-color: #006EAD;
+    font-size: 11pt;
+    padding: 2px;
+    margin-top: 0;
+    margin-bottom: 50px;
+    text-align: center;
+    font-weight: normal;
+    text-transform: uppercase; }
+  form.new_user_session label, form.new_user_session input[type=text], form.new_user_session input[type=password] {
+    float: left;
+    width: 125px; }
+  form.new_user_session label {
+    clear: left;
+    width: 100px; }
+  form.new_user_session input[type=submit] {
+    clear: left;
+    float: left; }
+
 body, td, h2 {
   font-family: verdana,arial,helvetica; }
 
@@ -69,21 +100,5 @@ body {
     padding: 0; }
 
 .main {
-  float: left; }
-  .main form.new_user_session {
-    margin-left: 110px; }
-    .main form.new_user_session h2 {
-      color: white;
-      background-color: #006EAD;
-      font-size: 11pt;
-      width: 225px;
-      padding: 2px; }
-    .main form.new_user_session label, .main form.new_user_session input[type=text], .main form.new_user_session input[type=password] {
-      float: left;
-      width: 125px; }
-    .main form.new_user_session label {
-      clear: left;
-      width: 100px; }
-    .main form.new_user_session input[type=submit] {
-      clear: left;
-      float: left; }
+  float: left;
+  width: 800px; }

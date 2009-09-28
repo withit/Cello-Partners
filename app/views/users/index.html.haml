@@ -8,7 +8,7 @@
     %th Organisation
     %th Email
   - @users.each do |user|
-    %tr
+    %tr{:class => cycle(nil,'alt')}
       %td= link_to "#{user.first_name} #{user.last_name}", [:edit, user]
       %td= link_to user.username,[:edit, user]
       %td= user.organisation_name
