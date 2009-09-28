@@ -1,19 +1,13 @@
-%h1 New User Account Details
-%p 
-  Fields marked with 
-  %span *
-  are required fields
+%h1 User Management: Edit User
+%p Please ament the details below and press 'Update User'
 - form_for @user do |f|
   %table
     %tr
+      %th User details
+      %th
+    %tr
       %td= f.label :username
       %td= f.text_field :username
-    %tr
-      %td= f.label :new_password
-      %td= f.password_field :new_password
-    %tr
-      %td= f.label :new_password_confirmation
-      %td= f.password_field :new_password_confirmation
     %tr
       %td= f.label :first_name
       %td= f.text_field :first_name
@@ -21,19 +15,44 @@
       %td= f.label :last_name
       %td= f.text_field :last_name
     %tr
-      %td= f.label :job_title
-      %td= f.text_field :job_title
+      %td= f.label :new_password
+      %td= f.password_field :new_password
+    %tr
+      %td= f.label :new_password_confirmation
+      %td= f.password_field :new_password_confirmation
+    %tr
+      %td= f.label :email
+      %td= f.text_field :email
+    %tr
+      %td= f.label :groups
+      %td= f.collection_select :role_ids, Role.all(:order => "Name"), :id, :Name, {}, :multiple => true
     %tr
       %td= f.label :organisation
-      %td
+      %td= f.object.organisation_name
+    %tr
+      %td= f.label :addr1, "Address 1"
+      %td= f.text_field :addr1
+    %tr
+      %td= f.label :addr2, "Address 2"
+      %td= f.text_field :addr2
+    %tr
+      %td= f.label :addr3, "Address 3"
+      %td= f.text_field :addr3
     %tr
       %td= f.label :phone
+      %td= f.text_field :phone
+    %tr
+      %td= f.label :fax
+      %td= f.text_field :fax
+    %tr
+      %td= f.label :mobile
+      %td= f.text_field :mobile
+    %tr
+      %td= f.label :cello_rep
+      %td= f.check_box :cello_rep
+    %tr
       %td
-        = f.text_field :phone
-        = f.label :email
-        = f.text_field :email
-    %tr
-      %td= f.label :comments
-      %td= f.text_area :comments
-    %tr
-      %td= f.submit 'Proceed >>'
+        = f.submit 'Update User'
+        %input{:type => 'reset', :value => 'clear'}
+= link_to 'Delete', @user, :method => :delete
+      

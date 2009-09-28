@@ -68,20 +68,22 @@ body {
     margin: 0;
     padding: 0; }
 
-.main form.new_user_session {
-  margin-left: 110px; }
-  .main form.new_user_session h2 {
-    color: white;
-    background-color: #006EAD;
-    font-size: 11pt;
-    width: 225px;
-    padding: 2px; }
-  .main form.new_user_session label, .main form.new_user_session input[type=text], .main form.new_user_session input[type=password] {
-    float: left;
-    width: 125px; }
-  .main form.new_user_session label {
-    clear: left;
-    width: 100px; }
-  .main form.new_user_session input[type=submit] {
-    clear: left;
-    float: left; }
+.main {
+  float: left; }
+  .main form.new_user_session {
+    margin-left: 110px; }
+    .main form.new_user_session h2 {
+      color: white;
+      background-color: #006EAD;
+      font-size: 11pt;
+      width: 225px;
+      padding: 2px; }
+    .main form.new_user_session label, .main form.new_user_session input[type=text], .main form.new_user_session input[type=password] {
+      float: left;
+      width: 125px; }
+    .main form.new_user_session label {
+      clear: left;
+      width: 100px; }
+    .main form.new_user_session input[type=submit] {
+      clear: left;
+      float: left; }
