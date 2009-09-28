@@ -4,8 +4,8 @@ class ProfilesController < ApplicationController
   end
   
   def update
-    @user = current_user
-    if @user.update_attributes(params[:profile])
+    @profile = current_user
+    if @profile.update_attributes(params[:profile])
       flash[:notice] = render_to_string(:layout => false)
       redirect_to flash_path
     else
