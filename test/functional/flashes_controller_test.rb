@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class FlashesControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  context "showing the flash" do
+    setup{ get :show, {}, authenticated_session}
+    should_respond_with :success
   end
 end

@@ -2,6 +2,10 @@ require 'digest/md5'
 class UserSession
   cattr_accessor :controller 
   
+  def id #prevent warnings about using id, and to use object id instead
+    @user && @user.id
+  end
+  
   attr_accessor :username, :password
   
   def errors
