@@ -35,4 +35,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def authenticated_session user=Factory(:user)
+    {:user_id => user.id.to_s}
+  end
 end

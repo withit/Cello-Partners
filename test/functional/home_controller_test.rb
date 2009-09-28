@@ -2,7 +2,7 @@ require 'test_helper'
 
 class HomeControllerTest < ActionController::TestCase
   context "on get to index when authenticated" do
-    setup { get :index, {}, :user_id => Factory(:user).id.to_s }
+    setup { get :index, {}, authenticated_session }
     should_respond_with :success
   end
   
