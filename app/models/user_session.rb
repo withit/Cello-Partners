@@ -20,7 +20,7 @@ class UserSession
   
   def save
     user = User.find_by_username(username)
-    if user.password == crypted_password
+    if user && user.password == crypted_password
       controller.session[:user_id] = user.id
       true
     else
@@ -30,5 +30,17 @@ class UserSession
   
   def crypted_password
     Digest::MD5.hexdigest(password)
+  end
+  
+  def self.find
+    new(User.find(controller.session[:user_id])) if controller.session[:user_id]
+  end
+  
+  def user
+    @user ||= controller.session[:user_id]  && User.find(controller.session[:user_id])
+  end
+  
+  def destroy
+    controller.session[:user_id] = nil
   end
 end
