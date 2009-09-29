@@ -1,0 +1,20 @@
+var calliper = new Array;
+<%- @callipers.each do |calliper| -%>
+  calliper.push(new Array('<%= escape_javascript(calliper.grade_abbrev) %>','<%= calliper.calliper %>'));
+<% end -%>
+
+function update_calliper(e){
+  var grade = e.element().value;
+  var options = $('quote_calliper').options;
+  options.length = 0;
+  var new_callipers = calliper.select(function(e){
+    return grade == e.first();
+  });
+  new_callipers.each(function(e){
+    options[options.length] = new Option(e.last() + ' μm',e.last());
+  });
+}
+
+document.observe('dom:loaded', function(e){
+  $$('#quote_grade_abbrev').invoke('observe', 'change', update_calliper)
+});

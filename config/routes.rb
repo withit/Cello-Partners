@@ -7,6 +7,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :collection => {:search => :get}
   map.resource :flash
   map.resource :profile
+  map.resources :quotes
+  map.resources :organisations, :has_many => :quotes
+  map.javascripts '/javascripts/:action.js', :controller => 'javascripts'
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action

@@ -1,0 +1,71 @@
+- content_for :head do 
+  = javascript_include_tag 'callipers'
+%h1 Quotes
+- unless @organisation
+  %h2 Create Quote - Cello
+  %p Please select a customer
+  - form_tag new_quote_path,:method => 'get', :id => "customer_select" do
+    = text_field_tag :customer_name
+    = collection_select :customer, :name, Organisation.all(:order => 'name'), :id, :name, {:prompt => '---Please Select---'}, :multiple => true
+    %input{:type => 'reset', :value => 'Reset Form'}
+    = submit_tag 'Submit'
+  %p This calculator is designed to provide indicative pricing for cello board orders. Pricing is subject to confirmation at time of ordering, and stock availability. Prices excludes GST.
+- else
+  - form_for @quote do |f|
+    %h2 Create Quote
+    %table
+      %tr
+        %td= f.label :orgnaisation
+        %td= h f.object.organisation_name
+      %tr
+        %td= f.label :grade_abbrev, "Grade"
+        %td= f.collection_select :grade_abbrev, Grade.all, :grade_abbrev, :name, :prompt => '--Please Select--'
+      %tr
+        %td= f.label :calliper
+        %td= f.select :calliper, []
+      %tr
+        %td= f.label :sheets, "Number of sheets"
+        %td= f.text_field :sheets
+      %tr
+        %td= f.label :width
+        %td
+          = f.text_field :width
+          mm
+      %tr
+        %td= f.label :length
+        %td
+          = f.text_field :width
+          mm
+      %tr
+        %td
+        %td
+      %tr
+        %td Grain
+        %td Long
+      %tr
+        %td Ex reels
+        %td 
+        %td mm
+      %tr
+        %td Gross Weight
+        %td
+        %td kg
+      %tr
+        %td Date Created
+        %td= f.object.created_date
+      %tr
+        %td Cost / 1000
+        %td
+        %td 
+          per 1,000 sheets + GST
+          = submit_tag 'Calculate'
+      %tr
+        %td Setup Surcharge
+        %td
+      %tr
+        %td= f.label :notes
+        %td= f.text_area :notes
+    %input{:type => 'reset', :value => 'Reset Form'}
+    %p This calculator is designed to provide indicative pricing for cello board orders. Pricing is subject to confirmation at time of ordering, and stock availability. Prices excludes GST.
+
+      

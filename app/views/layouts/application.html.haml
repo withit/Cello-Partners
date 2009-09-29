@@ -4,6 +4,7 @@
     %title Cello Paper
     = stylesheet_link_tag 'application'
     = javascript_include_tag :defaults, :cache => true
+    = yield :head
   %body
     .header
       %h1 Cello

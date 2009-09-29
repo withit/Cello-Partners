@@ -52,6 +52,8 @@ class MenuItem
       lambda{new_user_path}
     when self.module == 'shell_user_mgr' && self.function == 'sform'
       lambda{search_users_path}
+    when self.module == 'quotes' && self.function == 'nrform'
+      lambda{new_quote_path}
     else 
       nil
     end

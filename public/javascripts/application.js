@@ -7,4 +7,32 @@ document.observe('dom:loaded', function(){
      e.element().down('ul').toggle();
    }
   });
+  $$('#customer_select input[type=text]').invoke('observe','keyup', function(e){
+    var value = e.element().value.toLowerCase();
+    var option_to_select = e.element().next('select').select('option').find(function(e){
+      return e.innerHTML.toLowerCase().startsWith(value);
+    });
+    e.element().next('select').select('option').each(function(e){
+      e.selected = false;
+    })
+    if(option_to_select){
+      option_to_select.selected = true;
+    }
+  });
+  $$('#customer_select input[type=text]').invoke('observe','keyup', function(e){
+    var value = e.element().value.toLowerCase();
+    var option_to_select = e.element().next('select').select('option').find(function(e){
+      return e.innerHTML.toLowerCase().startsWith(value);
+    });
+    e.element().next('select').select('option').each(function(e){
+      e.selected = false;
+    })
+    if(option_to_select){
+      option_to_select.selected = true;
+    }
+  });
+  $$('form#customer_select').invoke('observe','submit', function(e){
+    e.stop();
+    document.location = "/organisations/" + e.element().down('select').value + "/quotes/new" ;
+  });
 });
