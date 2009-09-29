@@ -11,7 +11,7 @@
     = submit_tag 'Submit'
   %p This calculator is designed to provide indicative pricing for cello board orders. Pricing is subject to confirmation at time of ordering, and stock availability. Prices excludes GST.
 - else
-  - form_for @quote do |f|
+  - form_for [@organisation, @quote] do |f|
     %h3 Create Quote
     %table
       %tr
@@ -22,7 +22,7 @@
         %td= f.collection_select :grade_abbrev, Grade.all, :grade_abbrev, :name, :prompt => '--Please Select--'
       %tr.even
         %td= f.label :calliper
-        %td= f.select :calliper, []
+        %td= f.collection_select :calliper, f.object.calliper_options, :calliper, :calliper_with_units
       %tr.odd
         %td= f.label :sheets, "Number of sheets"
         %td= f.text_field :sheets
@@ -44,7 +44,9 @@
         %td Long
       %tr.odd
         %td Ex reels
-        %td mm
+        %td
+          = @quote.ex_reels
+          mm
       %tr.even
         %td Gross Weight
         %td kg

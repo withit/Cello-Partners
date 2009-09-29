@@ -5,6 +5,11 @@ class QuotesController < ApplicationController
     @quote = @organisation.quotes.build if @organisation
   end
   
+  def create
+    @quote =  @organisation.quotes.build(params[:quote])
+    render 'new'
+  end
+  
   protected
     
   def load_organisation
