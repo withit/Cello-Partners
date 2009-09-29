@@ -1,4 +1,4 @@
-form, h2, p {
+form, h2, p, h3 {
   color: #035881; }
 
 table {
@@ -81,32 +81,39 @@ form#new_quote input[type=reset] {
         text-decoration: none; }
 
 form.new_user_session {
-  margin: 40px auto;
+  margin: 140px auto;
   background-color: #96D56C;
   overflow: auto;
-  width: 300px;
-  height: 200px;
+  width: 500px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px; }
   form.new_user_session h2 {
     color: white;
     background-color: #006EAD;
-    font-size: 11pt;
+    background-image: url(../images/blue.jpg);
+    font-size: 18px;
     padding: 2px;
     margin-top: 0;
     margin-bottom: 50px;
     text-align: center;
     font-weight: normal;
-    text-transform: uppercase; }
-  form.new_user_session label, form.new_user_session input[type=text], form.new_user_session input[type=password] {
-    float: left;
-    width: 125px; }
-  form.new_user_session label {
-    clear: left;
-    width: 100px; }
+    text-transform: uppercase;
+    -moz-border-radius-topleft: 10px;
+    -webkit-border-top-left-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    -webkit-border-top-right-radius: 10px; }
+  form.new_user_session table {
+    margin: 0 auto;
+    text-align: right; }
+  form.new_user_session a {
+    color: white;
+    text-decoration: none;
+    display: block; }
+    form.new_user_session a:hover {
+      text-decoration: underline; }
   form.new_user_session input[type=submit] {
-    clear: left;
-    float: left; }
+    float: none;
+    padding: 6px; }
 
 .header {
   background-image: url(../images/banner.jpg);
@@ -128,6 +135,13 @@ form.new_user_session {
   background-position: top left;
   background-repeat: repeat-x;
   padding-top: 13px; }
+
+.footer {
+  clear: left;
+  border-top: 1px solid #96d56C;
+  color: #035881;
+  text-align: right;
+  padding: 5px; }
 
 body, td, h2 {
   font-family: verdana,arial,helvetica; }

@@ -9,4 +9,6 @@ class Action < ActiveRecord::Base
   def function
     self.Function
   end
+  
+  belongs_to :permission, :foreign_key => 'Option_Set_ID'
 end

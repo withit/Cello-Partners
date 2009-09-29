@@ -24,7 +24,13 @@
                         - else
                           = link_to h(child.label), instance_eval(&child.url)
             %li#logout= link_to 'Logout', logout_path
-      .main
+        .main
+          = yield
+      - else
         = yield
+    .footer
+      &copy; Copyright
+      = Date.today.year
+      CELLO | Contact Information | Contact | Terms and Conditions | Security Policy | Site by
 
     

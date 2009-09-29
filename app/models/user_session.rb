@@ -26,6 +26,9 @@ class UserSession
     user = User.find_by_username(username)
     if user && user.password == crypted_password
       controller.session[:user_id] = user.id
+      user.last_login = Time.now
+      user.num_logins = user.num_logins.to_i + 1
+      user.save
       true
     else
       false

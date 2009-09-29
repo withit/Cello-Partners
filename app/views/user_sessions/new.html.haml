@@ -1,7 +1,14 @@
 - form_for @user_session do |f|
   %h2 Login
-  = f.label :username
-  = f.text_field :username
-  = f.label :password
-  = f.password_field :password
-  = f.submit "Login"
+  %table
+    %tr
+      %td= f.label :username, 'user name'
+      %td= f.text_field :username
+    %tr
+      %td= f.label :password, 'password'
+      %td= f.password_field :password
+    %tr
+      %td
+      %td
+        = f.submit "Login"
+        = link_to 'forgotten your password?'

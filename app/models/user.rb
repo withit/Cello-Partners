@@ -17,6 +17,19 @@ class User < ActiveRecord::Base
   has_many :roles, :through => :privileges
   #has_many :permissions, :through => :roles
   
+  def permissions
+    Permission.scoped(:joins => {:grants => {:role => {:privileges => :user}}}, :conditions => ['shell_users.User_ID = ?',id])
+  end
+  
+  def actions
+    Action.scoped(:joins => {:permission => {:grants => {:role => {:privileges => :user}}}}, :conditions => ['shell_users.User_ID = ?',id])
+  end
+  
+  def has_access_to? mod, func
+    return true if id == 1
+    actions.find(:first, :conditions => ['shell_options.Module = ? and shell_options.Function = ?',mod, func])
+  end
+  
   def menu_items
     effective_roles.uniq.collect do |role|
       role.grants(:include => :permission, :conditions => {:is_menu => true})
