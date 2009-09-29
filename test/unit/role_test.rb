@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class RoleTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
+  should_have_many :grants
+  should_have_many :permissions
+  should_have_many :privileges
+  should_have_many :users
 end

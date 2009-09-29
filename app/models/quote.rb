@@ -2,7 +2,7 @@ class Quote < ActiveRecord::Base
   set_table_name 'orders'
   set_inheritance_column 'foo'
   
-  belongs_to :organisation
+  belongs_to :organisation, :foreign_key => 'org_id'
   
   def organisation_name
     organisation.name

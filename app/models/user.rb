@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   def password
     self.Password
   end
-  has_many :privileges
+  has_many :privileges, :foreign_key => 'User_ID'
   has_many :roles, :through => :privileges
   #has_many :permissions, :through => :roles
   

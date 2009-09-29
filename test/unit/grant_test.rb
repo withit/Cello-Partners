@@ -1,8 +1,6 @@
 require 'test_helper'
 
 class GrantTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
+  should_belong_to :role
+  should_belong_to :permission
 end

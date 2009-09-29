@@ -1,8 +1,7 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
+  should_belong_to :organisation
+  should_have_many :privileges
+  should_have_many :roles
 end

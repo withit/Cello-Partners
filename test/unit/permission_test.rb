@@ -1,8 +1,7 @@
 require 'test_helper'
 
 class PermissionTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
+  should_have_many :grants
+  should_have_many :roles
+  should_belong_to :action
 end
