@@ -14,7 +14,7 @@ table {
     padding: 4px;
     vertical-align: top;
     line-height: 25px; }
-    table td #user_comments, table th #user_comments {
+    table td #user_comments, table td #quote_notes, table th #user_comments, table th #quote_notes {
       height: 50px; }
 
 input[type=submit], input[type=reset] {
@@ -27,6 +27,9 @@ input[type=submit], input[type=reset] {
   text-transform: uppercase;
   background-image: url(/images/blue.jpg);
   -webkit-box-shadow: 2px 2px 2px #888; }
+
+form#new_quote input[type=reset] {
+  float: none; }
 
 .sidebar {
   float: left;
@@ -139,3 +142,6 @@ body {
 
 .main {
   float: left; }
+
+p {
+  width: 500px; }

@@ -1,8 +1,8 @@
 - content_for :head do 
   = javascript_include_tag 'callipers'
-%h1 Quotes
+%h2 Quotes
 - unless @organisation
-  %h2 Create Quote - Cello
+  %h3 Create Quote - Cello
   %p Please select a customer
   - form_tag new_quote_path,:method => 'get', :id => "customer_select" do
     = text_field_tag :customer_name
@@ -12,26 +12,26 @@
   %p This calculator is designed to provide indicative pricing for cello board orders. Pricing is subject to confirmation at time of ordering, and stock availability. Prices excludes GST.
 - else
   - form_for @quote do |f|
-    %h2 Create Quote
+    %h3 Create Quote
     %table
       %tr
-        %td= f.label :orgnaisation
+        %td= f.label :organisation, 'Customer'
         %td= h f.object.organisation_name
-      %tr
+      %tr.odd
         %td= f.label :grade_abbrev, "Grade"
         %td= f.collection_select :grade_abbrev, Grade.all, :grade_abbrev, :name, :prompt => '--Please Select--'
-      %tr
+      %tr.even
         %td= f.label :calliper
         %td= f.select :calliper, []
-      %tr
+      %tr.odd
         %td= f.label :sheets, "Number of sheets"
         %td= f.text_field :sheets
-      %tr
+      %tr.even
         %td= f.label :width
         %td
           = f.text_field :width
           mm
-      %tr
+      %tr.odd
         %td= f.label :length
         %td
           = f.text_field :width
@@ -39,27 +39,24 @@
       %tr
         %td
         %td
-      %tr
+      %tr.even
         %td Grain
         %td Long
-      %tr
+      %tr.odd
         %td Ex reels
-        %td 
         %td mm
-      %tr
+      %tr.even
         %td Gross Weight
-        %td
         %td kg
-      %tr
+      %tr.odd
         %td Date Created
         %td= f.object.created_date
-      %tr
+      %tr.even
         %td Cost / 1000
-        %td
         %td 
           per 1,000 sheets + GST
           = submit_tag 'Calculate'
-      %tr
+      %tr.odd
         %td Setup Surcharge
         %td
       %tr
