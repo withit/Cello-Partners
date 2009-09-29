@@ -1,4 +1,5 @@
 %h2 User Management: Edit User
+= button_to 'Delete', @user, :method => :delete
 %p Please ament the details below and press 'Update User'
 - form_for @user do |f|
   %table
@@ -54,5 +55,4 @@
       %td
         = f.submit 'Update User'
         %input{:type => 'reset', :value => 'clear'}
-= button_to 'Delete', @user, :method => :delete
       
