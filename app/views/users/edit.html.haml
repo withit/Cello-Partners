@@ -1,58 +1,58 @@
-%h1 User Management: Edit User
+%h2 User Management: Edit User
 %p Please ament the details below and press 'Update User'
 - form_for @user do |f|
   %table
     %tr
       %th User details
       %th
-    %tr
+    %tr.odd
       %td= f.label :username
       %td= f.text_field :username
-    %tr
+    %tr.even
       %td= f.label :first_name
       %td= f.text_field :first_name
-    %tr
+    %tr.odd
       %td= f.label :last_name
       %td= f.text_field :last_name
-    %tr
+    %tr.even
       %td= f.label :new_password
       %td= f.password_field :new_password
-    %tr
+    %tr.odd
       %td= f.label :new_password_confirmation
       %td= f.password_field :new_password_confirmation
-    %tr
+    %tr.even
       %td= f.label :email
       %td= f.text_field :email
-    %tr
+    %tr.odd
       %td= f.label :groups
       %td= f.collection_select :role_ids, Role.all(:order => "Name"), :id, :Name, {}, :multiple => true
-    %tr
+    %tr.even
       %td= f.label :organisation
       %td= f.object.organisation_name
-    %tr
+    %tr.odd
       %td= f.label :addr1, "Address 1"
       %td= f.text_field :addr1
-    %tr
+    %tr.even
       %td= f.label :addr2, "Address 2"
       %td= f.text_field :addr2
-    %tr
+    %tr.odd
       %td= f.label :addr3, "Address 3"
       %td= f.text_field :addr3
-    %tr
+    %tr.even
       %td= f.label :phone
       %td= f.text_field :phone
-    %tr
+    %tr.odd
       %td= f.label :fax
       %td= f.text_field :fax
-    %tr
+    %tr.even
       %td= f.label :mobile
       %td= f.text_field :mobile
-    %tr
+    %tr.odd
       %td= f.label :cello_rep
       %td= f.check_box :cello_rep
     %tr
       %td
         = f.submit 'Update User'
         %input{:type => 'reset', :value => 'clear'}
-= link_to 'Delete', @user, :method => :delete
+= button_to 'Delete', @user, :method => :delete
       

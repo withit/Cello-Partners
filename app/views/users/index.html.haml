@@ -1,4 +1,4 @@
-%h1 User Management: Edit User
+%h2 User Management: Edit User
 %p Click on a name below to edit the user details
 %p=page_entries_info @users
 %table
@@ -8,7 +8,7 @@
     %th Organisation
     %th Email
   - @users.each do |user|
-    %tr{:class => cycle(nil,'alt')}
+    %tr{:class => cycle('odd','even')}
       %td= link_to "#{user.first_name} #{user.last_name}", [:edit, user]
       %td= link_to user.username,[:edit, user]
       %td= user.organisation_name

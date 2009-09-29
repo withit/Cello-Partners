@@ -1,9 +1,27 @@
-form
-  :color #42809F
+form, h2, p
+  :color #035881
 table
+  :border-spacing 4px
+  :font-size 12px
   th
     :text-align left
-  td
+  tr.odd td
     :background-color #D6ECC6
-  tr.alt td
-    :background-color #DCF2FD
+  tr.even td
+    :background-color #DCF2FC
+  td, th
+    :padding 4px
+    :vertical-align top
+    :line-height 25px
+    #user_comments
+      :height 50px
+input[type=submit],input[type=reset]
+  :background-color #3ea8da
+  :border 0
+  :color white
+  :-moz-border-radius 5px
+  :-webkit-border-radius 5px
+  :float right
+  :text-transform uppercase
+  :background-image url(/images/blue.jpg)
+  :-webkit-box-shadow 2px 2px 2px #888

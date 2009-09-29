@@ -1,40 +1,57 @@
-%h1 New User Account Details
-%p 
+%h2 New User Account Details
+%p.instructions
   Fields marked with 
-  %span *
+  %span.required *
   are required fields
 - form_for @user do |f|
   %table
-    %tr
+    %tr.odd
       %td= f.label :username
-      %td= f.text_field :username
-    %tr
+      %td
+        = f.text_field :username
+        *
+    %tr.even
       %td= f.label :new_password
-      %td= f.password_field :new_password
-    %tr
+      %td
+        = f.password_field :new_password
+        *
+    %tr.odd
       %td= f.label :new_password_confirmation
-      %td= f.password_field :new_password_confirmation
-    %tr
+      %td
+        = f.password_field :new_password_confirmation
+        *
+    %tr.even
       %td= f.label :first_name
-      %td= f.text_field :first_name
-    %tr
+      %td
+        = f.text_field :first_name
+        *
+    %tr.odd
       %td= f.label :last_name
-      %td= f.text_field :last_name
-    %tr
+      %td
+        = f.text_field :last_name
+        *
+    %tr.even
       %td= f.label :job_title
-      %td= f.text_field :job_title
-    %tr
+      %td
+        = f.text_field :job_title
+        *
+    %tr.odd
       %td= f.label :organisation
       %td= f.collection_select :Organisation, Organisation.all, :id, :name
-    %tr
+    %tr.even
       %td= f.label :phone
       %td
         = f.text_field :phone
-        = f.label :email
+        *
+    %tr.odd
+      %td= f.label :email
+      %td
         = f.text_field :email
-    %tr
+        *
+    %tr.even
       %td= f.label :comments
       %td= f.text_area :comments
     %tr
-      %td= f.submit 'Proceed >>'
+      %td
+      %td= f.submit 'Proceed &raquo;'
     

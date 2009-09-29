@@ -8,22 +8,23 @@
   %body
     .header
       %h1 Cello
-    - if current_user
-      .sidebar
-        %ul
-          - current_user.menu.root_items.each do |menu_item|
-            %li
-              = h menu_item.label
-              - unless menu_item.children.empty?
-                %ul{:style => 'display: none;'}
-                  - menu_item.children.each do |child|
-                    %li
-                      - if !child.url
-                        = h child.label 
-                      - else
-                        = link_to h(child.label), instance_eval(&child.url)
-          %li#logout= link_to 'Logout', logout_path
-    .main
-      = yield
+    .container
+      - if current_user
+        .sidebar
+          %ul
+            - current_user.menu.root_items.each do |menu_item|
+              %li
+                = h menu_item.label
+                - unless menu_item.children.empty?
+                  %ul{:style => 'display: none;'}
+                    - menu_item.children.each do |child|
+                      %li
+                        - if !child.url
+                          = h child.label 
+                        - else
+                          = link_to h(child.label), instance_eval(&child.url)
+            %li#logout= link_to 'Logout', logout_path
+      .main
+        = yield
 
     

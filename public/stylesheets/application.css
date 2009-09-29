@@ -1,12 +1,32 @@
-form {
-  color: #42809F; }
+form, h2, p {
+  color: #035881; }
 
-table th {
-  text-align: left; }
-table td {
-  background-color: #D6ECC6; }
-table tr.alt td {
-  background-color: #DCF2FD; }
+table {
+  border-spacing: 4px;
+  font-size: 12px; }
+  table th {
+    text-align: left; }
+  table tr.odd td {
+    background-color: #D6ECC6; }
+  table tr.even td {
+    background-color: #DCF2FC; }
+  table td, table th {
+    padding: 4px;
+    vertical-align: top;
+    line-height: 25px; }
+    table td #user_comments, table th #user_comments {
+      height: 50px; }
+
+input[type=submit], input[type=reset] {
+  background-color: #3ea8da;
+  border: 0;
+  color: white;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  float: right;
+  text-transform: uppercase;
+  background-image: url(/images/blue.jpg);
+  -webkit-box-shadow: 2px 2px 2px #888; }
 
 .sidebar {
   float: left;
@@ -22,28 +42,40 @@ table tr.alt td {
     .sidebar ul li {
       border-bottom: 1px solid white;
       padding: 5px;
-      color: #016999;
+      color: #035881;
       font-size: 10px;
-      position: relative; }
+      position: relative;
+      padding-left: 15px;
+      background-image: url(../images/arrow.jpg);
+      background-position: 95% 50%;
+      background-repeat: no-repeat; }
       .sidebar ul li ul {
         position: absolute;
         top: 0;
         left: 200px;
         width: 200px;
         background-color: #96D56C; }
+        .sidebar ul li ul li {
+          background-image: none; }
     .sidebar ul li#logout {
       text-align: right;
       padding-top: 15px;
-      padding-bottom: 15px; }
+      padding-bottom: 30px;
+      border: none;
+      background-image: none; }
       .sidebar ul li#logout a {
+        display: block;
         padding: 5px;
-        margin-top: 15px;
-        background-color: #0171A9;
+        background-color: #3ea8da;
+        border: 0;
         color: white;
-        text-decoration: none;
         -moz-border-radius: 5px;
         -webkit-border-radius: 5px;
-        text-transform: uppercase; }
+        float: right;
+        text-transform: uppercase;
+        background-image: url(/images/blue.jpg);
+        -webkit-box-shadow: 2px 2px 2px #888;
+        text-decoration: none; }
 
 form.new_user_session {
   margin: 40px auto;
@@ -74,7 +106,6 @@ form.new_user_session {
     float: left; }
 
 .header {
-  border-bottom: 10px solid #3ea8da;
   background-image: url(../images/banner.jpg);
   background-repeat: no-repeat;
   background-position: top-left;
@@ -89,8 +120,17 @@ form.new_user_session {
     background-repeat: no-repeat;
     border-bottom: 1px solid #96d56C; }
 
+.container {
+  background-image: url(../images/blue.jpg);
+  background-position: top left;
+  background-repeat: repeat-x;
+  padding-top: 13px; }
+
 body, td, h2 {
   font-family: verdana,arial,helvetica; }
+
+body {
+  font-size: 12px; }
 
 body {
   margin: 0;
