@@ -73,6 +73,22 @@ form.new_user_session {
     clear: left;
     float: left; }
 
+.header {
+  border-bottom: 10px solid #3ea8da;
+  background-image: url(../images/banner.jpg);
+  background-repeat: no-repeat;
+  background-position: top-left;
+  padding-bottom: 10px; }
+  .header h1 {
+    background-image: url(../images/cello-logo.jpg);
+    height: 125px;
+    text-indent: -9999px;
+    margin: 0;
+    padding: 0;
+    background-position: top right;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid #96d56C; }
+
 body, td, h2 {
   font-family: verdana,arial,helvetica; }
 
@@ -80,24 +96,6 @@ body {
   margin: 0;
   padding: 0;
   background-color: #FFFFFF; }
-
-.header {
-  border-bottom: 10px solid #0080BD; }
-  .header .time {
-    background-color: #006EAD;
-    color: #FFFFFF;
-    border-top: 1px solid #FFF8DB;
-    border-bottom: 1px solid #FFF8DB;
-    outline: 1px solid #006EAD;
-    font-size: 10px;
-    line-height: 18px; }
-  .header h1 {
-    background-image: url(../images/cello_header.jpg);
-    height: 110px;
-    width: 175px;
-    text-indent: -9999px;
-    margin: 0;
-    padding: 0; }
 
 .main {
   float: left;
