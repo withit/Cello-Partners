@@ -141,7 +141,29 @@ form.new_user_session {
   border-top: 1px solid #96d56C;
   color: #035881;
   text-align: right;
-  padding: 5px; }
+  padding: 5px;
+  line-height: 30px;
+  vertical-align: middle; }
+  .footer a img {
+    border: none;
+    vertical-align: middle; }
+
+.pagination {
+  background-image: url(../images/green.jpg);
+  float: right;
+  color: white;
+  height: 20px;
+  line-height: 20px;
+  padding: 0px 4px;
+  margin-top: 40px;
+  margin-bottom: 10px; }
+  .pagination .prev_page, .pagination .next_page {
+    text-transform: uppercase; }
+  .pagination a {
+    color: white;
+    text-decoration: none; }
+    .pagination a:hover {
+      text-decoration: underline; }
 
 body, td, h2 {
   font-family: verdana,arial,helvetica; }
@@ -149,8 +171,11 @@ body, td, h2 {
 body {
   font-size: 12px; }
 
+h1, h2, h3, h4, h5 {
+  font-size: 14px; }
+
 body {
-  margin: 0;
+  margin: 10px;
   padding: 0;
   background-color: #FFFFFF; }
 
@@ -159,3 +184,16 @@ body {
 
 p {
   width: 500px; }
+
+table th {
+  text-transform: uppercase;
+  color: #035881;
+  font-family: 'Arial';
+  line-height: 12px; }
+table td {
+  color: #035881; }
+  table td a {
+    color: #409904;
+    text-decoration: none; }
+    table td a:hover {
+      text-decoration: underline; }
