@@ -10,8 +10,15 @@ class QuotesController < ApplicationController
     render 'new'
   end
   
+  def search
+  end
+  
   protected
-    
+  
+  def require_organisation
+    render 'organisations/select'
+  end
+  
   def load_organisation
     @organisation = Organisation.find(params[:organisation_id]) if params[:organisation_id]
   end

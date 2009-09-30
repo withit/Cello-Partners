@@ -54,6 +54,8 @@ class MenuItem
       lambda{search_users_path}
     when self.module == 'quotes' && self.function == 'nrform'
       lambda{new_quote_path}
+    when self.module == 'quotes' && self.function == 'sform'
+      lambda{search_quotes_path}
     else 
       nil
     end

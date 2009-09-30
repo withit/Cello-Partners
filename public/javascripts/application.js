@@ -27,7 +27,13 @@ document.observe('dom:loaded', function(){
   });
   $$('form#customer_select').invoke('observe','submit', function(e){
     e.stop();
-    document.location = "/organisations/" + e.element().down('select').value + "/quotes/new" ;
+    var org_id = e.element().down('select').value;
+    if(org_id)
+    {
+      document.location = "/organisations/" + org_id + document.location.pathname;
+    } else { 
+      alert('You must select a customer');
+    }
   });
   $$('.sidebar').invoke('observe', 'mouseout',function(e){
     if(!e.findElement('li'))

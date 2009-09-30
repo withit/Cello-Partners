@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :collection => {:search => :get}
   map.resource :flash
   map.resource :profile
-  map.resources :quotes
+  map.resources :quotes, :collection => {:search => :get}
   map.resources :organisations, :has_many => :quotes
   map.javascripts '/javascripts/:action.js', :controller => 'javascripts'
   # Sample of regular route:
