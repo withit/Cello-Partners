@@ -3,3 +3,13 @@
 
 en:
   hello: "Hello world"
+  controller:
+    quotes:
+      search:
+        heading: ""
+        subheading: "List Quotes & Orders"
+      new:
+        heading: "Quote"
+        subheading: "Create Quote"
+          
+      

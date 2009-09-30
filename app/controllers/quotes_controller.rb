@@ -1,5 +1,5 @@
 class QuotesController < ApplicationController
-  before_filter :load_organisation
+  before_filter :load_organisation, :require_organisation
   
   def new
     @quote = @organisation.quotes.build if @organisation
@@ -16,7 +16,7 @@ class QuotesController < ApplicationController
   protected
   
   def require_organisation
-    render 'organisations/select'
+    render 'organisations/select' unless @organisation
   end
   
   def load_organisation

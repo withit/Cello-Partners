@@ -1,0 +1,10 @@
+%h3= t("controller.#{controller.controller_name}.#{controller.action_name}.heading")
+%h4
+  = t("controller.#{controller.controller_name}.#{controller.action_name}.subheading")
+  \- Cello
+%p Please select a customer
+- form_tag new_quote_path,:method => 'get', :id => "customer_select" do
+  = text_field_tag :customer_name
+  = collection_select :customer, :name, Organisation.all(:order => 'name'), :id, :name, {:prompt => '---Please Select---'}, :multiple => true
+  = submit_tag 'Submit'
+%p.clear This calculator is designed to provide indicative pricing for cello board orders. Pricing is subject to confirmation at time of ordering, and stock availability. Prices excludes GST.
