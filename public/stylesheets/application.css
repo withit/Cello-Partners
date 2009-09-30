@@ -53,6 +53,7 @@ form#new_quote input[type=reset] {
       background-position: 95% 50%;
       background-repeat: no-repeat; }
       .sidebar ul li ul {
+        display: none;
         position: absolute;
         top: 0;
         left: 200px;
@@ -60,6 +61,8 @@ form#new_quote input[type=reset] {
         background-color: #96D56C; }
         .sidebar ul li ul li {
           background-image: none; }
+    .sidebar ul li.active ul {
+      display: block; }
     .sidebar ul li#logout {
       text-align: right;
       padding-top: 15px;

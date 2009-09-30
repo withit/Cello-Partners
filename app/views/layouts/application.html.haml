@@ -16,7 +16,7 @@
               %li
                 = h menu_item.label
                 - unless menu_item.children.empty?
-                  %ul{:style => 'display: none;'}
+                  %ul.active
                     - menu_item.children.each do |child|
                       %li
                         - if !child.url

@@ -20,6 +20,7 @@
       :background-position 95% 50%
       :background-repeat no-repeat
       ul
+        :display none
         :position absolute
         :top 0
         :left 200px
@@ -27,6 +28,10 @@
         :background-color #96D56C
         li
           :background-image none
+    li.active
+      ul
+        :display block
+      
     li#logout
       :text-align right
       :padding-top 15px
@@ -46,4 +51,4 @@
         :background-image url(/images/blue.jpg)
         :-webkit-box-shadow 2px 2px 2px #888
         :text-decoration none
-        
+    
