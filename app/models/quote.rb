@@ -46,10 +46,11 @@ class Quote < ActiveRecord::Base
   end
   
   def price
-    prices.break_less_than(gross_weight).first(:order => "break desc", :select => 'price').price
+    p = prices.break_less_than(gross_weight).first(:order => "break desc", :select => 'price')
+    p && p.price
   end
   
   def price_per_1000_sheets
-    price * gross_weight * 1000 / sheets
+    price && price * gross_weight * 1000 / sheets
   end
 end

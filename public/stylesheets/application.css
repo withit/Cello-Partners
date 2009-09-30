@@ -192,6 +192,16 @@ form.new_user_session {
     .pagination a:hover {
       text-decoration: underline; }
 
+#customer_select {
+  float: left; }
+  #customer_select input, #customer_select select {
+    display: block;
+    padding: 0; }
+  #customer_select select {
+    height: 200px; }
+  #customer_select input[type=submit] {
+    margin: 5px; }
+
 body, td, h2 {
   font-family: verdana,arial,helvetica; }
 
@@ -224,3 +234,6 @@ table td {
     text-decoration: none; }
     table td a:hover {
       text-decoration: underline; }
+
+.clear {
+  clear: both; }

@@ -7,9 +7,8 @@
   - form_tag new_quote_path,:method => 'get', :id => "customer_select" do
     = text_field_tag :customer_name
     = collection_select :customer, :name, Organisation.all(:order => 'name'), :id, :name, {:prompt => '---Please Select---'}, :multiple => true
-    %input{:type => 'reset', :value => 'Reset Form'}
     = submit_tag 'Submit'
-  %p This calculator is designed to provide indicative pricing for cello board orders. Pricing is subject to confirmation at time of ordering, and stock availability. Prices excludes GST.
+  %p.clear This calculator is designed to provide indicative pricing for cello board orders. Pricing is subject to confirmation at time of ordering, and stock availability. Prices excludes GST.
 - else
   - form_for [@organisation, @quote] do |f|
     %h3 Create Quote
