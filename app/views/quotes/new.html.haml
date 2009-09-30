@@ -34,7 +34,7 @@
       %tr.odd
         %td= f.label :length
         %td
-          = f.text_field :width
+          = f.text_field :length
           mm
       %tr
         %td
@@ -49,13 +49,16 @@
           mm
       %tr.even
         %td Gross Weight
-        %td kg
+        %td
+          = @quote.gross_weight
+          kg
       %tr.odd
         %td Date Created
         %td= f.object.created_date
       %tr.even
         %td Cost / 1000
         %td 
+          %span.cost= number_to_currency @quote.price_per_1000_sheets
           per 1,000 sheets + GST
           = submit_tag 'Calculate'
       %tr.odd

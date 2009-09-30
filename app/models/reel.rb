@@ -14,6 +14,6 @@ class Reel < ActiveRecord::Base
   end
   
   def weight_per_unit_length page_width
-    gsm / pages_per_unit_length(page_width)
+    gsm * reel_size/ pages_per_unit_length(page_width)
   end
 end

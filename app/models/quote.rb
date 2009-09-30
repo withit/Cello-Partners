@@ -23,19 +23,33 @@ class Quote < ActiveRecord::Base
   end
   
   def gross_weight
+    reel && (reel.weight_per_unit_length(width) * length * sheets) / 10**9
   end
   
   def ex_reels
-    reel = reels.to_a.min do |a,b|
-      a.weight_per_unit_length(width) <=> b.weight_per_unit_length(width)
-    end
     reel && reel.reel_size
   end
   
-  def reels
-    Reel.find_all_by_grade_abbrev_and_calliper(grade_abbrev, calliper)
+  def reel
+    @reel ||= reels.to_a.min do |a,b|
+      a.weight_per_unit_length(width) <=> b.weight_per_unit_length(width)
+    end
   end
   
-  def cost_per_1000_sheets
+  def reels
+    return unless grade_abbrev && calliper
+    Reel.reel_size_greater_than(width).find_all_by_grade_abbrev_and_calliper(grade_abbrev, calliper)
+  end
+  
+  def prices
+    Price.scoped(:conditions => {:status => true, :grade_abbrev => grade_abbrev, :calliper => calliper, :name => organisation.price_names})
+  end
+  
+  def price
+    prices.break_less_than(gross_weight).first(:order => "break desc", :select => 'price').price
+  end
+  
+  def price_per_1000_sheets
+    price * gross_weight * 1000 / sheets
   end
 end

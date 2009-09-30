@@ -12,16 +12,7 @@ class ReelTest < ActiveSupport::TestCase
   
   should "something to so with weight" do
     reel = Factory(:reel, :reel_size => 1000, :gsm => 200)
-    assert_equal 100, reel.weight_per_unit_length(500)
-    assert_equal 200, reel.weight_per_unit_length(501)
+    assert_equal 100000, reel.weight_per_unit_length(500)
+    assert_equal 200000, reel.weight_per_unit_length(501)
   end
-  
-  
-  # def pages_per_unit_length page_width
-  #   real_size / page_width 
-  # end
-  # 
-  # def weight_per_unit_length page_width
-  #   reel_size / pages_per_unit_length(page_width)
-  # end
 end
