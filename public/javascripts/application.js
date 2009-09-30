@@ -30,6 +30,10 @@ document.observe('dom:loaded', function(){
     document.location = "/organisations/" + e.element().down('select').value + "/quotes/new" ;
   });
   $$('.sidebar').invoke('observe', 'mouseout',function(e){
+    if(!e.findElement('li'))
+    {
+      return;
+    }
     e.findElement('li').removeClassName('active');
     if(e.findElement('li').up('li'))
     {
@@ -37,6 +41,10 @@ document.observe('dom:loaded', function(){
     }
   });
   $$('.sidebar').invoke('observe', 'mouseover',function(e){
+    if(!e.findElement('li'))
+    {
+      return;
+    }
     e.findElement('li').addClassName('active');
     if(e.findElement('li').up('li'))
     {
