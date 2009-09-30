@@ -58,30 +58,51 @@ form#new_quote input[type=reset] {
         top: 0;
         left: 200px;
         width: 200px;
-        background-color: #96D56C; }
+        background-color: #96D56C;
+        border-left: 1px solid white;
+        border-right: 1px solid white; }
         .sidebar ul li ul li {
-          background-image: none; }
-    .sidebar ul li.active ul {
-      display: block; }
-    .sidebar ul li#logout {
-      text-align: right;
-      padding-top: 15px;
-      padding-bottom: 30px;
-      border: none;
-      background-image: none; }
-      .sidebar ul li#logout a {
+          background-image: none;
+          background-color: #2C9DD4;
+          font-weight: normal;
+          color: white; }
+    .sidebar ul li.active {
+      background-color: #c6c6c6;
+      font-weight: bold;
+      color: #035881; }
+      .sidebar ul li.active a {
+        color: #035881; }
+      .sidebar ul li.active li a {
+        color: white; }
+      .sidebar ul li.active li.active a {
+        color: #035881; }
+      .sidebar ul li.active ul {
         display: block;
-        padding: 5px;
-        background-color: #3ea8da;
-        border: 0;
-        color: white;
-        -moz-border-radius: 5px;
-        -webkit-border-radius: 5px;
-        float: right;
-        text-transform: uppercase;
-        background-image: url(/images/blue.jpg);
-        -webkit-box-shadow: 2px 2px 2px #888;
-        text-decoration: none; }
+        border-top: 1px solid white; }
+    .sidebar ul a {
+      text-decoration: none; }
+    .sidebar ul a:hover {
+      text-decoration: underline; }
+  .sidebar #logout {
+    text-align: right;
+    padding-top: 15px;
+    padding-bottom: 30px;
+    border: none;
+    background-image: none;
+    padding-right: 5px; }
+    .sidebar #logout a {
+      display: block;
+      padding: 5px;
+      background-color: #3ea8da;
+      border: 0;
+      color: white;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      float: right;
+      text-transform: uppercase;
+      background-image: url(/images/blue.jpg);
+      -webkit-box-shadow: 2px 2px 2px #888;
+      text-decoration: none; }
 
 form.new_user_session {
   margin: 140px auto;

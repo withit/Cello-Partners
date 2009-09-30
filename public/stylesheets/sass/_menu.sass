@@ -26,29 +26,53 @@
         :left 200px
         :width 200px
         :background-color #96D56C
+        :border-left 1px solid white
+        :border-right 1px solid white
         li
           :background-image none
+          :background-color #2C9DD4
+          :font-weight normal
+          :color white
     li.active
+      :background-color #c6c6c6
+      :font-weight bold
+      :color #035881
+      a
+        :color #035881
+      li
+        a
+          :color white
+      li.active
+        a 
+          :color #035881
       ul
         :display block
-      
-    li#logout
-      :text-align right
-      :padding-top 15px
-      :padding-bottom 30px
-      :border none
-      :background-image none
-      a
-        :display block
-        :padding 5px
-        :background-color #3ea8da
-        :border 0
-        :color white
-        :-moz-border-radius 5px
-        :-webkit-border-radius 5px
-        :float right
-        :text-transform uppercase
-        :background-image url(/images/blue.jpg)
-        :-webkit-box-shadow 2px 2px 2px #888
-        :text-decoration none
+        :border-top 1px solid white
+    a
+      :text-decoration none
+    a:hover
+      :text-decoration underline
+        
     
+      
+  #logout
+    :text-align right
+    :padding-top 15px
+    :padding-bottom 30px
+    :border none
+    :background-image none
+    :padding-right 5px
+    a
+      :display block
+      :padding 5px
+      :background-color #3ea8da
+      :border 0
+      :color white
+      :-moz-border-radius 5px
+      :-webkit-border-radius 5px
+      :float right
+      :text-transform uppercase
+      :background-image url(/images/blue.jpg)
+      :-webkit-box-shadow 2px 2px 2px #888
+      :text-decoration none
+  

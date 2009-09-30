@@ -16,14 +16,14 @@
               %li
                 = h menu_item.label
                 - unless menu_item.children.empty?
-                  %ul.active
+                  %ul
                     - menu_item.children.each do |child|
                       %li
                         - if !child.url
                           = h child.label 
                         - else
                           = link_to h(child.label), instance_eval(&child.url)
-            %li#logout= link_to 'Logout', logout_path
+          #logout= link_to 'Logout', logout_path
         .main
           = yield
       - else
