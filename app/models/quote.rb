@@ -67,4 +67,8 @@ class Quote < ActiveRecord::Base
   def created_on
     created_date && created_date.to_date
   end
+  
+  def created_at
+    created_date && created_date.to_time
+  end
 end

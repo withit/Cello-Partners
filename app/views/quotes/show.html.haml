@@ -1,0 +1,98 @@
+%h2 Details
+-form_for @quote do |f|
+  %table
+    %tr.odd
+      %td Customer:
+      %td= @quote.organisation_name
+      %td
+    %tr.even
+      %td Grade:
+      %td= @quote.grade_name
+      %td
+    %tr.odd
+      %td Calliper:
+      %td= @quote.calliper
+      %td μm
+    %tr.even
+      %td No of sheets:
+      %td= @quote.sheets
+      %td
+    %tr.odd
+      %td Width:
+      %td= @quote.width
+      %td mm
+    %tr.even
+      %td Length
+      %td= @quote.length
+      %td mm
+    %tr.odd
+      %td{:colspan => 3}
+    %tr.even
+      %td Grain
+      %td Long
+      %td
+    %tr.odd
+      %td Grammage
+      %td= @quote.gsm
+      %td gsm
+    %tr.even
+      %td Ex reels
+      %td= @quote.ex_reels
+      %td mm
+    %tr.odd
+      %td Gross weight
+      %td= @quote.gross_weight
+      %td kg
+    %tr.even
+      %td Date created
+      %td= @quote.created_at
+      %td
+    %tr.odd
+      %td Cost / 1000:
+      %td.cost= number_to_currency @quote.price
+      %td per 1,000 sheets +GST
+    %tr.even
+      %td{:colspan => 3}
+    %tr.odd
+      %td Notes:
+      %td{:colspan => 2}= @quote.notes
+    %tr.even
+      %td Required Date
+      %td
+      %td
+    %tr.odd
+      %td Your Ref/Order No:
+      %td
+      %td
+    %tr.even
+      %td Delivery Address
+      %td{:colspan => 2}
+    %tr.odd
+      %td Address1:
+      %td=# f.text_field :addr1
+      %td
+    %tr.even
+      %td Address2:
+      %td=# f.text_field :addr2
+      %td
+    %tr.odd
+      %td City:
+      %td=# f.text_field :city
+      %td
+    %tr.even
+      %td State:
+      %td=# f.text_field :state
+      %td
+    %tr.odd
+      %td Postcode:
+      %td=# f.text_field :postcode
+      %td
+    %tr.even 
+      %td Authorized by:
+      %td=# f.text_field :authorized_by
+      %td
+    %tr.odd
+      %td Email Confirmation
+      %td=# = f.text_field :email
+      %td
+  

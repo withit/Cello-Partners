@@ -81,3 +81,4 @@
       %td= number_to_currency(quote.price)
       %td= h quote.notes
       %td= link_to "#{quote.type} Details", quote
+= will_paginate @quotes, :seperator => ' | '
