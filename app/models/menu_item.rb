@@ -56,6 +56,10 @@ class MenuItem
       lambda{new_quote_path}
     when self.module == 'quotes' && self.function == 'sform'
       lambda{search_quotes_path}
+    when self.module == 'shell_group_mgr' && self.function == 'nrform'
+      lambda{new_role_path}
+    when self.module == 'shell_group_mgr' && self.function == 'edit'
+      lambda{roles_path}
     else 
       nil
     end

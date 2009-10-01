@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :flash
   map.resource :profile
   map.resources :quotes, :collection => {:search => :get}
+  map.resources :roles
   map.resources :organisations do |org|
     org.resources :quotes, :collection => {:search => :get}
   end

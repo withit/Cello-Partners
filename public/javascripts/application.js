@@ -57,4 +57,8 @@ document.observe('dom:loaded', function(){
       e.findElement('li').up('li').addClassName('active');
     }
   });
+  $$('#select_role_form').invoke('observe','submit', function(e){
+    e.stop();
+    document.location = '/roles/' + $F('select_role') + '/edit';
+  })
 });

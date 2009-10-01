@@ -202,6 +202,26 @@ form.new_user_session {
   #customer_select input[type=submit] {
     margin: 5px; }
 
+.errorExplanation {
+  padding: .8em;
+  margin: 1em;
+  border: 2px solid #dddddd;
+  background: #fbe3e4;
+  color: #8a1f11;
+  border-color: #fbc2c4; }
+  .errorExplanation p, .errorExplanation h2 {
+    color: #8a1f11; }
+
+.fieldWithErrors input,
+.fieldWithErrors select {
+  background: #fbe3e4;
+  color: #8a1f11;
+  border-color: #fbc2c4; }
+
+.fieldWithErrors label {
+  color: #8a1f11;
+  font-weight: bold; }
+
 body, td, h2 {
   font-family: verdana,arial,helvetica; }
 

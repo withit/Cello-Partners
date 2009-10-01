@@ -1,0 +1,12 @@
+%h2 Group Management
+%p Please select a group from the drop menu below to edit the details
+- form_tag roles_path, :id => 'select_role_form' do
+  %table
+    %tr
+      %th{:colspan => 2} Group Options
+    %tr.odd
+      %td Group Name:
+      %td= collection_select :select, :role, @roles, :id, :name
+    %tr
+      %td= submit_tag :search
+      

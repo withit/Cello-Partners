@@ -1,0 +1,23 @@
+- form_for @role do |f|
+  = f.error_messages :header_message => 'Group could not be created'
+  %h2 Group Management: Edit Group
+  %p Please amend the information below as required and press 'Update Group'
+  %table
+    %tr
+      %th{:colspan => 2} Group Details
+    %tr.odd
+      %td= f.label :Name
+      %td= f.text_field :Name
+    %tr.even
+      %td= f.label :description
+      %td= f.text_field :description
+    %tr.odd
+      %td= f.label :owner_id
+      %td= f.collection_select :owner, User.all(:order => 'username'), :id, :username, :prompt => 'Please select an owner'
+    %tr.even
+      %td= f.label :users, 'Select Members'
+      %td= f.collection_select :user_ids, User.all(:order => 'username'), :id, :username, {},:multiple=> true
+    %tr
+      %td
+        = f.submit 'Update Group'
+        %input{:type => :reset, :value => 'Clear'}
