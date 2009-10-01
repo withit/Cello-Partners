@@ -11,6 +11,12 @@ class QuotesController < ApplicationController
   end
   
   def search
+    @search = Quote.search
+  end
+  
+  def index
+    @search = @organisation.quotes.search(params[:search])
+    @quotes = @search.paginate(:page => params[:page], :per_page => 25)
   end
   
   protected

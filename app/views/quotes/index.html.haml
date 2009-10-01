@@ -49,3 +49,35 @@
         = f.text_field :length_equals
         mm
   = submit_tag "Search"
+%table
+  %tr 
+    %th ID
+    %th Organsiation
+    %th Created By
+    %th Created
+    %th Your Ref
+    %th Grade
+    %th Width
+    %th Length
+    %th Calliper
+    %th GSM
+    %th No. of Sheets
+    %th Price
+    %th Notes
+    %th Details
+  - @quotes.each do |quote|
+    %tr{:class => cycle('odd','even')}
+      %td= h quote.id
+      %td= h quote.organisation_name
+      %td= h quote.creator_name
+      %td= h quote.created_on
+      %td= h quote.your_ref
+      %td= h quote.grade_name
+      %td= h quote.width
+      %td= h quote.length
+      %td= h quote.calliper
+      %td= h quote.gsm
+      %td= h quote.sheets
+      %td= number_to_currency(quote.price)
+      %td= h quote.notes
+      %td= link_to "#{quote.type} Details", quote

@@ -6,7 +6,11 @@ var calliper = new Array;
 function update_calliper(e){
   var grade = e.element().value;
   var options = $('quote_calliper').options;
-  options.length = 0;
+  if(options[0] && options[0].value == ''){
+    options.length = 1;
+  } else {
+    options.length = 0;
+  }
   var new_callipers = calliper.select(function(e){
     return grade == e.first();
   });
@@ -16,5 +20,5 @@ function update_calliper(e){
 }
 
 document.observe('dom:loaded', function(e){
-  $$('#quote_grade_abbrev').invoke('observe', 'change', update_calliper)
+  $$('#quote_grade_abbrev').invoke('observe', 'change', update_calliper);
 });

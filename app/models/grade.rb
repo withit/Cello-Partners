@@ -4,4 +4,9 @@ class Grade < ActiveRecord::Base
   def callipers
     Reel.callipers.scoped(:conditions => {:grade_abbrev => grade_abbrev})
   end
+  
+  def self.callipers_for_abbrev abbrev
+    grade = find_by_grade_abbrev(abbrev)
+    grade ? grade.callipers : []
+  end
 end

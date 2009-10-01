@@ -45,12 +45,26 @@ class Quote < ActiveRecord::Base
     Price.scoped(:conditions => {:status => true, :grade_abbrev => grade_abbrev, :calliper => calliper, :name => organisation.price_names})
   end
   
-  def price
+  def rate
     p = prices.break_less_than(gross_weight).first(:order => "break desc", :select => 'price')
     p && p.price
   end
   
   def price_per_1000_sheets
-    price && price * gross_weight * 1000 / sheets
+    rate && rate * gross_weight * 1000 / sheets
+  end
+  
+  belongs_to :creator, :class_name => 'User'
+  
+  def creator_name
+    creator && creator.full_name
+  end
+  
+  def grade_name 
+    grade && grade.name
+  end
+  
+  def created_on
+    created_date && created_date.to_date
   end
 end
