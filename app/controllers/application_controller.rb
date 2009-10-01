@@ -31,4 +31,9 @@ class ApplicationController < ActionController::Base
   end
   
   helper_method :current_user
+  
+  def redirect_to_flash_message
+    flash[:notice] = render_to_string(:layout => false)
+    redirect_to flash_path
+  end
 end

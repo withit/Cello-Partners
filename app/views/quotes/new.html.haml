@@ -6,7 +6,9 @@
   %table
     %tr
       %td= f.label :organisation, 'Customer'
-      %td= h f.object.organisation_name
+      %td
+        = f.hidden_field :parent_id
+        = h f.object.organisation_name
     %tr.odd
       %td= f.label :grade_abbrev, "Grade"
       %td= f.collection_select :grade_abbrev, Grade.all, :grade_abbrev, :name, :prompt => '--Please Select--'
@@ -35,20 +37,20 @@
     %tr.odd
       %td Ex reels
       %td
-        = @quote.ex_reels
+        = @quote.reel
         mm
     %tr.even
       %td Gross Weight
       %td
-        = @quote.gross_weight
+        = @quote.kilos
         kg
     %tr.odd
       %td Date Created
-      %td= f.object.created_date
+      %td= f.object.created_on
     %tr.even
       %td Cost / 1000
       %td 
-        %span.cost= number_to_currency @quote.price_per_1000_sheets
+        %span.cost= number_to_currency @quote.price
         per 1,000 sheets + GST
         = submit_tag 'Calculate'
     %tr.odd
@@ -58,6 +60,7 @@
       %td= f.label :notes
       %td= f.text_area :notes
   %input{:type => 'reset', :value => 'Reset Form'}
+  = f.submit "Create Quote"
   %p This calculator is designed to provide indicative pricing for cello board orders. Pricing is subject to confirmation at time of ordering, and stock availability. Prices excludes GST.
 
     

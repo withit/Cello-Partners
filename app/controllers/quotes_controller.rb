@@ -7,7 +7,13 @@ class QuotesController < ApplicationController
   
   def create
     @quote =  @organisation.quotes.build(params[:quote])
-    render 'new'
+    @quote.save(false)
+    if create_quote?
+      redirect_to_flash_message
+    else
+      @quote = @quote.clones.build
+      render 'new'
+    end
   end
   
   def search
@@ -31,5 +37,9 @@ class QuotesController < ApplicationController
   
   def load_organisation
     @organisation = Organisation.find(params[:organisation_id]) if params[:organisation_id]
+  end
+  
+  def create_quote?
+    params[:commit] == 'Create Quote'
   end
 end

@@ -7,8 +7,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      flash[:notice] = render_to_string(:layout => false)
-      redirect_to flash_path
+      redirect_to_flash_message
     else
       render 'edit'
     end

@@ -4,11 +4,12 @@ class Quote < ActiveRecord::Base
   
   belongs_to :organisation, :foreign_key => 'org_id'
   belongs_to :grade
+  
   def organisation_name
     organisation.name
   end
   
-  def initialize *args
+  def initialize attributes={}, *args
     super
     self.created_date ||= Date.today
   end
@@ -23,17 +24,27 @@ class Quote < ActiveRecord::Base
   end
   
   def gross_weight
-    reel && (reel.weight_per_unit_length(width) * length * sheets) / 10**9
+    find_reel && (find_reel.weight_per_unit_length(width) * length * sheets) / 10**9
+  end
+  
+  def set_kilos
+    self.kilos = gross_weight
   end
   
   def ex_reels
-    reel && reel.reel_size
+    reel
   end
   
-  def reel
-    @reel ||= reels.to_a.min do |a,b|
+  def find_reel
+    reels.to_a.min do |a,b|
       a.weight_per_unit_length(width) <=> b.weight_per_unit_length(width)
     end
+  end
+  
+  def set_reel
+    reel = find_reel
+    self.reel = reel && reel.reel_size
+    self.gsm = reel && reel.gsm
   end
   
   def reels
@@ -45,13 +56,21 @@ class Quote < ActiveRecord::Base
     Price.scoped(:conditions => {:status => true, :grade_abbrev => grade_abbrev, :calliper => calliper, :name => organisation.price_names})
   end
   
-  def rate
+  def find_rate
     p = prices.break_less_than(gross_weight).first(:order => "break desc", :select => 'price')
     p && p.price
   end
   
   def price_per_1000_sheets
-    rate && rate * gross_weight * 1000 / sheets
+    find_rate && find_rate * gross_weight * 1000 / sheets
+  end
+  
+  def set_price
+    self.price = price_per_1000_sheets
+  end
+  
+  def set_rate
+    self.rate = find_rate
   end
   
   belongs_to :creator, :class_name => 'User'
@@ -70,5 +89,22 @@ class Quote < ActiveRecord::Base
   
   def created_at
     created_date && created_date.to_time
+  end
+  
+  def set_calculations
+    set_reel
+    set_price
+    set_reel
+    set_kilos
+    set_rate
+  end
+  
+  before_create :set_calculations
+  
+  belongs_to :parent, :class_name => 'Quote', :foreign_key => 'parent_id'
+  has_many :clones, :class_name => 'Quote', :foreign_key => 'parent_id', :before_add => :clone_attributes_from_parent
+  
+  def clone_attributes_from_parent child
+    child.attributes = self.attributes
   end
 end
