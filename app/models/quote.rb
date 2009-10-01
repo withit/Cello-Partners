@@ -12,6 +12,8 @@ class Quote < ActiveRecord::Base
   def initialize attributes={}, *args
     super
     self.created_date ||= Date.today
+    self.type ||= 'Quote'
+    self.status ||= 0
   end
 
   def calliper_options
@@ -97,14 +99,29 @@ class Quote < ActiveRecord::Base
     set_reel
     set_kilos
     set_rate
+    set_surcharge
   end
   
-  before_create :set_calculations
+  def set_surcharge
+    self.setup_surcharge = 500 * [sheets.to_f / 1000, 1].min if length && length > 1600
+  end
+  
+  before_create :set_calculations, :set_creator
   
   belongs_to :parent, :class_name => 'Quote', :foreign_key => 'parent_id'
   has_many :clones, :class_name => 'Quote', :foreign_key => 'parent_id', :before_add => :clone_attributes_from_parent
   
+  def set_updated_at
+    self.updated_date = Time.now
+  end
+  
+  before_save :set_updated_at
+  
   def clone_attributes_from_parent child
     child.attributes = self.attributes
+  end
+  
+  def set_creator
+    self.creator = UserSession.find && UserSession.find.user
   end
 end
