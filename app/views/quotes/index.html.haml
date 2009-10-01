@@ -49,6 +49,7 @@
         = f.text_field :length_equals
         mm
   = submit_tag "Search"
+=link_to 'Download to Excel', params.merge(:format => 'xls')
 %table
   %tr 
     %th ID

@@ -1,0 +1,32 @@
+%table
+  %tr 
+    %th ID
+    %th Organsiation
+    %th Created By
+    %th Created
+    %th Your Ref
+    %th Grade
+    %th Width
+    %th Length
+    %th Calliper
+    %th GSM
+    %th No. of Sheets
+    %th Price
+    %th Notes
+    %th Details
+  - @quotes.each do |quote|
+    %tr
+      %td= quote.id
+      %td= quote.organisation_name
+      %td= quote.creator_name
+      %td= quote.created_on
+      %td= quote.your_ref
+      %td= quote.grade_name
+      %td= quote.width
+      %td= quote.length
+      %td= quote.calliper
+      %td= quote.gsm
+      %td= quote.sheets
+      %td= number_to_currency(quote.price)
+      %td= quote.notes
+      %td= quote.type
