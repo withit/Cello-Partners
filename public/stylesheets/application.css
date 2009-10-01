@@ -200,7 +200,8 @@ form.new_user_session {
   #customer_select select {
     height: 200px; }
   #customer_select input[type=submit] {
-    margin: 5px; }
+    margin: 5px;
+    padding: 5px; }
 
 .errorExplanation {
   padding: .8em;
