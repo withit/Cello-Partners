@@ -38,7 +38,11 @@ class QuotesController < ApplicationController
   end
   
   def load_organisation
-    @organisation = Organisation.find(params[:organisation_id]) if params[:organisation_id]
+    if current_user.is_customer?
+      @organisation = current_user.organisation
+    else
+      @organisation = Organisation.find(params[:organisation_id]) if params[:organisation_id]
+    end
   end
   
   def save_quote?

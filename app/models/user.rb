@@ -64,7 +64,11 @@ class User < ActiveRecord::Base
   end
   
   def effective_roles 
-    id == 1 ? Role.all : roles
+    super_admin? ? Role.all : roles
+  end
+  
+  def super_admin?
+    id == 1
   end
   
   self.columns.collect(&:name).each do |column_name|
@@ -95,5 +99,10 @@ class User < ActiveRecord::Base
   
   def full_name
     "#{first_name} #{last_name}"
+  end
+  
+  def is_customer?
+    return false if super_admin?
+    roles.count(:conditions => "name like 'Cello%'").zero?
   end
 end
