@@ -8,7 +8,9 @@ class QuotesController < ApplicationController
   def create
     @quote =  @organisation.quotes.build(params[:quote])
     @quote.save(false)
-    if create_quote?
+    if save_quote? || send_email?
+      @quote.update_attribute(:status, 1)
+      @quote.deliver_as_email if send_email?
       redirect_to_flash_message
     else
       @quote = @quote.clones.build
@@ -39,7 +41,15 @@ class QuotesController < ApplicationController
     @organisation = Organisation.find(params[:organisation_id]) if params[:organisation_id]
   end
   
-  def create_quote?
+  def save_quote?
     params[:commit] == 'Create Quote'
+  end
+  
+  def send_email?
+    params[:commit] == "Send Email"
+  end
+  
+  def place_order?
+    params[:commit] == "Place Order"
   end
 end

@@ -60,5 +60,10 @@ document.observe('dom:loaded', function(){
   $$('#select_role_form').invoke('observe','submit', function(e){
     e.stop();
     document.location = '/roles/' + $F('select_role') + '/edit';
-  })
+  });
+  $$('#email_quote').invoke('observe','click', function(e){
+    e.stop();
+    $('email_row').show();
+  });
+  
 });

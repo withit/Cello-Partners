@@ -122,6 +122,17 @@ class Quote < ActiveRecord::Base
   end
   
   def set_creator
-    self.creator = UserSession.find && UserSession.find.user
+    self.creator ||= UserSession.find && UserSession.find.user
+  end
+  
+  attr_accessor :email
+
+  def emailed?
+    @email_sent
+  end
+  
+  def deliver_as_email
+    @email_sent = true
+    Notifier.deliver_quote(self)
   end
 end

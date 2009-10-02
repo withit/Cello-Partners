@@ -56,11 +56,18 @@
     %tr.odd
       %td Setup Surcharge
       %td
-    %tr
+    %tr.even
       %td= f.label :notes
       %td= f.text_area :notes
+    %tr.odd#email_row{:style => "display: none;"}
+      %td= f.label :email
+      %td
+        = f.text_field :email
+        = f.submit "Send Email"
   %input{:type => 'reset', :value => 'Reset Form'}
-  = f.submit "Create Quote"
+  = f.submit "Save Quote"
+  = f.submit "Email Quote", :id => 'email_quote'
+  = f.submit "Place Order"
   %p This calculator is designed to provide indicative pricing for cello board orders. Pricing is subject to confirmation at time of ordering, and stock availability. Prices excludes GST.
 
     

@@ -1,5 +1,7 @@
 %h2 Quotes
-%h3 Quote Saved
+%h3 
+  Quote Saved
+  = "&amp; Emailed." if @quote.emailed?
 %p
   Your quote has been saved
   %br
