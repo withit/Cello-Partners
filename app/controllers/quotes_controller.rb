@@ -14,6 +14,7 @@ class QuotesController < ApplicationController
       redirect_to_flash_message
     else
       @quote = @quote.clones.build
+      @quote.valid?
       render 'new'
     end
   end

@@ -23,11 +23,13 @@
       %td
         = f.text_field :width
         mm
+        = f.error_message_on(:width)
     %tr.odd
       %td= f.label :length
       %td
         = f.text_field :length
         mm
+        = f.error_message_on(:width)
     %tr
       %td
       %td

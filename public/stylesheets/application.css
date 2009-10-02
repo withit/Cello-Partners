@@ -219,8 +219,10 @@ form.new_user_session {
   color: #8a1f11;
   border-color: #fbc2c4; }
 
+.fieldWithErrors label, .formError {
+  color: #8a1f11; }
+
 .fieldWithErrors label {
-  color: #8a1f11;
   font-weight: bold; }
 
 body, td, h2 {

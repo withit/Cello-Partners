@@ -59,7 +59,7 @@ class Quote < ActiveRecord::Base
   end
   
   def find_rate
-    p = prices.break_less_than(gross_weight).first(:order => "break desc", :select => 'price')
+    p = prices.break_greater_than_or_equal_to(gross_weight).first(:order => "break desc", :select => 'price')
     p && p.price
   end
   
@@ -68,7 +68,11 @@ class Quote < ActiveRecord::Base
   end
   
   def set_price
-    self.price = price_per_1000_sheets
+    if price_per_1000_sheets && price_per_1000_sheets * sheets < 250
+      self.price = 250.to_f / sheets * 1000
+    else
+      self.price = price_per_1000_sheets
+    end
   end
   
   def set_rate
@@ -135,4 +139,6 @@ class Quote < ActiveRecord::Base
     @email_sent = true
     Notifier.deliver_quote(self)
   end
+  
+  validates_numericality_of :length, :width, :greater_than_or_equal_to => 300, :message => "must be at least 300mm"
 end
