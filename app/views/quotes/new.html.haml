@@ -11,7 +11,7 @@
         = h f.object.organisation_name
     %tr.odd
       %td= f.label :grade_abbrev, "Grade"
-      %td= f.collection_select :grade_abbrev, Grade.all, :grade_abbrev, :name, :prompt => '--Please Select--'
+      %td= f.collection_select :grade_abbrev, f.object.grade_options, :grade_abbrev, :name, :prompt => '--Please Select--'
     %tr.even
       %td= f.label :calliper
       %td= f.collection_select :calliper, f.object.calliper_options, :calliper, :calliper_with_units
@@ -29,7 +29,7 @@
       %td
         = f.text_field :length
         mm
-        = f.error_message_on(:width)
+        = f.error_message_on(:length)
     %tr
       %td
       %td
@@ -67,9 +67,10 @@
         = f.text_field :email
         = f.submit "Send Email"
   %input{:type => 'reset', :value => 'Reset Form'}
-  = f.submit "Save Quote"
-  = f.submit "Email Quote", :id => 'email_quote'
-  = f.submit "Place Order"
+  - if @quote.can_be_saved?
+    = f.submit "Place Order"
+    = f.submit "Save Quote"
+    = f.submit "Email Quote", :id => 'email_quote'
   %p This calculator is designed to provide indicative pricing for cello board orders. Pricing is subject to confirmation at time of ordering, and stock availability. Prices excludes GST.
 
     

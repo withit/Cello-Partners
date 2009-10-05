@@ -7,10 +7,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :collection => {:search => :get}
   map.resource :flash
   map.resource :profile
-  map.resources :quotes, :collection => {:search => :get}
+  map.resources :quotes, :collection => {:search => :get},:has_many => :orders
   map.resources :roles
   map.resources :organisations do |org|
-    org.resources :quotes, :collection => {:search => :get}
+    org.resources :quotes, :collection => {:search => :get}, :has_many => :orders
   end
   map.javascripts '/javascripts/:action.js', :controller => 'javascripts'
   # Sample of regular route:

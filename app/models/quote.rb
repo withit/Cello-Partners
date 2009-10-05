@@ -21,6 +21,10 @@ class Quote < ActiveRecord::Base
     grade.callipers
   end
   
+  def grade_options
+    organisation.grades
+  end
+  
   def grade
     Grade.find_by_grade_abbrev(grade_abbrev)
   end
@@ -54,7 +58,7 @@ class Quote < ActiveRecord::Base
     Reel.reel_size_greater_than(width).find_all_by_grade_abbrev_and_calliper(grade_abbrev, calliper)
   end
   
-  def prices
+  def prices    
     Price.scoped(:conditions => {:status => true, :grade_abbrev => grade_abbrev, :calliper => calliper, :name => organisation.price_names})
   end
   
@@ -122,7 +126,7 @@ class Quote < ActiveRecord::Base
   before_save :set_updated_at
   
   def clone_attributes_from_parent child
-    child.attributes = self.attributes
+    child.attributes = self.attributes_before_type_cast
   end
   
   def set_creator
@@ -140,5 +144,30 @@ class Quote < ActiveRecord::Base
     Notifier.deliver_quote(self)
   end
   
+  validates_numericality_of :length, :width
   validates_numericality_of :length, :width, :greater_than_or_equal_to => 300, :message => "must be at least 300mm"
+  validate :ensure_that_there_is_a_reel_width_enough
+  validates_numericality_of :length,:less_than_or_equal_to => 2015, :message => "can't be more than 2015mm"
+  
+  def ensure_that_there_is_a_reel_width_enough
+    errors.add(:width, 'there is no reel wide enough') unless find_reel
+  end
+  
+  def can_be_saved?
+    parent && errors.empty?
+  end
+  
+  has_many :orders, :class_name => 'Quote', :foreign_key => 'parent_id', :before_add => :clone_attributes_from_parent
+  
+  def grain 
+    return unless width && length
+    width > length ? "Short" : "Long"
+  end
+  
+  def possible_addresses
+    organisation.addresses
+  end
+  belongs_to :address
+  accepts_nested_attributes_for :address
+  
 end

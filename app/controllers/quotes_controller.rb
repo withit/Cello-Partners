@@ -8,10 +8,10 @@ class QuotesController < ApplicationController
   def create
     @quote =  @organisation.quotes.build(params[:quote])
     @quote.save(false)
-    if save_quote? || send_email?
+    if save_quote? || send_email? || place_order?
       @quote.update_attribute(:status, 1)
       @quote.deliver_as_email if send_email?
-      redirect_to_flash_message
+      place_order? ? redirect_to(new_quote_order_path(@quote)) : redirect_to_flash_message
     else
       @quote = @quote.clones.build
       @quote.valid?

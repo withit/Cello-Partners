@@ -1,0 +1,91 @@
+- form_for @order do |f|
+  %h2 Create order
+  %table
+    %tbody
+      %tr.odd
+        %td= f.label :customer
+        %td= @order.organisation_name
+      %tr.even
+        %td= f.label "Grade"
+        %td= @order.grade_name
+      %tr.odd
+        %td= f.label :calliper
+        %td
+          = @order.calliper
+          μm
+      %tr.even
+        %td= f.label :sheets, 'No of sheets'
+        %td= @order.sheets
+      %tr.odd
+        %td= f.label :width
+        %td
+          = @order.length
+          mm
+      %tr.even
+        %td= f.label :length
+        %td
+          = @order.width
+          mm
+      %tr.odd
+        %td{:colspan => 2}
+      %tr.even
+        %td Grain
+        %td= @order.grain
+      %tr.odd
+        %td Ex reels
+        %td
+          = @order.ex_reels
+          mm
+      %tr.even
+        %td Gross weight
+        %td
+          = @order.kilos
+          kg
+      %tr.odd
+        %td Date Created
+        %td= @order.created_on
+      %tr.even
+        %td{:colspan => 2}
+      %tr.odd
+        %td Cost/ 1000
+        %td
+          %span.price= number_to_currency @order.price
+          per 1,000 sheets + GST
+      %tr.even
+        %td{:colspan => 2}
+      %tr.odd
+        %td= f.label :notes
+        %td= @order.notes
+      %tr.even
+        %td= f.label :required_date
+        %td= f.text_field :required_date
+      %tr.odd
+        %td= f.label :your_ref, 'Your Ref/Order No'
+        %td= f.text_field :your_ref
+      %tr.even
+        %td= f.label :delivery_address
+        %td= f.collection_select :address_id, @order.possible_addresses, :id, :label, :include_blank => '--Please Select--'
+    %tbody#address_fields
+      - f.fields_for :address do |a|
+        %tr.odd
+          %td= a.label :addr1, 'Address1'
+          %td= a.text_field :st_address1
+        %tr.even
+          %td= a.label :addr2, 'Address2'
+          %td= a.text_field :st_address2
+        %tr.odd
+          %td= a.label :st_city, 'City'
+          %td= a.text_field :st_city
+        %tr.even
+          %td= a.label :st_state, 'State'
+          %td= a.text_field :st_state
+        %tr.odd
+          %td= a.label :st_postcode, "Postcode"
+          %td= a.text_field :st_postcode
+    %tbody
+      %tr.even
+        %td= f.label :authorizer_name
+        %td=# f.text_field :authorizer_name
+      %tr.odd
+        %td= f.label :email, 'Email Confirmation'
+        %td= f.text_field :email

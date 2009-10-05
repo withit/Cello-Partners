@@ -65,5 +65,12 @@ document.observe('dom:loaded', function(){
     e.stop();
     $('email_row').show();
   });
-  
+  $$('#quote_address_id').invoke('observe', 'change', function(e){
+    if($F("quote_address_id").blank())
+    {
+      $$("#address_fields input").invoke('enable');
+    } else {
+      $$("#address_fields input").invoke('disable');
+    }
+  });
 });
