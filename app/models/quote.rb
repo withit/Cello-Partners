@@ -126,7 +126,7 @@ class Quote < ActiveRecord::Base
   before_save :set_updated_at
   
   def clone_attributes_from_parent child
-    child.attributes = self.attributes_before_type_cast
+    child.attributes = self.attributes_before_type_cast.reject{|k,v| v.blank?}
   end
   
   def set_creator
