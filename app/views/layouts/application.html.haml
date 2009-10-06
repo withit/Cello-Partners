@@ -32,7 +32,7 @@
                   %ul
                     - root_item.children.each do |child_item|
                       %li
-                        = link_to_if child_item.url,h(child_item.label),instance_eval(&child_item.url)
+                        = link_to_if child_item.url,h(child_item.label),child_item.url
                         
           #logout= link_to 'Logout', logout_path
         .main

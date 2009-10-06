@@ -18,21 +18,24 @@ class Permission < ActiveRecord::Base
   def url
     case 
     when self.module == 'shell_editmyself'
-      lambda{edit_profile_path}
+      path('profiles', 'edit')
     when self.module == 'shell_user_mgr' && self.function == 'nrform'
-      lambda{new_user_path}
+      path('users','new')
     when self.module == 'shell_user_mgr' && self.function == 'sform'
-      lambda{search_users_path}
+      path('users','search')
     when self.module == 'quotes' && self.function == 'nrform'
-      lambda{new_quote_path}
+      path('quotes','new')
     when self.module == 'quotes' && self.function == 'sform'
-      lambda{search_quotes_path}
+      path('quotes','search')
     when self.module == 'shell_group_mgr' && self.function == 'nrform'
-      lambda{new_role_path}
+      path('roles','new')
     when self.module == 'shell_group_mgr' && self.function == 'edit'
-      lambda{roles_path}
+      path('roles','index')
     else 
-      lambda{'#'}
     end
+  end
+  
+  def path controller, action
+    {:controller => controller, :action => action}
   end
 end
