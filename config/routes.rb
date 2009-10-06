@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :collection => {:search => :get}
   map.resource :flash
   map.resource :profile
-  map.resources :quotes, :collection => {:search => :get},:has_many => :orders
+  map.resources :quotes, :collection => {:search => :get},:has_many => :orders, :shallow => true
   map.resources :roles
   map.resources :organisations do |org|
     org.resources :quotes, :collection => {:search => :get}, :has_many => :orders

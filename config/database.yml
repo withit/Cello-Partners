@@ -2,11 +2,12 @@
 #   gem install sqlite3-ruby (not necessary on OS X Leopard)
 development:
   adapter: mysql
-  database: cello
-  host: fermat.wi.com.au
-  username: cellop
-  password: enco9384
-
+  database: cello_dev
+  host: katherine.wi.com.au
+  username: root
+  password: netgpa2010
+  # username: root#cellop
+  # password: netgpa2030#enco9384
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     self.Password
   end
   has_many :privileges, :foreign_key => 'User_ID'
-  has_many :roles, :through => :privileges
+  has_many :roles, :through => :privileges, :uniq => true
   #has_many :permissions, :through => :roles
   
   def permissions
@@ -52,6 +52,22 @@ class User < ActiveRecord::Base
     end.flatten.uniq.sort
   end
   
+  def find_child_menu_items
+    Permission.scoped(
+      :joins => [:grants, :action], 
+      :conditions => ["shell_permissions.User_Group_ID IN (?) and shell_permissions.is_menu = ? and shell_option_sets.parent != 0", role_ids.uniq, true],
+      :select => "shell_permissions.*, shell_option_sets.*, shell_options.*"
+    )
+  end
+  
+  def find_root_menu_items
+    Permission.scoped(
+      :joins => [:grants, :action], 
+      :conditions => ["shell_permissions.User_Group_ID IN (?) and shell_permissions.is_menu = ? and shell_option_sets.parent = 0", role_ids.uniq, true],
+      :select => "shell_permissions.*, shell_option_sets.*, shell_options.*"
+    )
+  end
+  
   def menu
     menu = Menu.new
     root_menu_items.each do |menu_item|
@@ -67,6 +83,7 @@ class User < ActiveRecord::Base
     super_admin? ? Role.all : roles
   end
   
+
   def super_admin?
     id == 1
   end

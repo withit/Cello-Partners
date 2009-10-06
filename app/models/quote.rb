@@ -1,18 +1,8 @@
-class Quote < ActiveRecord::Base
-  set_table_name 'orders'
-  set_inheritance_column 'foo'
-  
-  belongs_to :organisation, :foreign_key => 'org_id'
-  belongs_to :grade
-  
-  def organisation_name
-    organisation.name
-  end
+class Quote < OrderOrQuote
   
   def initialize attributes={}, *args
     super
     self.created_date ||= Date.today
-    self.type ||= 'Quote'
     self.status ||= 0
   end
 
@@ -23,10 +13,6 @@ class Quote < ActiveRecord::Base
   
   def grade_options
     organisation.grades
-  end
-  
-  def grade
-    Grade.find_by_grade_abbrev(grade_abbrev)
   end
   
   def gross_weight
@@ -83,24 +69,6 @@ class Quote < ActiveRecord::Base
     self.rate = find_rate
   end
   
-  belongs_to :creator, :class_name => 'User'
-  
-  def creator_name
-    creator && creator.full_name
-  end
-  
-  def grade_name 
-    grade && grade.name
-  end
-  
-  def created_on
-    created_date && created_date.to_date
-  end
-  
-  def created_at
-    created_date && created_date.to_time
-  end
-  
   def set_calculations
     set_reel
     set_price
@@ -114,27 +82,14 @@ class Quote < ActiveRecord::Base
     self.setup_surcharge = 500 * [sheets.to_f / 1000, 1].min if length && length > 1600
   end
   
-  before_create :set_calculations, :set_creator
+  before_create :set_calculations
   
-  belongs_to :parent, :class_name => 'Quote', :foreign_key => 'parent_id'
   has_many :clones, :class_name => 'Quote', :foreign_key => 'parent_id', :before_add => :clone_attributes_from_parent
-  
-  def set_updated_at
-    self.updated_date = Time.now
-  end
-  
-  before_save :set_updated_at
   
   def clone_attributes_from_parent child
     child.attributes = self.attributes_before_type_cast.reject{|k,v| v.blank?}
   end
   
-  def set_creator
-    self.creator ||= UserSession.find && UserSession.find.user
-  end
-  
-  attr_accessor :email
-
   def emailed?
     @email_sent
   end
@@ -157,30 +112,6 @@ class Quote < ActiveRecord::Base
     parent && errors.empty?
   end
   
-  has_many :orders, :class_name => 'Quote', :foreign_key => 'parent_id', :before_add => :clone_attributes_from_parent
-  
-  def grain 
-    return unless width && length
-    width > length ? "Short" : "Long"
-  end
-  
-  def possible_addresses
-    organisation.addresses
-  end
-  before_save :set_address_organisation
-  belongs_to :address #, :before_build => :set_address_org
-  accepts_nested_attributes_for :address
-  
-  def set_address_organisation
-    address.organisation = organisation if address.new_record?
-  end
-  
-  def existing_address_id
-    address_id
-  end
-  
-  def existing_address_id= new_existing_address_id
-    self.address_id = new_existing_address_id unless new_existing_address_id.blank?
-  end
+  has_many :orders, :foreign_key => 'parent_id', :before_add => :clone_attributes_from_parent
 
 end

@@ -2,7 +2,8 @@ class Organisation < ActiveRecord::Base
   set_table_name 'shell_organisations'
   has_many :users, :foreign_key => 'Organisation'
   has_many :quotes, :foreign_key => 'org_id'
-  
+  has_many :orders, :foreign_key => 'org_id'
+  has_many :orders_and_quotes, :foreign_key => 'org_id', :class_name => 'OrderOrQuote'
   belongs_to :pricing_group_name, :foreign_key => 'pricing_group_id'
   
   def price_names
@@ -18,4 +19,6 @@ class Organisation < ActiveRecord::Base
   end
 
   has_many :addresses, :foreign_key => 'org_id'
+  
+  
 end

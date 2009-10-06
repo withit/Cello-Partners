@@ -14,17 +14,26 @@
       - if current_user
         .sidebar
           %ul
-            - current_user.menu.root_items.each do |menu_item|
+            / - current_user.menu.root_items.each do |menu_item|
+            /   %li
+            /     = h menu_item.label
+            /     - unless menu_item.children.empty?
+            /       %ul
+            /         - menu_item.children.each do |child|
+            /           %li
+            /             - if !child.url
+            /               = h child.label 
+            /             - else
+            /               = link_to h(child.label), instance_eval(&child.url)
+            - MenuItem.build_for(current_user).each do |root_item|
               %li
-                = h menu_item.label
-                - unless menu_item.children.empty?
+                = h root_item.label
+                - unless root_item.children.empty?
                   %ul
-                    - menu_item.children.each do |child|
+                    - root_item.children.each do |child_item|
                       %li
-                        - if !child.url
-                          = h child.label 
-                        - else
-                          = link_to h(child.label), instance_eval(&child.url)
+                        = link_to_if child_item.url,h(child_item.label),instance_eval(&child_item.url)
+                        
           #logout= link_to 'Logout', logout_path
         .main
           = yield
