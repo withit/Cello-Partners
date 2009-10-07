@@ -20,7 +20,7 @@
         = f.collection_select :section_ids, Section.all, :id, :Name, {}, :multiple => true
     %tr.even
       %td Article Visibility 
-      %td= f.select :published, [['Visible',true],['Not Visible', false]]
+      %td= f.select :published, [['Visible',1],['Not Visible', 0]]
     %tr.odd
       %td Author
       %td= @article.author_name

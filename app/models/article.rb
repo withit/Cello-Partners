@@ -5,7 +5,7 @@ class Article < ActiveRecord::Base
   set_table_name 'article'
   set_primary_key 'ID'
   
-  has_and_belongs_to_many :sections, :join_table => 'article_to_section', :foreign_key => 'ArticleID', :association_foreign_key => 'SectionID'
+  has_and_belongs_to_many :sections, :join_table => 'article_to_section', :foreign_key => 'ArticleID', :association_foreign_key => 'SectionID', :uniq => true, :select => 'sections.*'
   
   (1..8 ).each do |i|
     attr_accessor "keyword_#{i}"
@@ -190,6 +190,7 @@ class Article < ActiveRecord::Base
     end
     
     def to_param
+      return unless id
       "#{id}-#{filename.parameterize}-#{filetype.parameterize}"
     end
   end

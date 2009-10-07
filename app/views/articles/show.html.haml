@@ -6,11 +6,11 @@
 %h4 Related Information
 %ul
   - @article.documents.each do |document|
-    %li= link_to document.name_with_extention, article_document_path(@article, document)
+    %li= link_to document.name_with_extention, article_document_path(@article, document), :target => '_blank'
 %h4 Related Web Pages
 %ul
   - @article.links.each do |link|
-    %li=link_to link.label, link.url
+    %li=link_to link.label, link.url, :target => link.target
 %h4 Keywords
 %p 
   This article was saved with the keywords below.

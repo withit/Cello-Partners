@@ -20,4 +20,6 @@ class Role < ActiveRecord::Base
       self.send("#{column_name}=", new_value)
     end
   end
+  
+  has_and_belongs_to_many :sections, :join_table => 'sections_to_groups', :foreign_key => 'Group_ID', :association_foreign_key => 'Section_ID', :select => 'sections.*'
 end

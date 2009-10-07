@@ -122,4 +122,8 @@ class User < ActiveRecord::Base
     return false if super_admin?
     roles.count(:conditions => "name like 'Cello%'").zero?
   end
+  
+  def articles
+    Article.scoped(:joins => {:sections => :roles}, :select => 'distinct article.*', :conditions => ['shell_groups.Group_ID in (?)', role_ids.uniq])
+  end
 end
