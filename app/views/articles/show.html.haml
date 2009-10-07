@@ -1,0 +1,18 @@
+%h3= h @article.title
+%p= h @article.abstract
+%p
+  Author:
+  = h @article.author_name
+%h4 Related Information
+%ul
+  - @article.documents.each do |document|
+    %li= link_to document.name_with_extention, article_document_path(@article, document)
+%h4 Related Web Pages
+%ul
+  - @article.links.each do |link|
+    %li=link_to link.label, link.url
+%h4 Keywords
+%p 
+  This article was saved with the keywords below.
+  %br
+  = @article.keyword_list

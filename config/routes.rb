@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :profile
   map.resources :quotes, :collection => {:search => :get},:has_many => :orders, :shallow => true
   map.resources :roles
+  map.resources :articles, :has_many => :documents
   map.resources :organisations do |org|
     org.resources :quotes, :collection => {:search => :get}, :has_many => :orders
   end

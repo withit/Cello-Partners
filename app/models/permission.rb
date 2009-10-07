@@ -31,6 +31,8 @@ class Permission < ActiveRecord::Base
       path('roles','new')
     when self.module == 'shell_group_mgr' && self.function == 'edit'
       path('roles','index')
+    when self.module == 'article_publishing' && self.function == 'list'
+      path('articles','index')
     else 
     end
   end

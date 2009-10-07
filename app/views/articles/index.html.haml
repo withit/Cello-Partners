@@ -1,0 +1,13 @@
+%h2 Article Management: Matching Published Articles
+%p Detailed below are the articles matching your search criteria
+%table
+  - @articles.each do |article|
+    %tr{:class => cycle('odd','even')}
+      %td= link_to 'edit',[:edit, article]
+      %td
+        = link_to article.title, article
+        %br
+        = h article.abstract
+      %td visible
+      %td= link_to 'Delete', article, :method => 'delete'
+        

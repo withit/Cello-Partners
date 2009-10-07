@@ -1,0 +1,86 @@
+%h2 Article Management : Edit Article
+%h3 Template Option 1
+%p This template should be used for simple text only document layouts where page breaks and paragraph breaks are the only forms of formating required. The tem,plates are designed to take these simple commands and convert them into the appropriate HTML tags for you. Adding additional HTML tags to this template may produce some unexpected results and is not advised.
+
+- form_for @article, :html => {:multipart => true} do |f|
+  %table
+    %tr
+      %th{:colspan => 2} Article Details
+    %tr.odd
+      %td Headline
+      %td= f.text_field :title
+    %tr.even
+      %td Summary
+      %td= f.text_area :abstract
+    %tr.odd 
+      %td
+        %label Section Name
+        %p Please select the section(s) of the site you wish this article to appear in the News.
+      %td
+        = f.collection_select :section_ids, Section.all, :id, :Name, {}, :multiple => true
+    %tr.even
+      %td Article Visibility 
+      %td= f.select :published, [['Visible',true],['Not Visible', false]]
+    %tr.odd
+      %td Author
+      %td= @article.author_name
+  %h4 Keywords
+  %p Keywords 1 to 3 are used to find related documents. Please ensure that the three most relevant keywords are in the first three fields.
+  %table
+    %tr
+      %th{:colspan => 3} Keywords
+    %tr
+      %td{:colspan => 3}
+    - (1..8).to_a.in_groups_of(3, false) do |row|
+      %tr
+        - row.each do |keyword_count|
+          %td= "Keyword #{keyword_count}"
+      %tr  
+        - row.each do |keyword_count|
+          %td= f.text_field "keyword_#{keyword_count}"
+  %h4 Related Information
+  %p The server documents and website likes below will appear under 'Related Information' section next to the article.
+  %p Server Documents
+  %p Documents to be linked to this article:
+  %table
+    %tr
+      %th File
+      %th File Name
+      %th File Type
+      %th Delete
+    - @article.documents.each do |document|
+      %tr
+        %td= link_to 'View Document', '#'
+        %td= document.filename
+        %td= document.filetype
+        %td= check_box_tag 'article[document_ids_to_delete][]', document.id
+    -  4.times do |i|
+      - fields_for :"article[new_document_attributes][]", Article::Document.new do |document_form|
+        %tr
+          %td= document_form.file_field :file, :index => nil
+          %td= document_form.text_field :filename, :index => nil
+          %td= document_form.select :filetype, Article::Document::FORMATS, {:prompt => 'Please select'}, :index => nil
+  %h4 Web Pages
+  %p Please detail any web pages you wish to be linked to this article?
+  %table
+    %tr
+      %th 
+      %th Link Name
+      %th URL
+      %th Target
+    - @article.links.each_with_index do |link, i|
+      - fields_for  :"article[link_attributes][]", link do |article_form|
+        %tr
+          %td= i + 1
+          %td= article_form.text_field :label, :index => nil
+          %td= article_form.text_field :url, :index => nil
+          %td= article_form.select :target, Article::Link::TARGETS,{:include_blank => true}, :index => nil
+    - 1.upto(4) do |i|
+      - fields_for :"article[link_attributes][]", Article::Link.new do |article_form|
+        %tr
+          %td= i
+          %td= article_form.text_field :label, :index => nil
+          %td= article_form.text_field :url, :index => nil
+          %td= article_form.select :target, Article::Link::TARGETS,{:include_blank => true}, :index => nil
+  = f.submit 'Save Article'
+      
