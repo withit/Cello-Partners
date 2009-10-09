@@ -30,4 +30,23 @@ class ArticleTest < ActiveSupport::TestCase
     ]
     assert_equal [Article::Link.new(1,"Foo","http://foo.com", "_top"),Article::Link.new(2,"Bar","http://bar.com", "_blank")], article.links
   end
+  
+  should "build dom using images and bodys" do
+    expected_result = "<document>\n\t<section number=\"1\" layout=\"2\" imageNumber=\"1\">\n\t\t<title />\n\t\t<note />\n\t\t<text>%3Cp%3Etest%201234567%3C%2Fp%3E</text>\n\t</section>\n\t<image filename=\"henry.jpg\" number=\"1\" hspace=\"3\" vspace=\"3\">\n\t\t<caption />\n\t</image>\n</document>"
+    article = Article.new
+    article.template = Template.find(2)
+    article.body_1 = '%3Cp%3Etest%201234567%3C%2Fp%3E' # '<p>test 1234567</p>'
+    article.image_1_name = 'henry'
+    article.image_1 = ""
+    article.image_1_extention = '.jpg'
+    assert_equal expected_result, article.build_document
+    
+    expected_result = "<document>\n\t<section number=\"1\" layout=\"1\" imageNumber=\"\">\n\t\t<title />\n\t\t<note />\n\t\t<text>%3Cp%3E%3C%2Fp%3E</text>\n\t</section>\n</document>"
+    article = Article.new
+    article.template = Template.find(1)
+    article.body_1 = '%3Cp%3E%3C%2Fp%3E' # '<p>test 1234567</p>'
+    assert_equal expected_result, article.build_document
+  end
+  
+  
 end

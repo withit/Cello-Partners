@@ -3,6 +3,11 @@
 %p
   Author:
   = h @article.author_name
+%div
+  - @article.article_sections.each do |section|
+    - if section.image
+      = image_tag section.image.url
+    = section.text
 %h4 Related Information
 %ul
   - @article.documents.each do |document|

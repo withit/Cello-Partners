@@ -19,4 +19,21 @@ class ArticlesController < ApplicationController
   def show
     @article = current_user.articles.find(params[:id])
   end
+  
+  def new
+    @article_template = Template.find(params[:template_id])
+    @article = Article.new(:author => current_user)
+  end
+  
+  def create
+    @article_template = Template.find(params[:template_id])
+    @article = Article.new(params[:article])
+    @article.template = @article_template
+    @article.author = current_user
+    if @article.save
+      redirect_to @article
+    else
+      render 'edit'
+    end
+  end
 end

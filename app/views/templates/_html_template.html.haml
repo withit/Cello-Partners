@@ -1,0 +1,61 @@
+%tr
+  %td Body Text
+  %td= f.text_area :body_1
+%tr
+  %td{:colspan => 2}
+    %h4 Image Details
+    If you require any images in your articles, please upload each one seperately from your desktop and make sure they are refered to in your code above in the following manner. 
+    %code= h("<img scr=\"<@var request$templateimages>image_name.xxx\">")
+    where 'img_name' equals the name of the file as defined below and '.xxx' equals the file type suffix.
+%tr
+  %td Image 1
+  %td
+    %label Upload File:
+    = f.file_field :image_1
+    %br
+    %label File Name:
+    = f.text_field :image_1_filename
+    %label File Type:
+    = f.radio_button :image_1_extention, '.gif'
+    GIF
+    = f.radio_button :image_1_extention, '.jpg'
+    JPEG
+%tr
+  %td Image 2
+  %td
+    %label Upload File:
+    = f.file_field :image_2
+    %br
+    %label File Name:
+    = f.text_field :image_2_filename
+    %label File Type:
+    = f.radio_button :image_2_extention, '.gif'
+    GIF
+    = f.radio_button :image_2_extention, '.jpg'
+    JPEG
+%tr
+  %td Image 3
+  %td
+    %label Upload File:
+    = f.file_field :image_3
+    %br
+    %label File Name:
+    = f.text_field :image_3_filename
+    %label File Type:
+    = f.radio_button :image_3_extention, '.gif'
+    GIF
+    = f.radio_button :image_3_extention, '.jpg'
+    JPEG
+%tr
+  %td Image 4
+  %td
+    %label Upload File:
+    = f.file_field :image_4
+    %br
+    %label File Name:
+    = f.text_field :image_4_filename
+    %label File Type:
+    = f.radio_button :image_4_extention, '.gif'
+    GIF
+    = f.radio_button :image_4_extention, '.jpg'
+    JPEG

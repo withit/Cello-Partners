@@ -33,6 +33,8 @@ class Permission < ActiveRecord::Base
       path('roles','index')
     when self.module == 'article_publishing' && self.function == 'list'
       path('articles','index')
+    when self.module == 'article_publishing' && self.function == 'form'
+      path("templates",'index')
     else 
     end
   end

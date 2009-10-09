@@ -1,0 +1,14 @@
+%h2 Articles Management : New Article
+%p Please select from one of the options below to add a new article
+%h3 Template Options
+%table
+  - @templates.in_groups_of(3, false).each do |row|
+    %tr
+      - row.each do |template|
+        %th= "Option #{template.id}"
+    %tr
+      - row.each do |template|
+        %td
+          = link_to(image_tag(template.image_url), new_template_article_path(template))
+          %br
+          = template.description

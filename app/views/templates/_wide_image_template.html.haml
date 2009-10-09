@@ -1,0 +1,16 @@
+%tr
+  %td Body Text
+  %td= f.text_area :body_1
+%tr
+  %td Image 1
+  %td
+    %label Upload File:
+    = f.file_field :image_1
+    %br
+    %label File Name:
+    = f.text_field :image_1_filename
+    %label File Type:
+    = f.radio_button :image_1_extention, '.gif'
+    GIF
+    = f.radio_button :image_1_extention, '.jpg'
+    JPEG

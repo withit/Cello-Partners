@@ -65,7 +65,7 @@ class Article < ActiveRecord::Base
         document.text('filename'),
         document.text('filetype')
       )
-    end
+    end.reject{|d| d.filename.nil? || d.filetype.nil?}
   end
   
   def build_document_xml
@@ -99,7 +99,7 @@ class Article < ActiveRecord::Base
         link.text('url'),
         link.text('target')
       )
-    end
+    end.reject{|d| d.label.nil? || d.url.nil?}
   end
   
   def load_keywords
@@ -153,9 +153,33 @@ class Article < ActiveRecord::Base
       end
 
       if document.file
-        FileUtils.mkdir_p("#{RAILS_ROOT}/documents/#{id}")
+        FileUtils.mkdir_p("#{RAILS_ROOT}/public/documents/#{id}")
         FileUtils.mv(document.file.path, path)
       end
+    end
+    
+    if image_1.present? && image_1_filename.present? && image_1_extention.present?
+      path = "#{RAILS_ROOT}/public/documents/#{id}/#{image_1_filename}#{image_1_extention}"
+      FileUtils.mkdir_p("#{RAILS_ROOT}/public/documents/#{id}")
+      FileUtils.mv(image_1.path, path)
+    end
+    
+    if image_2.present? && image_2_filename.present? && image_2_extention.present?
+      path = "#{RAILS_ROOT}/public/documents/#{id}/#{image_2_filename}#{image_2_extention}"
+      FileUtils.mkdir_p("#{RAILS_ROOT}/public/documents/#{id}")
+      FileUtils.mv(image_2.path, path)
+    end
+    
+    if image_3.present? && image_3_filename.present? && image_3_extention.present?
+      path = "#{RAILS_ROOT}/public/documents/#{id}/#{image_3_filename}#{image_3_extention}"
+      FileUtils.mkdir_p("#{RAILS_ROOT}/public/documents/#{id}")
+      FileUtils.mv(image_3.path, path)
+    end
+    
+    if image_4.present? && image_4_filename.present? && image_4_extention.present?
+      path = "#{RAILS_ROOT}/public/documents/#{id}/#{image_4_filename}#{image_4_extention}"
+      FileUtils.mkdir_p("#{RAILS_ROOT}/public/documents/#{id}")
+      FileUtils.mv(image_4.path, path)
     end
   end
   
@@ -201,5 +225,94 @@ class Article < ActiveRecord::Base
       ["New Window", '_blank'],
       ['The Content Frame', 'content']
     ]
+  end
+  
+  1.upto(4) do |i|
+    attr_accessor "image_#{i}", "image_#{i}_filename", "image_#{i}_extention"
+  end
+  
+  attr_accessor :body_1, :body_2
+  attr_accessor :template
+  
+  def number_of_images
+    count = 0
+    count += 1 if image_1
+    count += 1 if image_2
+    count += 1 if image_3
+    count += 1 if image_4
+    count = nil if count.zero?
+    count
+  end
+  
+  def build_document
+    result = "<document>\n"
+    template.image_numbers.each do |image_number|
+      result << "\t<section number=\"1\" layout=\"#{template.id}\" imageNumber=\"#{image_number}\">\n"
+      result << "\t\t<title />\n"
+      result << "\t\t<note />\n"
+      result << "\t\t<text>#{send("body_#{image_number || 1}")}</text>\n"
+      result << "\t</section>\n"
+    end
+    template.image_numbers.compact.each do |image_number|
+      result << "\t<image filename=\"#{send("image_#{image_number}_filename")}#{send("image_#{image_number}_extention")}\" number=\"1\" hspace=\"3\" vspace=\"3\">\n"
+      result << "\t\t<caption />\n"
+      result << "\t</image>\n"
+    end
+    result << "</document>"
+  end
+  
+  before_create :set_dom
+  
+  def set_dom
+    self.dom = build_document
+  end
+  
+  def article_sections
+    @sections ||= load_sections
+  end
+  
+  class ArticleSection < Struct.new(:article, :text, :image_id)
+    def text
+      URI::decode(super).gsub(/#{Regexp.escape('<@var request$templateimages>')}/, "/documents/#{article.id}/")
+    end
+    
+    def image
+      article.find_image(image_id) if image_id
+    end
+  end
+  
+  class ArticleImage < Struct.new(:article, :id, :filename)
+    def url
+      "/documents/#{article.id}/#{filename}"
+    end
+  end
+  
+  def find_image id
+    images.find{|i| i.id == id}
+  end
+  
+  def images
+    @images ||= load_images
+  end
+  
+  
+  def load_images
+    REXML::Document.new(self.dom).elements.collect('*/image') do |image|
+      ArticleImage.new(
+        self,
+        image.attribute('number').to_s.to_i,
+        image.attributes['filename']
+      )
+    end
+  end
+  
+  def load_sections
+    REXML::Document.new(self.dom).elements.collect('*/section') do |section|
+      ArticleSection.new(
+        self,
+        section.text('text'),
+        section.attributes['imageNumber'].blank? ? nil : section.attributes['imageNumber'].to_i
+      )
+    end
   end
 end
