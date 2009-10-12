@@ -6,9 +6,9 @@ table {
   font-size: 12px; }
   table th {
     text-align: left; }
-  table tr.odd td {
+  table tr.odd td, table tr.odd th {
     background-color: #D6ECC6; }
-  table tr.even td {
+  table tr.even th, table tr.even td {
     background-color: #DCF2FC; }
   table td, table th {
     padding: 4px;
@@ -228,6 +228,41 @@ form.new_user_session {
 
 .fieldWithErrors label {
   font-weight: bold; }
+
+#quote_search {
+  float: left; }
+  #quote_search tr.odd th, #quote_search tr.even th {
+    text-transform: none;
+    color: #035881;
+    font-family: 'Arial'; }
+  #quote_search tr.odd label, #quote_search tr.even label {
+    line-height: 25px; }
+  #quote_search tr.odd #search_width_equals, #quote_search tr.odd #search_length_equals, #quote_search tr.even #search_width_equals, #quote_search tr.even #search_length_equals {
+    width: 100px; }
+  #quote_search tr.odd #search_notes_contains, #quote_search tr.even #search_notes_contains {
+    height: 60px;
+    width: 98%; }
+  #quote_search input[type=submit] {
+    padding: 10px 30px; }
+  #quote_search a.excel {
+    display: block;
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    color: #6AB139;
+    text-decoration: none;
+    font-weight: bold; }
+    #quote_search a.excel:hover {
+      text-decoration: underline; }
+
+.no_results {
+  clear: left; }
+
+.quotes {
+  clear: left; }
+  .quotes th {
+    background-color: #d6d6d6;
+    padding: 14px; }
 
 body, td, h2 {
   font-family: verdana,arial,helvetica; }

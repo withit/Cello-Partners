@@ -1,0 +1,44 @@
+%h2 Load Pricing Data
+%p Please select a Pricing Data file to be loaded. The file must be formatted as an unquoted Comma Separated Values (CSV) file. with the following fields:
+
+%table
+  %tr
+    %th Name
+    %th Value
+  %tr
+    %td Price Schedule 
+    %td Text
+  %tr
+    %td Grade
+    %td Text
+    
+  %tr
+    %td Grade ID
+    %td Alphanum (6)
+  %tr
+    %td Subgrade
+    %td Alphanum (6)
+  %tr
+    %td Calliper
+    %td integer
+  %tr
+    %td GSM
+    %td integer
+  %tr
+    %td Break
+    %td integer
+  %tr
+    %td Price
+    %td decimal
+  %tr
+    %td Price type
+    %td Int
+%p The current date will automatically be added to each record inserted.
+%p 
+  Please ensure that if you are saving the file from MS Excel, that
+  %strong no
+  thousands separator is specified in the number formats, as this will cause the import to fail.
+%p Price Line Names & Grade Abbreviations will automatically e added to the Price Lines table if the Price Lines table does not contain them
+- form_for Price.new, :html => {:multipart => true} do |f|
+  %p= f.file_field :data
+  %p= f.submit 'Submit'

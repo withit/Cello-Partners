@@ -1,0 +1,29 @@
+%h1 Load Reel Data
+%p Please select a Reel Data file to be loaded. This file must be formatted as a Comma Separated Values (CSV) file, with the following fields
+%table
+  %tr
+    %th Name
+    %th Value
+  %tr
+    %td Grade
+    %td Varchar (100)
+  %tr
+    %td Grade ID
+    %td Varchar(20)
+  %tr
+    %td Subgrade
+    %td Varchar (20)
+  %tr
+    %td Calliper
+    %td integer
+  %tr
+    %td GSM
+    %td integer
+  %tr
+    %td Reel Size
+    %td integer
+%p The current date will automatically be added to each record inserted.
+%p If a record exists, the timestamp of that record will be updated to the current date
+- form_for Reel.new, :html => {:multipart => true} do |f|
+  = f.file_field :data
+  = f.submit 'Submit'

@@ -26,7 +26,7 @@ class Permission < ActiveRecord::Base
     when self.module == 'quotes' && self.function == 'nrform'
       path('quotes','new')
     when self.module == 'quotes' && self.function == 'sform'
-      path('quotes','search')
+      path('quotes','index')
     when self.module == 'shell_group_mgr' && self.function == 'nrform'
       path('roles','new')
     when self.module == 'shell_group_mgr' && self.function == 'edit'
@@ -35,6 +35,10 @@ class Permission < ActiveRecord::Base
       path('articles','index')
     when self.module == 'article_publishing' && self.function == 'form'
       path("templates",'index')
+    when self.module == 'load_pricing_data' && self.function == 'form'
+      path("prices", "new")
+    when self.module == 'load_reels' && self.function == 'form'
+      path("reels","new")
     else 
     end
   end

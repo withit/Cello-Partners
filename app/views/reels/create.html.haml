@@ -1,0 +1,30 @@
+%h2 Loading Reel Data
+%p
+  = pluralize (@rows_detected, 'row') 
+  detected
+%p .
+%p
+  = pluralize (Reel.updated_counter, 'row')
+  updated
+%p
+  = pluralize (Reel.created_counter, 'row')
+  created
+  
+%h2 Cross Check of Product Reels and Pricing Data
+%p
+  = pluralize (Reel.count, "active Product Reel")
+  in the database.
+  %br
+  = pluralize (Price.count, "active Pricing record")
+  in the database.
+  
+%h3 Unmatched Price Records
+%p When matched by Grade, Subgrade Abbreviation, Calliper &amp; GSM, the following Pricing records have no corresponding Product Reel:
+%table
+  %tr
+    %th Grade
+    %th Subgrade
+    %th Calliper
+    %th GSM
+  %tr
+    

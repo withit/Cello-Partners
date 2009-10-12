@@ -1,85 +1,98 @@
 - content_for :head do 
   = javascript_include_tag 'callipers'
 %h2 Quotes
-- form_for @search, :url => organisation_quotes_path(@organisation) do |f|
+- form_for @search, :url => organisation_quotes_path(@organisation), :html => {:id => 'quote_search'} do |f|
   %table
     %tr.odd
-      %td Customer
-      %td= @organisation.name
+      %th
+        %label Customer
+      %td{:colspan => 3}= @organisation.name
     %tr.even
-      %td Search for
-      %td
+      %th
+        %label Search for
+      %td{:colspan => 3}
         = f.radio_button :creator_id, current_user.id
-        My Orders/Quotes
+        %label My Orders/Quotes
         = f.radio_button :creator_id, ''
-        Company  Orders/Quotes
+        %label Company  Orders/Quotes
     %tr.odd
-      %td Quotes or Orders
-      %td
+      %th
+        %label Quotes or Orders
+      %td{:colspan => 3}
         = f.radio_button :type_equals, ""
-        Both
+        %label Both
         = f.radio_button :type_equals, 'Quote'
-        Quotes
+        %label Quotes
         = f.radio_button :type_equals, 'Order'
-        Orders
+        %label Orders
     %tr.even
-      %td Customer Ref:
-      %td= f.text_field :your_ref_contains
-      %td Cello Ref
-      %td= f.text_field :id_equals
-      %td Notes
+      %th
+        %label Customer Ref
+      %td{:colspan => 3}= f.text_field :your_ref_contains
     %tr.odd
-      %td Grade:
-      %td= f.collection_select :grade_abbrev_equals, Grade.all, :grade_abbrev, :name, {:include_blank => "--Please Select--"}, :id => 'quote_grade_abbrev'
-      %td Calliper:
-      %td= f.collection_select :calliper_equals, Grade.callipers_for_abbrev(f.object.grade_abbrev_equals), :calliper, :calliper, {:include_blank => 'Please Select'}, :id => 'quote_calliper'
-      %td{:rowspan => 3}= f.text_area :notes_contains
+      %th
+        %label Cello Ref
+      %td{:colspan => 3}= f.text_field :id_equals
     %tr.even
-      %td No of sheets
-      %td= f.text_field :sheets_equals
-      %td
-      %td
+      %th
+        %label Grade
+      %td{:colspan => 3}= f.collection_select :grade_abbrev_equals, Grade.all, :grade_abbrev, :name, {:include_blank => "--Please Select--"}, :id => 'quote_grade_abbrev'
+    %tr.odd  
+      %th
+        %label Calliper
+      %td{:colspan => 3}= f.collection_select :calliper_equals, Grade.callipers_for_abbrev(f.object.grade_abbrev_equals), :calliper, :calliper, {:include_blank => 'Please Select'}, :id => 'quote_calliper'
+    %tr.even
+      %th
+        %label No of sheets
+      %td{:colspan => 3}= f.text_field :sheets_equals
     %tr.odd
-      %td Width
-      %td
-        = f.text_field :width_equals
-        mm
-      %td Length
-      %td
-        = f.text_field :length_equals
-        mm
+      %th
+        %label Width (mm)
+      %td= f.text_field :width_equals
+      %th
+        %label Length (mm)
+      %td= f.text_field :length_equals
+    %tr.even
+      %th
+        %label Notes
+      %td{:colspan => 3}= f.text_area :notes_contains
+  =link_to 'Download to Excel', params.merge(:format => 'xls'), :class => 'excel' if @quotes && @quotes.present?
   = submit_tag "Search"
-=link_to 'Download to Excel', params.merge(:format => 'xls')
-%table
-  %tr 
-    %th ID
-    %th Organsiation
-    %th Created By
-    %th Created
-    %th Your Ref
-    %th Grade
-    %th Width
-    %th Length
-    %th Calliper
-    %th GSM
-    %th No. of Sheets
-    %th Price
-    %th Notes
-    %th Details
-  - @quotes.each do |quote|
-    %tr{:class => cycle('odd','even')}
-      %td= h quote.id
-      %td= h quote.organisation_name
-      %td= h quote.creator_name
-      %td= h quote.created_on
-      %td= h quote.your_ref
-      %td= h quote.grade_name
-      %td= h quote.width
-      %td= h quote.length
-      %td= h quote.calliper
-      %td= h quote.gsm
-      %td= h quote.sheets
-      %td= number_to_currency(quote.price)
-      %td= h quote.notes
-      %td= link_to "#{quote.type} Details", quote
-= will_paginate @quotes, :seperator => ' | '
+- if @quotes && @quotes.empty?
+  .no_results
+    %h3 No Matching Records
+    %p No records match your search criteria
+- elsif @quotes
+  %table.quotes
+    %tr 
+      %th ID
+      %th Organsiation
+      %th Created By
+      %th Created
+      %th Your Ref
+      %th Grade
+      %th Width
+      %th Length
+      %th Calliper
+      %th GSM
+      %th No. of Sheets
+      %th Price
+      %th Notes
+      %th Details
+    - @quotes.each do |quote|
+      %tr{:class => cycle('odd','even')}
+        %td= h quote.id
+        %td= h quote.organisation_name
+        %td= h quote.creator_name
+        %td= h quote.created_on
+        %td= h quote.your_ref
+        %td= h quote.grade_name
+        %td= h quote.width
+        %td= h quote.length
+        %td= h quote.calliper
+        %td= h quote.gsm
+        %td= h quote.sheets
+        %td= number_to_currency(quote.price)
+        %td= h quote.notes
+        %td= link_to "#{quote.type} Details", quote
+  = will_paginate @quotes, :seperator => ' | '

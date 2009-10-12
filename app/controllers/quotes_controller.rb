@@ -25,7 +25,7 @@ class QuotesController < ApplicationController
   
   def index
     @search = @organisation.orders_and_quotes.search(params[:search])
-    @quotes = params[:format] != 'xls' ? @search.paginate(:page => params[:page], :per_page => 25) : @search.all
+    @quotes = params[:format] != 'xls' ? @search.paginate(:page => params[:page], :per_page => 25) : @search.all if params[:search]
   end
   
   def show

@@ -5,10 +5,12 @@ table
   :font-size 12px
   th
     :text-align left
-  tr.odd td
-    :background-color #D6ECC6
-  tr.even td
-    :background-color #DCF2FC
+  tr.odd 
+    td, th
+      :background-color #D6ECC6
+  tr.even
+    th, td
+      :background-color #DCF2FC
   td, th
     :padding 4px
     :vertical-align top
