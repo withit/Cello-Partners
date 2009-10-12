@@ -68,7 +68,15 @@ class Reel < ActiveRecord::Base
     @updated_counter += 1
   end
   
-  def self.reels_without_prices
-    Reel.all(:select => "grade, grade_abbrev, calliper, gsm") - Price.find(:all,:select => "grade, grade_abbrev, calliper, gsm").collect{|e| e.becomes(Reel)}
+  def self.paper
+    @paper ||= all.collect(&:paper).uniq
+  end
+  
+  def paper
+    Paper.new(grade, grade_abbrev, calliper, gsm)
+  end
+  
+  def self.paper_without_prices
+    (paper - Price.paper).sort
   end
 end

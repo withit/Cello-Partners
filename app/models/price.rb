@@ -32,4 +32,15 @@ class Price < ActiveRecord::Base
     Price.all(:select => "grade, grade_abbrev, calliper, gsm") - Reel.find(:all,:select => "grade, grade_abbrev, calliper, gsm").collect{|e| e.becomes(Price)}
   end
   
+  def paper
+    Paper.new(grade, grade_abbrev, calliper, gsm)
+  end
+  
+  def self.paper_without_reels
+    (paper - Reel.paper).sort
+  end
+  
+  def self.paper
+    @paper ||= all.collect(&:paper).uniq
+  end
 end

@@ -26,5 +26,23 @@
     %th Subgrade
     %th Calliper
     %th GSM
+  - Price.paper_without_reels.each do |paper|
+    %tr{:class => cycle('odd','even')}
+      %td= h paper.grade
+      %td= h paper.subgrade
+      %td= h paper.calliper
+      %td= h paper.gsm
+%h3 Unmatched Product Reels
+%p When matched by Grade, Subgrade Abbreviation, Calliper &amp; GSM, the following Product Reel records have no corresponding Pricing record:
+%table
   %tr
-    
+    %th Grade
+    %th Subgrade
+    %th Calliper
+    %th GSM
+  - Reel.paper_without_prices.each do |paper|
+    %tr{:class => cycle('odd','even')}
+      %td= h paper.grade
+      %td= h paper.subgrade
+      %td= h paper.calliper
+      %td= h paper.gsm
