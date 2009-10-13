@@ -14,7 +14,11 @@
       %td= f.collection_select :grade_abbrev, f.object.grade_options, :grade_abbrev, :name, :prompt => '--Please Select--'
     %tr.even
       %td= f.label :calliper
-      %td= f.collection_select :calliper, f.object.calliper_options, :calliper, :calliper_with_units
+      %td
+        = f.collection_select :calliper, f.object.calliper_options, :calliper, :calliper_with_units
+        - if @quote.gsm
+          = @quote.gsm
+          gsm
     %tr.odd
       %td= f.label :sheets, "Number of sheets"
       %td= f.text_field :sheets
@@ -52,12 +56,10 @@
     %tr.even
       %td Cost / 1000
       %td 
-        %span.cost= number_to_currency @quote.price
+        %span.cost
+          = number_to_currency @quote.price_per_1000_sheets_including_surcharge
         per 1,000 sheets + GST
         = submit_tag 'Calculate'
-    %tr.odd
-      %td Setup Surcharge
-      %td
     %tr.even
       %td= f.label :notes
       %td= f.text_area :notes
@@ -72,5 +74,8 @@
     = f.submit "Save Quote"
     = f.submit "Email Quote", :id => 'email_quote'
   %p This calculator is designed to provide indicative pricing for cello board orders. Pricing is subject to confirmation at time of ordering, and stock availability. Prices excludes GST.
-
+- if @quote.recommendations
+  .recommendations
+    %h4 Recommendations for better pricing
+    = @quote.recommendations.inspect
     

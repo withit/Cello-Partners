@@ -1,0 +1,29 @@
+%h2 View/Add/Edit Organisation Addresses
+%table
+  %tr
+    %th ID
+    %th Organsiation
+    %th Description
+    %th Address
+    %th Phone
+    %th Fax
+    %th Email
+    %th Status
+    %th 
+    %th
+  - @addresses.each do |address|
+    %tr{:class => cycle('odd','even')}
+      %td= address.id
+      %td= address.organisation_name
+      %td= address.description
+      %td
+        = address.first_line
+        %br
+        = address.second_line
+      %td= address.phone
+      %td= address.fax
+      %td= address.email
+      %td= address.status_label
+      %td= link_to 'Edit', [:edit, address]
+      %td= link_to 'Delete',address, :method => :delete
+= link_to 'New', new_address_path

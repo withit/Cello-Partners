@@ -16,7 +16,7 @@ class Quote < OrderOrQuote
   end
   
   def gross_weight
-    find_reel && (find_reel.weight_per_unit_length(width) * length * sheets) / 10**9
+    find_reel && (find_reel.weight_per_unit_length(width) * length * sheets).to_f / 10**9
   end
   
   def set_kilos
@@ -49,8 +49,17 @@ class Quote < OrderOrQuote
   end
   
   def find_rate
-    p = prices.break_greater_than_or_equal_to(gross_weight).first(:order => "break desc", :select => 'price')
+    p = prices.break_less_than_or_equal_to(gross_weight).first(:order => "break desc", :select => 'price')
     p && p.price
+  end
+  
+  def recomendation_for_width
+    recommended_reel = reels.to_a.max do |a,b|
+      a.best_width_under(width) <=> b.best_width_under(width)
+    end
+  end
+  
+  def recomendation_for_sheets
   end
   
   def price_per_1000_sheets
@@ -79,7 +88,11 @@ class Quote < OrderOrQuote
   end
   
   def set_surcharge
-    self.setup_surcharge = 500 * [sheets.to_f / 1000, 1].min if length && length > 1600
+    if length && length > Setting.max_length_without_surcharge.to_i
+      self.setup_surcharge = [Setting.minimum_surcharge.to_i, Setting.surcharge_per_kilo.to_f * kilos.to_f].max 
+    else
+      self.setup_surcharge = 0
+    end
   end
   
   before_create :set_calculations
@@ -102,7 +115,13 @@ class Quote < OrderOrQuote
   validates_numericality_of :length, :width
   validates_numericality_of :length, :width, :greater_than_or_equal_to => 300, :message => "must be at least 300mm"
   validate :ensure_that_there_is_a_reel_width_enough
-  validates_numericality_of :length,:less_than_or_equal_to => 2015, :message => "can't be more than 2015mm"
+  #validates_numericality_of :length,:less_than_or_equal_to => lambda{Setting.max_length.to_i}, :message => "can't be more than 2015mm"
+  
+  def ensure_less_than_max_length
+    errors.add(:length, "can't be more than #{Setting.max_length}mm") if length.to_i > Setting.max_length.to_i
+  end
+  
+  validate :ensure_less_than_max_length
   
   def ensure_that_there_is_a_reel_width_enough
     errors.add(:width, 'there is no reel wide enough') unless find_reel
@@ -113,5 +132,14 @@ class Quote < OrderOrQuote
   end
   
   has_many :orders, :foreign_key => 'parent_id', :before_add => :clone_attributes_from_parent
+
+  def price_per_1000_sheets_including_surcharge
+    return unless price && sheets && sheets > 0
+    price + setup_surcharge.to_f / sheets.to_f * 1000
+  end
+
+  def recommendations
+    true
+  end
 
 end

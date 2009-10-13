@@ -45,6 +45,8 @@ class Permission < ActiveRecord::Base
       path("organisations", "index")
     when self.module == "contactcello" && self.function == "list"
       path("reps", "show")
+    when self.module == "org_addresses" && self.function == "list"
+      path("addresses","index")
     else 
     end
   end

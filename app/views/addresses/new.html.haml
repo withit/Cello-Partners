@@ -1,0 +1,45 @@
+%h2 View/Add/Edit Organisation Addresses
+-form_for @address do |form|
+  = form.error_messages
+  %table
+    %tr{alt}
+      %td= form.label :org_id
+      %td= form.collection_select :org_id, Organisation.all(:order => 'name'), :id, :name, :include_blank => 'Please Select'
+    %tr{alt}
+      %td= form.label :description
+      %td= form.text_field :description
+    %tr{alt}
+      %td= form.label :address1
+      %td= form.text_field :address1
+    %tr{alt}
+      %td= form.label :st_address2
+      %td= form.text_field :st_address2
+    %tr{alt}
+      %td= form.label :city
+      %td= form.text_field :city
+    %tr{alt}
+      %td= form.label :state
+      %td= form.text_field :state
+    %tr{alt}
+      %td= form.label :postcode
+      %td= form.text_field :postcode
+    %tr{alt}
+      %td= form.label :country
+      %td= form.text_field :country
+    %tr{alt}
+      %td= form.label :phone
+      %td= form.text_field :phone
+    %tr{alt}
+      %td= form.label :fax
+      %td= form.text_field :fax
+    %tr{alt}
+      %td= form.label :email
+      %td= form.text_field :email
+    %tr{alt}
+      %td= form.label :web
+      %td= form.text_field :web
+    %tr{alt}
+      %td= form.label :status
+      %td= form.select :status, form.object.status_options
+    %tr
+      %td{:colspan => 2}= form.submit 'Save'

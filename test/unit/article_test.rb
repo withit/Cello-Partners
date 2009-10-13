@@ -4,6 +4,7 @@ class ArticleTest < ActiveSupport::TestCase
 
   should "save keywords in XML structure" do
     article = Article.new(:keyword_1 => '<foo>', :keyword_2 => 'bar', :keyword_3 => 'baz')
+    article.template = Template.find(1  )
     article.save(false)
     assert_equal "<keywords>\r\n\t<kw>&lt;foo&gt;</kw>\r\n\t<kw>bar</kw>\r\n\t<kw>baz</kw>\r\n\t<kw />\r\n\t<kw />\r\n\t<kw />\r\n\t<kw />\r\n\t<kw />\r\n</keywords>\r\n", article.keywords
   end
@@ -36,7 +37,7 @@ class ArticleTest < ActiveSupport::TestCase
     article = Article.new
     article.template = Template.find(2)
     article.body_1 = '%3Cp%3Etest%201234567%3C%2Fp%3E' # '<p>test 1234567</p>'
-    article.image_1_name = 'henry'
+    article.image_1_filename = 'henry'
     article.image_1 = ""
     article.image_1_extention = '.jpg'
     assert_equal expected_result, article.build_document
