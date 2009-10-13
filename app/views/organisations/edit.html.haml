@@ -1,0 +1,31 @@
+%h2 Organsiations
+%h3 Edit an Organsiation
+- form_for @organisation do |form|
+  %table
+    %tr.odd
+      %td ID
+      %td= form.object.id
+      %td
+    %tr.even
+      %td Name
+      %td= form.text_field :name, :maxlength => 100, :size => 30
+      %td The Customer Name may be up to 100 characters long. 
+    %tr.odd
+      %td Customer code
+      %td= form.text_field :customer_code, :maxlength => 10, :size => 20
+      %td The customer code may be up to 10 characters long
+    %tr.even
+      %td Price Group
+      %td= form.object.price_group_label
+      %td The Price Group determines which products and what prices are available to the customer.
+    %tr.odd
+      %td Cello rep
+      %td= form.collection_select :cello_rep_id, User.rep, :id, :full_name, :prompt => 'Please select', :include_blank => '-'
+      %td The Cello Rep is the nominated contact for this customer
+    %tr.even
+      %td Status
+      %td= form.select :status, form.object.status_options
+      %td
+    %tr
+      %td
+      %td= form.submit 'Submit'

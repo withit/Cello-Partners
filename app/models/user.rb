@@ -126,4 +126,6 @@ class User < ActiveRecord::Base
   def articles
     Article.scoped(:joins => {:sections => :roles}, :select => 'distinct article.*', :conditions => ['shell_groups.Group_ID in (?)', role_ids.uniq])
   end
+  
+  named_scope :rep, :conditions => {:cello_rep => 1}
 end

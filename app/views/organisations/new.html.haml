@@ -1,0 +1,22 @@
+%h2 Organsiations
+%h3 Enter a New Organisation
+- form_for @organisation do |form|
+  %table
+    %tr.odd
+      %td ID
+      %td
+    %tr.even
+      %td Name
+      %td= form.text_field :name
+    %tr.odd
+      %td Customer code
+      %td= form.text_field :customer_code
+    %tr.even
+      %td Price Group
+      %td= form.collection_select :pricing_group_id, form.object.price_group_options(current_user), :id, :name
+    %tr.odd
+      %td Status
+      %td= form.select :status, form.object.status_options
+    %tr
+      %td
+      %td= form.submit 'Submit'

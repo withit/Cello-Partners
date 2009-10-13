@@ -41,6 +41,10 @@ class Permission < ActiveRecord::Base
       path("reels","new")
     when self.module == 'app_settings' && self.function == 'list'
       path("settings", "index")
+    when self.module == "organisations" && self.function == "list"
+      path("organisations", "index")
+    when self.module == "contactcello" && self.function == "list"
+      path("reps", "show")
     else 
     end
   end
