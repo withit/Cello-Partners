@@ -1,0 +1,38 @@
+%h2 View/Add/Edit Application Prefs
+%p
+  %span.warning Warning
+  Altering the following values may cause application failure
+%table
+  %tr
+    %th ID
+    %th Label
+    %th Value
+    %th Type
+    %th 
+    %th
+  - @settings.each do |setting|
+    - if setting == @setting
+      - form_for @setting do |f|
+        %tr
+          %td New
+          %td= f.text_field :label
+          %td= f.text_field :value
+          %td= f.select :type, f.object.type_options, :prompt => 'Please Select'
+          %td= f.submit 'Update'
+          %td 
+    - else
+      %tr{:class => cycle('odd','even')}
+        %td= setting.id
+        %td= setting.label
+        %td= setting.value
+        %td= setting.type_label
+        %td= link_to 'Edit', [:edit,setting]
+        %td= link_to 'Delete', setting, :method => 'delete'
+  - if !@setting || @setting.new_record?
+    - form_for @setting || Setting.new do |f|
+      %tr
+        %td New
+        %td= f.text_field :label
+        %td= f.text_field :value
+        %td= f.select :type, f.object.type_options, :prompt => 'Please Select'
+        %td{:colspan => 2}= f.submit 'Add'

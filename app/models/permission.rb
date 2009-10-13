@@ -39,6 +39,8 @@ class Permission < ActiveRecord::Base
       path("prices", "new")
     when self.module == 'load_reels' && self.function == 'form'
       path("reels","new")
+    when self.module == 'app_settings' && self.function == 'list'
+      path("settings", "index")
     else 
     end
   end
