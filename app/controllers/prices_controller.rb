@@ -1,4 +1,5 @@
 class PricesController < ApplicationController
+  include ValueLists
   def new
   end
   

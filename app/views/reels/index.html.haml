@@ -1,0 +1,32 @@
+%h2 View/Add/Edit Pricing Group
+%table
+  %tr
+    %th ID
+    %th Grade
+    %th Grade ID 
+    %th Subgrade
+    %th Calliper
+    %th GSM
+    %th Reel Size
+    %th Date Uploaded
+    %th
+  - @reels.each do |reel|
+    - if reel == @reel
+      - form_for @reel, :builder => ValueListFormBuilder do |form|
+        = render form
+    - else
+      %tr{alt}
+        %td= h reel.id
+        %td= h reel.grade
+        %td= h reel.grade_abbrev
+        %td= h reel.subgrade_abbrev
+        %td= h reel.calliper
+        %td= h reel.gsm
+        %td= h reel.reel_size
+        %td= h reel.uploaded_on
+        %td
+          = link_to 'Edit', [:edit, reel]
+          = link_to 'Delete', reel, :method => :delete, :confirm => 'Are you sure you want to delete this pricing?'
+  - if !@reel || @reel.new_record?
+    - form_for @reel || Reel.new,  :builder => ValueListFormBuilder do |form|
+      = render form

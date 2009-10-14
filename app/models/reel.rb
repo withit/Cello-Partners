@@ -87,4 +87,8 @@ class Reel < ActiveRecord::Base
     desired_times_fits_in =  times_fits_in + 1
     reel_size / desired_times_fits_in
   end
+  
+  def uploaded_on
+    date_uploaded && date_uploaded.to_date
+  end
 end

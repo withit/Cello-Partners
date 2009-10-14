@@ -1,0 +1,13 @@
+%tr
+  %td= value_list_form.id
+  %td= value_list_form.collection_select :name, PricingLine.all, :name, :name, :prompt => 'Select'
+  %td= value_list_form.text_field :grade, :size => 20
+  %td= value_list_form.text_field :grade_abbrev, :size => 20
+  %td= value_list_form.text_field :subgrade_abbrev, :size => 20
+  %td= value_list_form.text_field :calliper, :size => 20
+  %td= value_list_form.text_field :gsm, :size => 20
+  %td= value_list_form.text_field :break, :size => 20
+  %td= value_list_form.text_field :price, :size => 20
+  %td= value_list_form.select :price_type, [['Quantity',1],['Fixed Price',0]]
+  %td
+  %td= value_list_form.actions

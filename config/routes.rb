@@ -11,8 +11,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :roles
   map.resources :articles, :has_many => :documents
   map.resources :templates, :has_many => :articles
-  map.resources :prices
-  map.resources :reels
+  map.resources :prices, :collection => {:upload => :post}
+  map.resources :reels, :collection => {:upload => :post}
   map.resources :settings
   map.resource :rep
   map.resources :non_standard_quotes

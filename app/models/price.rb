@@ -43,4 +43,12 @@ class Price < ActiveRecord::Base
   def self.paper
     @paper ||= all.collect(&:paper).uniq
   end
+  
+  def price_type_label
+    price_type && ["Fixed Price","Quantity"][price_type]
+  end
+  
+  def uploaded_on
+    date_uploaded.to_date
+  end
 end

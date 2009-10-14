@@ -1,0 +1,38 @@
+%h2 View/Add/Edit Pricing Group Names
+%table
+  %tr
+    %th ID
+    %th Price Line
+    %th Grade
+    %th Grade ID
+    %th Subgrade
+    %th Calliper
+    %th GSM
+    %th Break
+    %th Price
+    %th Price Type
+    %th Date Uploaded
+    %th
+  - @prices.each do |price|
+    - if price == @price
+      - form_for @price, :builder => ValueListFormBuilder do |form|
+        = render form
+    - else
+      %tr{alt}
+        %td= price.id
+        %td= price.name
+        %td= price.grade
+        %td= price.grade_abbrev
+        %td= price.subgrade_abbrev
+        %td= price.calliper
+        %td= price.gsm
+        %td= price.break
+        %td= price.price
+        %td= price.price_type_label
+        %td= price.uploaded_on
+        %td
+          = link_to 'Edit', edit_price_path(price)
+          = link_to 'Delete', price_path(price), :method => :delete, :confirm => 'Are you sure you want to delete this pricing?'
+  - if !@price || @price.new_record?
+    - form_for @price || Price.new,  :builder => ValueListFormBuilder do |form|
+      = render form
