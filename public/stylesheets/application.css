@@ -5,15 +5,15 @@ table {
   border-spacing: 4px;
   font-size: 12px; }
   table th {
-    text-align: left; }
+    text-align: left;
+    background-color: #d6d6d6; }
   table tr.odd td, table tr.odd th {
     background-color: #D6ECC6; }
   table tr.even th, table tr.even td {
     background-color: #DCF2FC; }
   table td, table th {
     padding: 4px;
-    vertical-align: top;
-    line-height: 25px; }
+    vertical-align: top; }
     table td #user_comments, table td #quote_notes, table th #user_comments, table th #quote_notes {
       height: 50px; }
 

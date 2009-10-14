@@ -31,30 +31,4 @@ class QuotesController < ApplicationController
   def show
     @quote = Quote.find(params[:id])
   end
-  
-  protected
-  
-  def require_organisation
-    render 'organisations/select' unless @organisation
-  end
-  
-  def load_organisation
-    if current_user.is_customer?
-      @organisation = current_user.organisation
-    else
-      @organisation = Organisation.find(params[:organisation_id]) if params[:organisation_id]
-    end
-  end
-  
-  def save_quote?
-    params[:commit] == 'Create Quote'
-  end
-  
-  def send_email?
-    params[:commit] == "Send Email"
-  end
-  
-  def place_order?
-    params[:commit] == "Place Order"
-  end
 end

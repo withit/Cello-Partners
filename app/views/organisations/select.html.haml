@@ -1,7 +1,3 @@
-%h3= t("controller.#{controller.controller_name}.#{controller.action_name}.heading")
-%h4
-  = t("controller.#{controller.controller_name}.#{controller.action_name}.subheading")
-  \- Cello
 %p Please select a customer
 - form_tag new_quote_path,:method => 'get', :id => "customer_select" do
   = text_field_tag :customer_name

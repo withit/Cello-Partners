@@ -36,17 +36,4 @@ class AddressesController < ApplicationController
     @address.destroy
     redirect_to organisation_addresses_path(@address.organisation)
   end
-  
-  private 
-  def require_organisation
-    render 'organisations/select' unless @organisation
-  end
-  
-  def load_organisation
-    if current_user.is_customer?
-      @organisation = current_user.organisation
-    else
-      @organisation = Organisation.find(params[:organisation_id]) if params[:organisation_id]
-    end
-  end
 end

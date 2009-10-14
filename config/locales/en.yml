@@ -11,5 +11,13 @@ en:
       new:
         heading: "Quote"
         subheading: "Create Quote"
+    default:
+      search:
+        heading: ""
+        subheading: "List Quotes & Orders"
+      new:
+        heading: "Quote"
+        subheading: "Create Quote"
+      
           
       
