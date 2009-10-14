@@ -15,4 +15,14 @@ class ReelTest < ActiveSupport::TestCase
     assert_equal 100000, reel.weight_per_unit_length(500)
     assert_equal 200000, reel.weight_per_unit_length(501)
   end
+  
+  should "return the largest optimal width under the provided width" do
+    reel = Factory(:reel, :reel_size => 1200)
+    assert_equal 600, reel.best_width_under(900)
+    assert_equal 400, reel.best_width_under(500)
+    assert_equal 300, reel.best_width_under(399)
+    assert_equal 1200, reel.best_width_under(1300)
+    assert_equal 1200, reel.best_width_under(1200)
+    assert_equal 600, reel.best_width_under(600)
+  end
 end

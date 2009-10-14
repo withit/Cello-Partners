@@ -53,13 +53,31 @@ class Quote < OrderOrQuote
     p && p.price
   end
   
-  def recomendation_for_width
-    recommended_reel = reels.to_a.max do |a,b|
+  def recommendation_for_width
+    recommended_reel = Reel.find_all_by_grade_abbrev_and_calliper(grade_abbrev, calliper).to_a.max do |a,b|
       a.best_width_under(width) <=> b.best_width_under(width)
     end
+    recommended_width = recommended_reel.best_width_under(width)
+    recommended_width == width ? nil : recommended_width
   end
   
   def recomendation_for_sheets
+    return unless recommeded_weight 
+    (recommeded_weight.to_f / find_reel.weight_per_unit_length(width) / length * 10**9).ceil
+  end
+  
+  def find_recommeded_weight
+    recommened_break_point = prices.break_greater_than(gross_weight).first(:order => "break asc") || return
+    recommened_break_point.break
+  end
+  
+  def recommeded_weight
+    @recommeded_weight ||= find_recommeded_weight
+  end
+  
+  def rounded_recomendation_for_sheets
+    return unless recomendation_for_sheets
+    (recomendation_for_sheets % 100).zero? ? recomendation_for_sheets : recomendation_for_sheets - (recomendation_for_sheets % 100) + 100
   end
   
   def price_per_1000_sheets
@@ -139,7 +157,7 @@ class Quote < OrderOrQuote
   end
 
   def recommendations
-    true
+    @recommedations ||= [recommendation_for_width, rounded_recomendation_for_sheets].compact
+    @recommedations.empty? ? nil : @recommedations
   end
-
 end

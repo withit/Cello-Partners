@@ -77,5 +77,23 @@
 - if @quote.recommendations
   .recommendations
     %h4 Recommendations for better pricing
-    = @quote.recommendations.inspect
+    - if @quote.recommendation_for_width
+      %p
+        Decrese width from 
+        = @quote.width
+        mm to:
+        %strong
+          = @quote.recommendation_for_width
+          mm
+    - if @quote.recommendations.many?
+      %p.or OR
+    - if @quote.rounded_recomendation_for_sheets
+      %p
+        Increase from 
+        = @quote.sheets
+        to :
+        %strong
+          = @quote.rounded_recomendation_for_sheets
+          sheets
+        = "(#{@quote.recommeded_weight} kg)"  
     

@@ -79,4 +79,11 @@ class Reel < ActiveRecord::Base
   def self.paper_without_prices
     (paper - Price.paper).sort
   end
+  
+  def best_width_under width
+    return width if reel_size.multiple_of?(width)
+    times_fits_in = reel_size / width
+    desired_times_fits_in =  times_fits_in + 1
+    reel_size / desired_times_fits_in
+  end
 end
