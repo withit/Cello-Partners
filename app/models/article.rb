@@ -23,6 +23,8 @@ class Article < ActiveRecord::Base
   
   belongs_to :author, :foreign_key => 'AUTHOR', :class_name => 'User'
   
+  validates_presence_of :section_ids
+  
   def author_name
     author.full_name
   end
@@ -273,7 +275,7 @@ class Article < ActiveRecord::Base
   
   class ArticleSection < Struct.new(:article, :text, :image_id)
     def text
-      URI::decode(super).gsub(/#{Regexp.escape('<@var request$templateimages>')}/, "/documents/#{article.id}/")
+      URI::decode(super.to_s).gsub(/#{Regexp.escape('<@var request$templateimages>')}/, "/documents/#{article.id}/")
     end
     
     def image

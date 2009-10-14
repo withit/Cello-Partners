@@ -36,4 +36,10 @@ class AddressesController < ApplicationController
     @address.destroy
     redirect_to organisation_addresses_path(@address.organisation)
   end
+  
+  private
+  
+  def module_name
+    'org_addresses'
+  end
 end

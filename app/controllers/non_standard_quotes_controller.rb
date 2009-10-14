@@ -20,4 +20,14 @@ class NonStandardQuotesController < ApplicationController
       render 'new'
     end
   end
+  
+  private
+  
+  def module_name
+    "nonstandardquote"
+  end
+  
+  def function_name
+    "nrform"
+  end
 end

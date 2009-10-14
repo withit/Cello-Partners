@@ -128,4 +128,9 @@ class User < ActiveRecord::Base
   end
   
   named_scope :rep, :conditions => {:cello_rep => 1}
+  
+  def can_access? module_name, function_name
+    return true if super_admin?
+    actions.find_by_Module_and_Function(module_name, function_name)
+  end
 end

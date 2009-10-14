@@ -59,6 +59,7 @@ class Quote < OrderOrQuote
     recommended_reel = Reel.find_all_by_grade_abbrev_and_calliper(grade_abbrev, calliper).to_a.max do |a,b|
       a.best_width_under(width) <=> b.best_width_under(width)
     end
+    return unless recommended_reel
     recommended_width = recommended_reel.best_width_under(width)
     recommended_width == width ? nil : recommended_width
   end

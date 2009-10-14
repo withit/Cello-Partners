@@ -16,10 +16,12 @@ class ApplicationController < ActionController::Base
   end
   
   def require_login
-    unless current_user
-      flash[:warning] = "Not authorized"
-      redirect_to login_path
-    end
+    deny_access unless current_user && authorize_for_action
+  end
+  
+  def deny_access
+    flash[:warning] = "Not authorized"
+    redirect_to login_path
   end
   
   def current_user_session
@@ -62,4 +64,31 @@ class ApplicationController < ActionController::Base
   def place_order?
     params[:commit] == "Place Order"
   end
+  
+  def module_name
+    controller_name
+  end
+  
+  def function_name
+    functions_hash[action_name]
+  end
+  
+  def functions_hash
+    returning(Hash.new{|h,k| k}) do |h|
+      h["index"] = "list"
+      h["destroy"] = "delete"
+      h["create"] = ["insert","newuser","publish"]
+      h["show"] = "detail"
+      h["new"] = ["new", "form","nrform"]
+      h["edit"] = ["edit", "editPerm","editCat","editform",'EditMyself']
+      h["update"] = ["update",'UpdateMyself']
+      h["search"] = ['sform']
+    end
+  end
+  
+  def authorize_for_action
+    raise([module_name, function_name].inspect) unless current_user.can_access?(module_name, function_name)
+    true
+  end
+
 end

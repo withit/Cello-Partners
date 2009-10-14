@@ -34,4 +34,10 @@ class SettingsController < ApplicationController
     @setting.destroy
     redirect_to settings_path
   end
+  
+  private
+  
+  def module_name
+    'app_settings'
+  end
 end

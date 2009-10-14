@@ -34,8 +34,8 @@ class OrganisationsController < ApplicationController
   end
   
   def destroy
-    @organisation.find(params[:id])
+    @organisation = Organisation.find(params[:id])
     @organisation.destroy
-    redirect_to organsiations_path
+    redirect_to organisations_path
   end
 end

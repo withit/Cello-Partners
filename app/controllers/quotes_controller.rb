@@ -31,4 +31,13 @@ class QuotesController < ApplicationController
   def show
     @quote = Quote.find(params[:id])
   end
+  
+  private
+  
+  def functions_hash
+    returning(super) do |h|
+      h["new"] = "nrform"
+      h["create"] = "nrform"
+    end
+  end
 end

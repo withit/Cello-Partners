@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_access
+
   def edit
     @user = User.find(params[:id])
   end
@@ -38,18 +38,19 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_search_path 
+    redirect_to search_users_path 
   end
   
   protected
   
-  def require_access
-    
-    #render :text => "Not authorized" unless current_user.has_access_to? security_module, security_function
+  def module_name 
+    'shell_user_mgr'
   end
   
-  def security_module 
-    'shell_user_mgr'
+  def functions_hash
+    returning(super) do |h|
+      h["edit"] = "sform"
+    end
   end
   
   def security_function

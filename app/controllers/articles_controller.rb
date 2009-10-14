@@ -36,4 +36,14 @@ class ArticlesController < ApplicationController
       render 'edit'
     end
   end
+  
+  private
+  
+  def module_name
+    action_name == "show" ? "displayarticle" : "article_publishing"
+  end
+  
+  def function_name
+     action_name == "show" ? "display" : super
+  end
 end

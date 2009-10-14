@@ -12,4 +12,12 @@ class ProfilesController < ApplicationController
       render 'edit'
     end
   end
+  
+  private
+  
+  def module_name
+    'shell_editmyself'
+  end
+  
+  
 end
