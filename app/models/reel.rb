@@ -81,6 +81,7 @@ class Reel < ActiveRecord::Base
   end
   
   def best_width_under width
+    return unless reel_size
     return width if reel_size.multiple_of?(width)
     times_fits_in = reel_size / width
     desired_times_fits_in =  times_fits_in + 1

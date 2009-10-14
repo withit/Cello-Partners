@@ -5,6 +5,8 @@ class Quote < OrderOrQuote
     self.created_date ||= Date.today
     self.status ||= 0
   end
+  
+  attr_accessor :standard
 
   def calliper_options
     return [] unless grade
@@ -98,11 +100,11 @@ class Quote < OrderOrQuote
   
   def set_calculations
     set_reel
-    set_price
+    set_price unless standard == false
     set_reel
     set_kilos
-    set_rate
-    set_surcharge
+    set_rate unless standard == false
+    set_surcharge unless standard == false
   end
   
   def set_surcharge
@@ -150,11 +152,6 @@ class Quote < OrderOrQuote
   end
   
   has_many :orders, :foreign_key => 'parent_id', :before_add => :clone_attributes_from_parent
-
-  def price_per_1000_sheets_including_surcharge
-    return unless price && sheets && sheets > 0
-    price + setup_surcharge.to_f / sheets.to_f * 1000
-  end
 
   def recommendations
     @recommedations ||= [recommendation_for_width, rounded_recomendation_for_sheets].compact

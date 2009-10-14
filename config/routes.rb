@@ -15,10 +15,12 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :reels
   map.resources :settings
   map.resource :rep
+  map.resources :non_standard_quotes
   map.resources :addresses
   map.resources :organisations do |org|
     org.resources :quotes, :collection => {:search => :get}, :has_many => :orders
     org.resources :addresses
+    org.resources :non_standard_quotes
   end
   map.javascripts '/javascripts/:action.js', :controller => 'javascripts'
   # Sample of regular route:

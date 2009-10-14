@@ -47,6 +47,8 @@ class Permission < ActiveRecord::Base
       path("reps", "show")
     when self.module == "org_addresses" && self.function == "list"
       path("addresses","index")
+    when self.module == "nonstandardquote" && self.function == "nrform"
+      path("non_standard_quotes","new")
     else 
     end
   end

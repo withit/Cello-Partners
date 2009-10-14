@@ -53,4 +53,9 @@ class OrderOrQuote < ActiveRecord::Base
   def grade
     Grade.find_by_grade_abbrev(grade_abbrev)
   end
+  
+  def price_per_1000_sheets_including_surcharge
+    return unless price && sheets && sheets > 0
+    price + setup_surcharge.to_f / sheets.to_f * 1000
+  end
 end

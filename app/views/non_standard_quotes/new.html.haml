@@ -1,0 +1,78 @@
+- content_for :head do 
+  = javascript_include_tag 'callipers'
+%h2 Quotes
+- form_for [@organisation, @quote], :url => organisation_non_standard_quotes_path(@organisation) do |f|
+  %h3 Create Quote
+  %table
+    %tr
+      %td= f.label :organisation, 'Customer'
+      %td
+        = f.hidden_field :parent_id
+        = h f.object.organisation_name
+    %tr.odd
+      %td= f.label :grade_abbrev, "Grade"
+      %td= f.collection_select :grade_abbrev, f.object.grade_options, :grade_abbrev, :name, :prompt => '--Please Select--'
+    %tr.even
+      %td= f.label :calliper
+      %td
+        = f.collection_select :calliper, f.object.calliper_options, :calliper, :calliper_with_units
+        - if @quote.gsm
+          = @quote.gsm
+          gsm
+    %tr.odd
+      %td= f.label :sheets, "Number of sheets"
+      %td= f.text_field :sheets
+    %tr.even
+      %td= f.label :width
+      %td
+        = f.text_field :width
+        mm
+        = f.error_message_on(:width)
+    %tr.odd
+      %td= f.label :length
+      %td
+        = f.text_field :length
+        mm
+        = f.error_message_on(:length)
+    %tr
+      %td
+      %td
+    %tr.even
+      %td Grain
+      %td Long
+    %tr.odd
+      %td Ex reels
+      %td
+        = @quote.reel
+        mm
+    %tr.even
+      %td Gross Weight
+      %td
+        = @quote.kilos
+        kg
+    %tr.odd
+      %td Date Created
+      %td= f.object.created_on
+    %tr.even
+      %td Cost / 1000
+      %td 
+        = f.text_field :price
+        per 1,000 sheets + GST
+        = submit_tag 'Calculate'
+    %tr.odd
+      %td Setup Surcharge
+      %td= f.text_field :setup_surcharge
+    %tr.even
+      %td= f.label :notes
+      %td= f.text_area :notes
+    %tr.odd#email_row{:style => "display: none;"}
+      %td= f.label :email
+      %td
+        = f.text_field :email
+        = f.submit "Send Email"
+  %input{:type => 'reset', :value => 'Reset Form'}
+  - if @quote.can_be_saved?
+    = f.submit "Place Order"
+    = f.submit "Save Quote"
+    = f.submit "Email Quote", :id => 'email_quote'
+  %p This calculator is designed to provide indicative pricing for cello board orders. Pricing is subject to confirmation at time of ordering, and stock availability. Prices excludes GST.
