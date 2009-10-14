@@ -1,0 +1,7 @@
+%tr
+  %td= value_list_form.id
+  %td= value_list_form.collection_select :group_name_id, PricingGroupName.all, :id, :name, :prompt => "Please select a Group Name"
+  %td= value_list_form.collection_select :price_id, PricingLine.all, :id, :name, :prompt => "Please Select a pricing"
+  %td= value_list_form.collection_select :status, Status.all, :id, :label
+  %td= value_list_form.select :sort, (1..value_list_form.object.max_sort).to_a
+  %td= value_list_form.actions

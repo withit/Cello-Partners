@@ -1,0 +1,5 @@
+%tr
+  %td= form.class
+  %td= form.text_field :name
+  %td= form.select_collection :status, Status.all, :id, :label
+  %td= form.actions

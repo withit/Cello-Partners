@@ -49,6 +49,10 @@ class Permission < ActiveRecord::Base
       path("addresses","index")
     when self.module == "nonstandardquote" && self.function == "nrform"
       path("non_standard_quotes","new")
+    when self.module == "pricing_group_names" && self.function == "list"
+      path("pricing_group_names", "index")
+    when self.module == "pricing_groups" && self.function == "list"
+      path("pricing_groups", "index")
     else 
     end
   end

@@ -17,6 +17,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :rep
   map.resources :non_standard_quotes
   map.resources :addresses
+  map.resources :pricing_group_names
+  map.resources :pricing_groups
   map.resources :organisations do |org|
     org.resources :quotes, :collection => {:search => :get}, :has_many => :orders
     org.resources :addresses

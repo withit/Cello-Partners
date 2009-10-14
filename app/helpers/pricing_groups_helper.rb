@@ -1,0 +1,2 @@
+module PricingGroupsHelper
+end

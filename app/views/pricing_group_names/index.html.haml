@@ -1,0 +1,22 @@
+%h2 View/Add/Edit Pricing Group Names
+%table
+  %tr
+    %th ID
+    %th Name
+    %th Status
+    %th
+  - @pricing_group_names.each do |pricing_group_name|
+    - if pricing_group_name == @pricing_group_name
+      - form_for @pricing_group_name, :builder => ValueListFormBuilder do |form|
+        = render form
+    - else
+      %tr{alt}
+        %td= pricing_group_name.id
+        %td= pricing_group_name.name
+        %td= pricing_group_name.status_label
+        %td
+          = link_to 'Edit', [:edit, pricing_group_name]
+          = link_to 'Delete', pricing_group_name, :method => :delete, :confirm => 'Are you sure you want to delete this pricing?'
+  - if !@pricing_group_name || @pricing_group_name.new_record?
+    - form_for @pricing_group_name || PricingGroupName.new,  :builder => ValueListFormBuilder do |form|
+      = render form
