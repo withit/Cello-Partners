@@ -87,8 +87,7 @@ class ApplicationController < ActionController::Base
   end
   
   def authorize_for_action
-    raise([module_name, function_name].inspect) unless current_user.can_access?(module_name, function_name)
-    true
+    current_user.can_access?(module_name, function_name)
   end
 
   def require_not_logged_in

@@ -21,5 +21,9 @@ class UserSessionsController < ApplicationController
     flash[:notice] = "You have logged out"
     redirect_to login_path
   end
-
+  protected
+  
+  def authorize_for_action
+    true
+  end
 end

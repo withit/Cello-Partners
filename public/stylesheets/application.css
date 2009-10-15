@@ -110,16 +110,16 @@ tbody {
       -webkit-box-shadow: 2px 2px 2px #888;
       text-decoration: none; }
 
-body.user_sessions .main {
+body.user_sessions .main, body.password_resets .main {
   width: 100%; }
-body.user_sessions form.new_user_session {
+body.user_sessions form.new_user_session, body.user_sessions div.reset_password, body.password_resets form.new_user_session, body.password_resets div.reset_password {
   margin: 40px auto;
   background-color: #96D56C;
   overflow: auto;
   width: 500px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px; }
-  body.user_sessions form.new_user_session h2 {
+  body.user_sessions form.new_user_session h2, body.user_sessions div.reset_password h2, body.password_resets form.new_user_session h2, body.password_resets div.reset_password h2 {
     color: white;
     background-color: #006EAD;
     background-image: url(../images/blue.jpg);
@@ -134,23 +134,23 @@ body.user_sessions form.new_user_session {
     -webkit-border-top-left-radius: 10px;
     -moz-border-radius-topright: 10px;
     -webkit-border-top-right-radius: 10px; }
-  body.user_sessions form.new_user_session table {
+  body.user_sessions form.new_user_session table, body.user_sessions div.reset_password table, body.password_resets form.new_user_session table, body.password_resets div.reset_password table {
     margin: 0 auto;
     text-align: right; }
-  body.user_sessions form.new_user_session a {
+  body.user_sessions form.new_user_session a, body.user_sessions div.reset_password a, body.password_resets form.new_user_session a, body.password_resets div.reset_password a {
     color: white;
     text-decoration: none;
     display: block; }
-    body.user_sessions form.new_user_session a:hover {
+    body.user_sessions form.new_user_session a:hover, body.user_sessions div.reset_password a:hover, body.password_resets form.new_user_session a:hover, body.password_resets div.reset_password a:hover {
       text-decoration: underline; }
-  body.user_sessions form.new_user_session input[type=submit] {
+  body.user_sessions form.new_user_session input[type=submit], body.user_sessions div.reset_password input[type=submit], body.password_resets form.new_user_session input[type=submit], body.password_resets div.reset_password input[type=submit] {
     float: none;
     padding: 6px; }
-body.user_sessions .contact {
+body.user_sessions .contact, body.password_resets .contact {
   margin: auto;
   width: 500px;
   margin-bottom: 40px; }
-  body.user_sessions .contact td {
+  body.user_sessions .contact td, body.password_resets .contact td {
     padding: 0px; }
 
 .header {
