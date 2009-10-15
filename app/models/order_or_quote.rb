@@ -58,4 +58,12 @@ class OrderOrQuote < ActiveRecord::Base
     return unless price && sheets && sheets > 0
     price + setup_surcharge.to_f / sheets.to_f * 1000
   end
+  
+  def size
+    "#{width} mm x #{length} mm (w x l)"
+  end
+  
+  def total_price
+    price * 1000 + setup_surcharge.to_i
+  end
 end

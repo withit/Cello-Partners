@@ -157,5 +157,5 @@ class Quote < OrderOrQuote
   def recommendations
     @recommedations ||= [recommendation_for_width, rounded_recomendation_for_sheets].compact
     @recommedations.empty? ? nil : @recommedations
-  end
+  end  
 end
