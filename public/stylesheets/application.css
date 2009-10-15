@@ -281,6 +281,15 @@ body.user_sessions .contact, body.password_resets .contact {
     background-color: #d6d6d6;
     padding: 14px; }
 
+.rep {
+  color: #035881; }
+  .rep h2, .rep h3 {
+    text-transform: uppercase;
+    font-size: 12px; }
+  .rep h3 {
+    color: #555;
+    margin-bottom: 3px; }
+
 body, td, h2 {
   font-family: verdana,arial,helvetica; }
 
@@ -298,7 +307,8 @@ body {
 .main {
   float: left;
   width: 800px;
-  overflow: visible; }
+  overflow: visible;
+  margin-top: 15px; }
 
 p {
   width: 500px; }
