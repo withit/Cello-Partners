@@ -91,4 +91,8 @@ class ApplicationController < ActionController::Base
     true
   end
 
+  def require_not_logged_in
+    redirect_to root_path if current_user
+  end
+
 end

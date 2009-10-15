@@ -1,0 +1,8 @@
+.reset_password
+  %h2 Reset Password 
+  - if flash[:error]
+    .error= h flash[:error]
+  - form_tag password_resets_path, :method => :post do
+    %label Email Address
+    = text_field_tag :email
+    = submit_tag "Reset Your Password"

@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :prices, :collection => {:upload => :post}
   map.resources :reels, :collection => {:upload => :post}
   map.resources :settings
+  map.resources :password_resets
   map.resource :rep
   map.resources :non_standard_quotes
   map.resources :addresses

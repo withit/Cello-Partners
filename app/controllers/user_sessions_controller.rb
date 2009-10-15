@@ -1,5 +1,6 @@
 class UserSessionsController < ApplicationController
-  skip_before_filter :require_login
+  skip_before_filter :require_login, :except => :destroy
+  before_filter :require_not_logged_in, :except => :destroy
   def new
     @user_session = UserSession.new
   end
@@ -9,6 +10,7 @@ class UserSessionsController < ApplicationController
     if @user_session.save
       redirect_to root_path
     else
+      flash.now[:error] = 'Incorrect username or password'
       render :new
     end
   end
@@ -19,4 +21,5 @@ class UserSessionsController < ApplicationController
     flash[:notice] = "You have logged out"
     redirect_to login_path
   end
+
 end

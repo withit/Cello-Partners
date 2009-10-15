@@ -133,4 +133,25 @@ class User < ActiveRecord::Base
     return true if super_admin?
     actions.find_by_Module_and_Function(module_name, function_name)
   end
+  
+  def menu_items
+    MenuItem.build_for(self)
+  end
+  
+  def self.find_by_email *args
+    find_by_Email *args
+  end
+  
+  def reset_password!
+    self.new_password = generate_random_password
+    Notifier.deliver_password_reset(self)
+    save!
+  end
+  
+  def generate_random_password
+    chars = ("A".."Z").to_a + ("a".."z").to_a + (0..9).to_a
+    (0..8).collect{|i| chars[ActiveSupport::SecureRandom.random_number(chars.size)]} * ""
+  end
+  
+  
 end

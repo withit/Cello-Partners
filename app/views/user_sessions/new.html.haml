@@ -1,5 +1,7 @@
 - form_for @user_session do |f|
   %h2 Login
+  - if flash[:error]
+    .error= h flash[:error]
   %table
     %tr
       %td= f.label :username, 'user name'
@@ -11,4 +13,18 @@
       %td
       %td
         = f.submit "Login"
-        = link_to 'forgotten your password?'
+        = link_to 'forgotten your password?', new_password_reset_path
+.contact
+  %p For partner access, please contact your cello paper account representive
+  %table
+    %tr
+      %td Phone
+      %td 1300 65 45 25
+      %td +61 9754 6666
+    %tr 
+      %td Fax 
+      %td 1300 65 45 15 
+      %td +61 2 9754 6555
+    %tr
+      %td Email
+      %td sales@cello.com.au

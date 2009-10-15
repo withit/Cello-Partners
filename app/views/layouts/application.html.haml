@@ -7,25 +7,14 @@
       = stylesheet_link_tag 'ie6'
     = javascript_include_tag :defaults, :cache => true
     = yield :head
-  %body
+  %body{:class => "#{controller.controller_name} #{controller.action_name}"}
     .header
       %h1 Cello
     .container
       - if current_user
         .sidebar
           %ul
-            / - current_user.menu.root_items.each do |menu_item|
-            /   %li
-            /     = h menu_item.label
-            /     - unless menu_item.children.empty?
-            /       %ul
-            /         - menu_item.children.each do |child|
-            /           %li
-            /             - if !child.url
-            /               = h child.label 
-            /             - else
-            /               = link_to h(child.label), instance_eval(&child.url)
-            - MenuItem.build_for(current_user).each do |root_item|
+            - current_user.menu_items.each do |root_item|
               %li
                 = h root_item.label
                 - unless root_item.children.empty?
@@ -35,14 +24,12 @@
                         = link_to_if child_item.url,h(child_item.label),child_item.url
                         
           #logout= link_to 'Logout', logout_path
-        .main
-          = yield
-      - else
+      .main
         = yield
     .footer
       &copy; Copyright
       = Date.today.year
-      CELLO | Contact Information | Contact | Terms and Conditions | Security Policy | Site by 
+      CELLO | Site by 
       = link_to image_tag('wi.jpg', :alt => 'With Imagination', :title => 'With Imagination'), 'http://www.wi.com.au', :class => 'with_imagination'
 
     

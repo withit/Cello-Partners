@@ -110,21 +110,23 @@ tbody {
       -webkit-box-shadow: 2px 2px 2px #888;
       text-decoration: none; }
 
-form.new_user_session {
-  margin: 140px auto;
+body.user_sessions .main {
+  width: 100%; }
+body.user_sessions form.new_user_session {
+  margin: 40px auto;
   background-color: #96D56C;
   overflow: auto;
   width: 500px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px; }
-  form.new_user_session h2 {
+  body.user_sessions form.new_user_session h2 {
     color: white;
     background-color: #006EAD;
     background-image: url(../images/blue.jpg);
     font-size: 18px;
     padding: 2px;
     margin-top: 0;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     text-align: center;
     font-weight: normal;
     text-transform: uppercase;
@@ -132,18 +134,24 @@ form.new_user_session {
     -webkit-border-top-left-radius: 10px;
     -moz-border-radius-topright: 10px;
     -webkit-border-top-right-radius: 10px; }
-  form.new_user_session table {
+  body.user_sessions form.new_user_session table {
     margin: 0 auto;
     text-align: right; }
-  form.new_user_session a {
+  body.user_sessions form.new_user_session a {
     color: white;
     text-decoration: none;
     display: block; }
-    form.new_user_session a:hover {
+    body.user_sessions form.new_user_session a:hover {
       text-decoration: underline; }
-  form.new_user_session input[type=submit] {
+  body.user_sessions form.new_user_session input[type=submit] {
     float: none;
     padding: 6px; }
+body.user_sessions .contact {
+  margin: auto;
+  width: 500px;
+  margin-bottom: 40px; }
+  body.user_sessions .contact td {
+    padding: 0px; }
 
 .header {
   background-image: url(../images/banner.jpg);
@@ -206,14 +214,14 @@ form.new_user_session {
     margin: 5px;
     padding: 5px; }
 
-.errorExplanation {
+.errorExplanation , .error {
   padding: .8em;
   margin: 1em;
   border: 2px solid #dddddd;
   background: #fbe3e4;
   color: #8a1f11;
   border-color: #fbc2c4; }
-  .errorExplanation p, .errorExplanation h2 {
+  .errorExplanation  p, .errorExplanation  h2, .error p, .error h2 {
     color: #8a1f11; }
 
 .fieldWithErrors input,

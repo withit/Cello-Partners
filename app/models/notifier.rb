@@ -6,4 +6,11 @@ class Notifier < ActionMailer::Base
     body       :quote => quote
   end
 
+  def password_reset user
+    recipients user.email
+    from       "partners@cello.com.au"
+    subject    "Cello password reset for #{user.username}"
+    body       :user => user
+  end
+
 end
