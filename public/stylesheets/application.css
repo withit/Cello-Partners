@@ -290,6 +290,21 @@ body.user_sessions .contact, body.password_resets .contact {
     color: #555;
     margin-bottom: 3px; }
 
+.recommendations {
+  background-color: #3EA8DA;
+  float: left;
+  width: 200px;
+  padding: 10px;
+  border: 10px solid white;
+  outline: 1px solid #026898; }
+  .recommendations, .recommendations p {
+    color: white; }
+  .recommendations p {
+    width: auto; }
+
+form.new_quote {
+  float: left; }
+
 body, td, h2 {
   font-family: verdana,arial,helvetica; }
 

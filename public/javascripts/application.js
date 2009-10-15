@@ -40,10 +40,17 @@ document.observe('dom:loaded', function(){
     {
       return;
     }
-    e.findElement('li').removeClassName('active');
-    if(e.findElement('li').up('li'))
+    li = e.findElement('li')
+    if(!$(e.toElement).descendantOf(li))
     {
-      e.findElement('li').up('li').removeClassName('active');
+      li.removeClassName('active');
+    }
+    if(li = e.findElement('li').up('li'))
+    {
+      if(!$(e.toElement).descendantOf(li))
+      {
+        li.removeClassName('active');
+      }
     }
   });
   $$('.sidebar').invoke('observe', 'mouseover',function(e){
