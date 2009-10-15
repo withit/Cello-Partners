@@ -1,12 +1,17 @@
 #quote_search
   :float left
   tr.odd, tr.even
+    th, td
+      :padding 1px
+      :padding-left 4px
+      :line-height 25px
     th
       :text-transform none
       :color #035881
       :font-family 'Arial'
     label  
       :line-height 25px
+      
     #search_width_equals, #search_length_equals
       :width 100px
     #search_notes_contains
@@ -14,6 +19,7 @@
       :width 98%
   input[type=submit]
     :padding 10px 30px
+    :float right
   a.excel
     :display block
     :float left

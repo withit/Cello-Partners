@@ -2,6 +2,8 @@
   %h2 Login
   - if flash[:error]
     .error= h flash[:error]
+  - if flash[:notice]
+    .notice= h flash[:notice]
   %table
     %tr
       %td= f.label :username, 'user name'

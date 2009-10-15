@@ -214,15 +214,20 @@ body.user_sessions .contact, body.password_resets .contact {
     margin: 5px;
     padding: 5px; }
 
-.errorExplanation , .error {
+.errorExplanation , .error, .notice {
   padding: .8em;
   margin: 1em;
   border: 2px solid #dddddd;
   background: #fbe3e4;
   color: #8a1f11;
   border-color: #fbc2c4; }
-  .errorExplanation  p, .errorExplanation  h2, .error p, .error h2 {
+  .errorExplanation  p, .errorExplanation  h2, .error p, .error h2, .notice p, .notice h2 {
     color: #8a1f11; }
+
+.notice {
+  border-color: #C6D880;
+  background: #E6EFC2;
+  color: #264409; }
 
 .fieldWithErrors input,
 .fieldWithErrors select {
@@ -238,6 +243,10 @@ body.user_sessions .contact, body.password_resets .contact {
 
 #quote_search {
   float: left; }
+  #quote_search tr.odd th, #quote_search tr.odd td, #quote_search tr.even th, #quote_search tr.even td {
+    padding: 1px;
+    padding-left: 4px;
+    line-height: 25px; }
   #quote_search tr.odd th, #quote_search tr.even th {
     text-transform: none;
     color: #035881;
@@ -250,7 +259,8 @@ body.user_sessions .contact, body.password_resets .contact {
     height: 60px;
     width: 98%; }
   #quote_search input[type=submit] {
-    padding: 10px 30px; }
+    padding: 10px 30px;
+    float: right; }
   #quote_search a.excel {
     display: block;
     float: left;
