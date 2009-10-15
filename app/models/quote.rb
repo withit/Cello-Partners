@@ -158,4 +158,8 @@ class Quote < OrderOrQuote
     @recommedations ||= [recommendation_for_width, rounded_recomendation_for_sheets].compact
     @recommedations.empty? ? nil : @recommedations
   end  
+  
+  def self.deliver_report
+    Notifier.deliver_quote_report(report)
+  end
 end

@@ -23,4 +23,8 @@ class Order < OrderOrQuote
     self.created_date ||= Date.today
     self.status ||= 1
   end
+  
+  def self.deliver_report
+    Notifier.deliver_order_report(report)
+  end
 end
