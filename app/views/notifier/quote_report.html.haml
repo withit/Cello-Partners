@@ -1,0 +1,35 @@
+%h2 
+  Quotes 
+  = Date.yesterday
+%table{:border => 0}
+  %tr{:valign => 'top',:align => 'left'}
+    %th Rep
+    %th Company
+    %th Creator
+    %th Grade
+    %th Calliper
+    %th GSM
+    %th Reel
+    %th Sheets
+    %th Width
+    %th Length
+    %th $ / 1,000
+    %th $ Rate
+    %th Kilos
+    %th Quote #
+  - @quotes.each do |quote|
+    %tr{:valign => 'top'}
+      %td= quote.rep_name
+      %td= quote.organisation_name
+      %td= quote.creator_name
+      %td= quote.grade_name
+      %td= quote.calliper
+      %td= quote.gsm
+      %td= quote.reel
+      %td= quote.sheets
+      %td= quote.width
+      %td= quote.length
+      %td= number_to_currency quote.price
+      %td= number_to_currency quote.rate
+      %td= quote.kilos
+      %td= quote.id

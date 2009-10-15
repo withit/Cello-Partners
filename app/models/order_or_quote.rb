@@ -46,7 +46,7 @@ class OrderOrQuote < ActiveRecord::Base
   belongs_to :organisation, :foreign_key => 'org_id'
   
   def organisation_name
-    organisation.name
+    organisation && organisation.name
   end
   
   belongs_to :grade
@@ -65,5 +65,13 @@ class OrderOrQuote < ActiveRecord::Base
   
   def total_price
     price * 1000 + setup_surcharge.to_i
+  end
+  
+  def self.report
+    find(:all, :include => [:creator, {:organisation => :rep}], :conditions => ["updated_date > ?", Date.yesterday])
+  end
+  
+  def rep_name
+    organisation && organisation.rep_name
   end
 end

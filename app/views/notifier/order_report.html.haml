@@ -1,0 +1,40 @@
+%h2 
+  Orders 
+  = Date.yesterday
+%table{:border => 0}
+  %tr{:valign => 'top', :align => 'left'}
+    %th Rep
+    %th Company
+    %th Authorised By
+    %th Grade
+    %th Calliper
+    %th GSM
+    %th Reel
+    %th Sheets
+    %th Width
+    %th Length
+    %th $ / 1,000
+    %th $ Rate
+    %th Kilos
+    %th Due
+    %th cust #
+    %th cello #
+  - @orders.each do |order|
+    %tr{:valign => "top"}
+      %td= order.rep_name
+      %td= order.organisation_name
+      %td= order.creator_name
+      %td= order.grade_name
+      %td= order.gsm
+      %td= order.reel
+      %td= order.width
+      %td= order.length
+      %td= number_to_currency order.price
+      %td= number_to_currency order.rate
+      %td= order.kilos
+      %td= order.required_date
+      %td= order.your_ref
+      %td= order.id
+  %tr
+    %td{:colspan => 12} &nbsp;
+    %td= @orders.sum{|o| o.kilos.to_i}

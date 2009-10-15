@@ -6,6 +6,11 @@ class Organisation < ActiveRecord::Base
   has_many :orders_and_quotes, :foreign_key => 'org_id', :class_name => 'OrderOrQuote'
   belongs_to :pricing_group_name, :foreign_key => 'pricing_group_id'
   belongs_to :rep, :class_name => 'User', :foreign_key => 'cello_rep_id'
+  
+  def rep_name
+    rep && rep.full_name
+  end
+  
   def price_names
     PricingLine.all(:joins => {:pricing_groups => {:pricing_group_name => :organisations }}, :conditions => ['shell_organisations.id = ?',id], :select => 'pricing_lines.name').collect(&:name)
   end

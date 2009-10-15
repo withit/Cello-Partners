@@ -1,0 +1,11 @@
+development:
+  reports:
+    mail_to: test@wi.com.au
+
+staging:
+  reports:
+    mail_to: "cello.notify@wi.com.au,d.gellert@cello.com.au"
+
+production:
+  reports:
+    mail_to: board.stock.group@mail.cello.com.au

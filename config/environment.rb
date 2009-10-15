@@ -17,7 +17,7 @@ Rails::Initializer.run do |config|
   config.gem 'searchlogic'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate'
   config.gem "fastercsv"
-
+  config.gem 'binarylogic-settingslogic', :lib => 'settingslogic'
   # Specify gems that this application depends on and have them installed with rake gems:install
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
