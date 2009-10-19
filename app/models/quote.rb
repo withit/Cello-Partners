@@ -162,4 +162,8 @@ class Quote < OrderOrQuote
   def self.deliver_report
     Notifier.deliver_quote_report(report)
   end
+  
+  def stock_availability
+    :not_available
+  end
 end

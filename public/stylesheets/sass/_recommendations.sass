@@ -1,13 +1,46 @@
-.recommendations
-  :background-color #3EA8DA
+.other_info
   :float left
   :width 200px
-  :padding 10px
-  :border 10px solid white
-  :outline 1px solid #026898 
-  &, & p
-    :color white
+  .recommendations
+    :background-color #3EA8DA
+    :padding 8px
+    :border 8px solid white
+    :outline 1px solid #026898 
+    &, & p
+      :color white
+    h4 
+      :text-transform uppercase
+      :font-size 110%
   p
     :width auto
+  #availabilty
+    :margin-top 18px
+    :padding 8px
+    :border 8px solid white
+    :outline 1px solid #026898
+    :text-align center
+    p
+      :color black
+    &.limited
+      :background-color #FCA61B
+      h3
+        :color #235800
+    &.available
+      :background-color #96D56C
+      h3
+        :color #285D05
+    &.not_available
+      :background-color #EE1C25
+      h3 
+        :color white
+      p.phone
+        :color white
+        .phone
+          :text-transform uppercase
+        .number
+          :font-weight bold
+    h3
+      :text-transform uppercase
 form.new_quote
   :float left
+  

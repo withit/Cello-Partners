@@ -1,5 +1,7 @@
 class AddressesController < ApplicationController
+  before_filter :set_headings
   before_filter :load_organisation, :require_organisation, :only => :index
+
   
   def new
     @address = Address.new
@@ -41,5 +43,10 @@ class AddressesController < ApplicationController
   
   def module_name
     'org_addresses'
+  end
+  
+  def set_headings
+    @heading = "Addresses"
+    @subheading = "Listing Addresses"
   end
 end

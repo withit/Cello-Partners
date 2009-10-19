@@ -56,7 +56,7 @@
         %td= check_box_tag 'article[document_ids_to_delete][]', document.id
     -  4.times do |i|
       - fields_for :"article[new_document_attributes][]", Article::Document.new do |document_form|
-        %tr
+        %tr.upload
           %td= document_form.file_field :file, :index => nil
           %td= document_form.text_field :filename, :index => nil
           %td= document_form.select :filetype, Article::Document::FORMATS, {:prompt => 'Please select'}, :index => nil

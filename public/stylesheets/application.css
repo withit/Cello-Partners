@@ -205,14 +205,29 @@ body.user_sessions .contact, body.password_resets .contact {
 
 #customer_select {
   float: left; }
-  #customer_select input, #customer_select select {
-    display: block;
-    padding: 0; }
   #customer_select select {
-    height: 200px; }
-  #customer_select input[type=submit] {
-    margin: 5px;
-    padding: 5px; }
+    display: block; }
+  #customer_select select, #customer_select input {
+    padding: 0; }
+  #customer_select h2 {
+    text-transform: uppercase; }
+  #customer_select h3 {
+    color: #424242;
+    font-size: 100%;
+    margin-bottom: 0px; }
+  #customer_select select {
+    height: 200px;
+    width: 230px; }
+  #customer_select p.submit {
+    width: 230px;
+    text-align: right; }
+    #customer_select p.submit input[type=submit] {
+      margin: 5px;
+      margin-right: 0px;
+      padding: 5px; }
+  #customer_select p {
+    width: auto;
+    margin-top: 0px; }
 
 .errorExplanation , .error, .notice {
   padding: .8em;
@@ -290,20 +305,114 @@ body.user_sessions .contact, body.password_resets .contact {
     color: #555;
     margin-bottom: 3px; }
 
-.recommendations {
-  background-color: #3EA8DA;
+.other_info {
   float: left;
-  width: 200px;
-  padding: 10px;
-  border: 10px solid white;
-  outline: 1px solid #026898; }
-  .recommendations, .recommendations p {
-    color: white; }
-  .recommendations p {
+  width: 200px; }
+  .other_info .recommendations {
+    background-color: #3EA8DA;
+    padding: 8px;
+    border: 8px solid white;
+    outline: 1px solid #026898; }
+    .other_info .recommendations, .other_info .recommendations p {
+      color: white; }
+    .other_info .recommendations h4 {
+      text-transform: uppercase;
+      font-size: 110%; }
+  .other_info p {
     width: auto; }
+  .other_info #availabilty {
+    margin-top: 18px;
+    padding: 8px;
+    border: 8px solid white;
+    outline: 1px solid #026898;
+    text-align: center; }
+    .other_info #availabilty p {
+      color: black; }
+    .other_info #availabilty.limited {
+      background-color: #FCA61B; }
+      .other_info #availabilty.limited h3 {
+        color: #235800; }
+    .other_info #availabilty.available {
+      background-color: #96D56C; }
+      .other_info #availabilty.available h3 {
+        color: #285D05; }
+    .other_info #availabilty.not_available {
+      background-color: #EE1C25; }
+      .other_info #availabilty.not_available h3 {
+        color: white; }
+      .other_info #availabilty.not_available p.phone {
+        color: white; }
+        .other_info #availabilty.not_available p.phone .phone {
+          text-transform: uppercase; }
+        .other_info #availabilty.not_available p.phone .number {
+          font-weight: bold; }
+    .other_info #availabilty h3 {
+      text-transform: uppercase; }
 
 form.new_quote {
   float: left; }
+
+span.cost {
+  color: black;
+  font-weight: bold;
+  font-size: 110%; }
+
+body.articles .main h2 {
+  text-transform: uppercase;
+  margin-bottom: 0; }
+  body.articles .main h2 span {
+    color: #700000; }
+body.articles .main h3 {
+  color: #4F4f4f;
+  margin-top: 0; }
+body.articles .main p {
+  width: auto; }
+body.articles .main table th {
+  background-color: white; }
+body.articles .main table th, body.articles .main table td {
+  padding: 10px; }
+  body.articles .main table th p, body.articles .main table td p {
+    color: #4F4f4f;
+    margin: 0;
+    width: 180px;
+    font-weight: lighter; }
+body.articles .main table textarea {
+  height: 60px; }
+body.articles .main input[type=submit] {
+  padding: 10px;
+  display: block;
+  float: right;
+  margin-bottom: 20px;
+  margin-right: 100px; }
+body.articles #keywords, body.articles #web-pages, body.articles #related-information {
+  border-width: 0px; }
+  body.articles #keywords table th, body.articles #web-pages table th, body.articles #related-information table th {
+    background-color: #D6D6D6; }
+  body.articles #keywords h4, body.articles #web-pages h4, body.articles #related-information h4 {
+    text-transform: uppercase;
+    font-weight: normal;
+    margin: 0;
+    margin-top: 20px; }
+  body.articles #keywords p, body.articles #web-pages p, body.articles #related-information p {
+    margin: 0;
+    width: 500px;
+    margin-bottom: 5px; }
+  body.articles #keywords td, body.articles #web-pages td, body.articles #related-information td {
+    background-color: #DCF2FC; }
+  body.articles #keywords ul, body.articles #web-pages ul, body.articles #related-information ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+    body.articles #keywords ul li, body.articles #web-pages ul li, body.articles #related-information ul li {
+      margin: 0;
+      padding: 10px; }
+  body.articles #keywords label, body.articles #web-pages label, body.articles #related-information label {
+    font-weight: bold;
+    padding-right: 15px; }
+body.articles #related-information table tr td {
+  background-color: #D6ECC6; }
+body.articles #related-information table tr.upload td {
+  background-color: white; }
 
 body, td, h2 {
   font-family: verdana,arial,helvetica; }

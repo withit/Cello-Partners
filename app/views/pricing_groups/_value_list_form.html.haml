@@ -1,4 +1,4 @@
-%tr
+%tr{alt}
   %td= value_list_form.id
   %td= value_list_form.collection_select :group_name_id, PricingGroupName.all, :id, :name, :prompt => "Please select a Group Name"
   %td= value_list_form.collection_select :price_id, PricingLine.all, :id, :name, :prompt => "Please Select a pricing"
