@@ -74,4 +74,5 @@ class OrderOrQuote < ActiveRecord::Base
   def rep_name
     organisation && organisation.rep_name
   end
+
 end

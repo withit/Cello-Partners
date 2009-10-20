@@ -91,4 +91,42 @@ class Reel < ActiveRecord::Base
   def uploaded_on
     date_uploaded && date_uploaded.to_date
   end
+  
+  def available
+    @avaiable ||= stocks.sum{|s| s.available}
+  end
+  
+  def status weight
+    return unless primary_stock
+    if weight > available
+      :not_available
+    elsif (available - weight) < primary_stock.MinStock
+      :limited
+    else
+      :available
+    end
+  end
+  
+  def stocks
+    [primary_stock, alt_stock_1, alt_stock_2].compact
+  end
+  
+  def primary_stock
+    @primary_stock ||= Stock.find(sap_code) unless sap_code.blank?
+  rescue ActiveResource::ResourceNotFound
+    nil
+  end
+  
+  def alt_stock_1
+    Stock.find(sap_alt_code_1) unless sap_alt_code_1.blank?
+  rescue ActiveResource::ResourceNotFound
+    nil
+  end
+  
+  def alt_stock_2
+    Stock.find(sap_alt_code_2) unless sap_alt_code_2.blank?
+  rescue ActiveResource::ResourceNotFound
+    nil
+  end
+  
 end

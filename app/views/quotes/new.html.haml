@@ -97,6 +97,7 @@
             = @quote.rounded_recomendation_for_sheets
             sheets
           = "(#{@quote.recommeded_weight} kg)"  
+  - if @quote.stock_availability
     = render :partial => "availability/#{@quote.stock_availability}"
     
         

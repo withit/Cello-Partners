@@ -61,7 +61,7 @@ class Quote < OrderOrQuote
     end
     return unless recommended_reel
     recommended_width = recommended_reel.best_width_under(width)
-    recommended_width == width ? nil : recommended_width
+    ((recommended_width == width) || (recommended_width < 300)) ? nil : recommended_width
   end
   
   def recomendation_for_sheets
@@ -106,6 +106,7 @@ class Quote < OrderOrQuote
     set_kilos
     set_rate unless standard == false
     set_surcharge unless standard == false
+    set_stock_availability
   end
   
   def set_surcharge
@@ -164,6 +165,10 @@ class Quote < OrderOrQuote
   end
   
   def stock_availability
-    :not_available
+    stock_status
+  end
+  
+  def set_stock_availability
+    self.stock_status = find_reel.status(kilos) if find_reel && kilos
   end
 end
