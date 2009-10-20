@@ -35,35 +35,35 @@ document.observe('dom:loaded', function(){
       alert('You must select a customer');
     }
   });
-  $$('.sidebar').invoke('observe', 'mouseout',function(e){
-    if(!e.findElement('li'))
-    {
-      return;
-    }
-    li = e.findElement('li')
-    if(!$(e.toElement).descendantOf(li))
-    {
-      li.removeClassName('active');
-    }
-    if(li = e.findElement('li').up('li'))
-    {
-      if(!$(e.toElement).descendantOf(li))
-      {
-        li.removeClassName('active');
-      }
-    }
-  });
-  $$('.sidebar').invoke('observe', 'mouseover',function(e){
-    if(!e.findElement('li'))
-    {
-      return;
-    }
-    e.findElement('li').addClassName('active');
-    if(e.findElement('li').up('li'))
-    {
-      e.findElement('li').up('li').addClassName('active');
-    }
-  });
+  // $$('.sidebar').invoke('observe', 'mouseout',function(e){
+  //   if(!e.findElement('li'))
+  //   {
+  //     return;
+  //   }
+  //   li = e.findElement('li')
+  //   if(!$(e.toElement).descendantOf(li))
+  //   {
+  //     li.removeClassName('active');
+  //   }
+  //   if(li = e.findElement('li').up('li'))
+  //   {
+  //     if(!$(e.toElement).descendantOf(li))
+  //     {
+  //       li.removeClassName('active');
+  //     }
+  //   }
+  // });
+  // $$('.sidebar').invoke('observe', 'mouseover',function(e){
+  //   if(!e.findElement('li'))
+  //   {
+  //     return;
+  //   }
+  //   e.findElement('li').addClassName('active');
+  //   if(e.findElement('li').up('li'))
+  //   {
+  //     e.findElement('li').up('li').addClassName('active');
+  //   }
+  // });
   $$('#select_role_form').invoke('observe','submit', function(e){
     e.stop();
     document.location = '/roles/' + $F('select_role') + '/edit';
@@ -80,4 +80,8 @@ document.observe('dom:loaded', function(){
       $$("#address_fields input").invoke('disable');
     }
   });
+});
+
+document.observe('dom:loaded', function(){
+  new ProtoFish('menu', '200', 'active', false, false, false);
 });

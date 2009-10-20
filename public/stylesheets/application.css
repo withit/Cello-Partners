@@ -46,6 +46,9 @@ tbody {
     margin: 0;
     padding: 0;
     width: 200px; }
+    .sidebar ul a {
+      text-decoration: none;
+      color: #035881; }
     .sidebar ul li {
       border-bottom: 1px solid white;
       padding-top: 5px;
