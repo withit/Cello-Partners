@@ -9,6 +9,9 @@
     %th GSM
     %th Reel Size
     %th Date Uploaded
+    %th SAP Code
+    %th Alt SAP code 1
+    %th Alt SAP code 2
     %th
   - @reels.each do |reel|
     - if reel == @reel
@@ -24,6 +27,9 @@
         %td= h reel.gsm
         %td= h reel.reel_size
         %td= h reel.uploaded_on
+        %td= h reel.sap_code
+        %td= h reel.sap_alt_code_1
+        %td= h reel.sap_alt_code_2
         %td
           = link_to 'Edit', [:edit, reel]
           = link_to 'Delete', reel, :method => :delete, :confirm => 'Are you sure you want to delete this pricing?'
