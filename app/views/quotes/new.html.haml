@@ -74,31 +74,32 @@
     = f.submit "Save Quote"
     = f.submit "Email Quote", :id => 'email_quote'
   %p This calculator is designed to provide indicative pricing for cello board orders. Pricing is subject to confirmation at time of ordering, and stock availability. Prices excludes GST.
-.other_info
-  - if @quote.recommendations
-    .recommendations
-      %h4 Recommendations for better pricing
-      - if @quote.recommendation_for_width
-        %p
-          Decrese width from 
-          = @quote.width
-          mm to:
-          %strong
-            = @quote.recommendation_for_width
-            mm
-      - if @quote.recommendations.many?
-        %p.or OR
-      - if @quote.rounded_recomendation_for_sheets
-        %p
-          Increase from
-          = @quote.sheets
-          to :
-          %strong
-            = @quote.rounded_recomendation_for_sheets
-            sheets
-          = "(#{@quote.recommeded_weight} kg)"  
-  - if @quote.stock_availability
-    = render :partial => "availability/#{@quote.stock_availability}"
+- if @quote.valid?
+  .other_info
+    - if @quote.recommendations
+      .recommendations
+        %h4 Recommendations for better pricing
+        - if @quote.recommendation_for_width
+          %p
+            Decrese width from 
+            = @quote.width
+            mm to:
+            %strong
+              = @quote.recommendation_for_width
+              mm
+        - if @quote.recommendations.many?
+          %p.or OR
+        - if @quote.rounded_recomendation_for_sheets
+          %p
+            Increase from
+            = @quote.sheets
+            to :
+            %strong
+              = @quote.rounded_recomendation_for_sheets
+              sheets
+            = "(#{@quote.recommeded_weight} kg)"  
+    - if @quote.stock_availability
+      = render :partial => "availability/#{@quote.stock_availability}"
     
         
     

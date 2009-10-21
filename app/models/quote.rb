@@ -18,6 +18,7 @@ class Quote < OrderOrQuote
   end
   
   def gross_weight
+    return unless width && length && sheets
     find_reel && (find_reel.weight_per_unit_length(width) * length * sheets).to_f / 10**9
   end
   
@@ -89,10 +90,11 @@ class Quote < OrderOrQuote
   
   def set_price
     if price_per_1000_sheets && (price_per_1000_sheets * sheets / 1000) < 250
-      self.price = 250.to_f / sheets * 1000
+      price = 250.to_f / sheets * 1000
     else
-      self.price = price_per_1000_sheets
+      price = price_per_1000_sheets
     end
+    self.price = price  unless price.nan?
   end
   
   def set_rate
@@ -134,7 +136,7 @@ class Quote < OrderOrQuote
     Notifier.deliver_quote(self)
   end
   
-  validates_numericality_of :length, :width
+  validates_numericality_of :length, :width, :sheets
   validates_numericality_of :length, :width, :greater_than_or_equal_to => 300, :message => "must be at least 300mm"
   validate :ensure_that_there_is_a_reel_width_enough
   #validates_numericality_of :length,:less_than_or_equal_to => lambda{Setting.max_length.to_i}, :message => "can't be more than 2015mm"
