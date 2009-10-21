@@ -94,7 +94,7 @@ class Quote < OrderOrQuote
     else
       price = price_per_1000_sheets
     end
-    self.price = price  unless price.nan?
+    self.price = price  unless price && price.nan?
   end
   
   def set_rate
