@@ -1,0 +1,13 @@
+%h1 
+  Group Management:
+  %span Function Permissions
+%p Please select a group from the list below to define which function the group will be able to perform on its related datasets.
+%table
+  %tr
+    %th Group Name
+    %th Description
+  - @roles.each do |role|
+    %tr{alt}
+      %td= link_to (h(role.name), edit_role_grants_path(role))
+      %td= h role.description
+  

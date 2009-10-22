@@ -1,0 +1,31 @@
+%h1 
+  Group Management:
+  %span Function Permissions
+%p Please select the functions this group will be able to perform on it's related datasets
+- form_tag role_grants_path, :method => :put do
+  %table
+    - @permissions.each do |parent, permissions|
+      %tr
+        %th Access
+        %th Option Name
+        %th Description
+        %th Options
+      - permissions.each do |permission|
+        %tr{alt}
+          %td= check_box_tag "grants[#{permission.id}][permission_id]", permission.id, @grants[permission.id] 
+          %td= h permission.name
+          %td= h permission.descr
+          %td
+            - fields_for "grants[#{permission.id}]", (@grants[permission.id] && @grants[permission.id].first) do |grant_fields|
+              %ul
+                %li
+                  %label In Menu
+                  = grant_fields.check_box :is_menu
+                %li
+                  %label Label
+                  = grant_fields.text_field :Label
+                %li
+                  %label Tool Tip
+                  = grant_fields.text_field :Tool_tip
+  = submit_tag "Save Permissions for \"#{@role.name}\" group"
+          

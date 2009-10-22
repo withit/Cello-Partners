@@ -22,4 +22,12 @@ class Role < ActiveRecord::Base
   end
   
   has_and_belongs_to_many :sections, :join_table => 'sections_to_groups', :foreign_key => 'Group_ID', :association_foreign_key => 'Section_ID', :select => 'sections.*'
+  
+  def save_grants
+    grants.each(&:save)
+  end
+  
+  after_save :save_grants
+    
+  
 end

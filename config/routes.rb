@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :flash
   map.resource :profile
   map.resources :quotes, :collection => {:search => :get},:has_many => :orders, :shallow => true
-  map.resources :roles
+  map.resources :roles, :has_one => :grants
   map.resources :articles, :has_many => :documents
   map.resources :templates, :has_many => :articles
   map.resources :prices, :collection => {:upload => :post}
@@ -16,6 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :settings
   map.resources :password_resets
   map.resource :rep
+  map.resources :grants
   map.resources :non_standard_quotes
   map.resources :addresses
   map.resources :pricing_group_names
