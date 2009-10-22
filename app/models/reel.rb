@@ -29,7 +29,10 @@ class Reel < ActiveRecord::Base
   def self.create_from_row row
     row.each(&:strip!)
     row[3..5] = row[3..5].collect{|e| e.blank? ? nil : e}
-    reel = find_or_initialize_by_grade_and_grade_abbrev_and_subgrade_abbrev_and_calliper_and_gsm_and_reel_size(*row)
+    reel = find_or_initialize_by_grade_and_grade_abbrev_and_subgrade_abbrev_and_calliper_and_gsm_and_reel_size(*row[0..5])
+    reel.sap_code = row[6]
+    reel.sap_alt_code_1 = row[7]
+    reel.sap_alt_code_2 = row[8]
     reel.save
   end
   
