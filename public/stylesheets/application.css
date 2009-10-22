@@ -418,6 +418,26 @@ body.articles #related-information table tr td {
 body.articles #related-information table tr.upload td {
   background-color: white; }
 
+body.grants table ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+  body.grants table ul li {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 18px; }
+    body.grants table ul li label {
+      display: block;
+      width: 25%;
+      float: left;
+      height: 100%;
+      line-height: 18px; }
+    body.grants table ul li input {
+      display: block;
+      float: left;
+      width: 70%; }
+
 body, td, h2 {
   font-family: verdana,arial,helvetica; }
 
