@@ -29,12 +29,6 @@ class SettingsController < ApplicationController
     end
   end
   
-  def destroy
-    @setting = Setting.find(params[:id])
-    @setting.destroy
-    redirect_to settings_path
-  end
-  
   private
   
   def module_name
