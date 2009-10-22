@@ -21,4 +21,18 @@ class GrantsController < ApplicationController
     @role.save!
     redirect_to grants_path
   end
+  
+  protected
+  
+  def module_name
+    'shell_permissions'
+  end
+  
+  def functions_hash
+    returning(Hash.new{|h,k| k}) do |h|
+      h["index"] = "listGroups"
+      h["edit"] = ["retrieve"]
+      h["update"] = ["editPerm"]
+    end
+  end
 end
