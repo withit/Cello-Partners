@@ -57,6 +57,8 @@ class Permission < ActiveRecord::Base
       path("prices", "index")
     when self.module == "product_reels" && self.function == "list"
       path("reels", "index")
+    when self.module == "shell_permissions" && self.function == "listGroups"
+      path("grants","index")
     else 
     end
   end
