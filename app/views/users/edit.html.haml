@@ -26,7 +26,7 @@
       %td= f.text_field :email
     %tr.odd
       %td= f.label :groups
-      %td= f.collection_select :role_ids, Role.all(:order => "Name"), :id, :Name, {}, :multiple => true
+      %td= f.collection_select :role_ids, current_user.roles(:order => "Name"), :id, :Name, {}, :multiple => true
     %tr.even
       %td= f.label :organisation
       %td= f.object.organisation_name
@@ -48,9 +48,10 @@
     %tr.even
       %td= f.label :mobile
       %td= f.text_field :mobile
-    %tr.odd
-      %td= f.label :cello_rep
-      %td= f.check_box :cello_rep
+    - unless current_user.is_customer?
+      %tr.odd
+        %td= f.label :cello_rep
+        %td= f.check_box :cello_rep
     %tr
       %td
         = f.submit 'Update User'
