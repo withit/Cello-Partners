@@ -37,7 +37,11 @@
         *
     %tr.odd
       %td= f.label :organisation
-      %td= f.collection_select :Organisation, Organisation.all, :id, :name
+      %td
+        - if current_user.is_customer?
+          = current_user.organisation_name
+        - else
+          = f.collection_select :Organisation, Organisation.all, :id, :name
     %tr.even
       %td= f.label :phone
       %td

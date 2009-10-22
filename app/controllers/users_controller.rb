@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
 
   def edit
-    @user = User.find(params[:id])
+    @user = scope.find(params[:id])
   end
   
   def update
-    @user = User.find(params[:id])
+    @user = scope.find(params[:id])
     if @user.update_attributes(params[:user])
       redirect_to_flash_message
     else
@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
+    @user.organisation = current_user.organisation if current_user.is_customer?
     if @user.save
       redirect_to [:edit,@user]
     else
@@ -27,16 +28,16 @@ class UsersController < ApplicationController
   end
   
   def search
-    @search = User.search
+    @search = scope.search
   end
   
   def index
-    @search = User.organisation_id_not_null.search(params[:search].merge({:User_ID_greater_than => 1}))
+    @search = scope.organisation_id_not_null.search(params[:search].merge({:User_ID_greater_than => 1}))
     @users = @search.paginate(:page => params[:page], :per_page => 25)
   end
   
   def destroy
-    @user = User.find(params[:id])
+    @user = scope.find(params[:id])
     @user.destroy
     redirect_to search_users_path 
   end
@@ -62,5 +63,11 @@ class UsersController < ApplicationController
     when 'create' then 'newuser'
     else action_name
     end
+  end
+  
+  protected 
+  
+  def scope
+    current_user.is_customer? ? current_user.organisation.users : User
   end
 end
