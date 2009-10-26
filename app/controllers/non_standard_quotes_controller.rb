@@ -16,6 +16,7 @@ class NonStandardQuotesController < ApplicationController
       place_order? ? redirect_to(new_quote_order_path(@quote)) : redirect_to_flash_message
     else
       @quote = @quote.clones.build
+      @quote.email = current_user.email
       @quote.valid?
       render 'new'
     end
