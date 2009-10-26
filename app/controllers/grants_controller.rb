@@ -6,7 +6,7 @@ class GrantsController < ApplicationController
   def edit
     @role = Role.find(params[:role_id])
     @grants = @role.grants.group_by{|p| p.send(Grant.reflect_on_association(:permission).primary_key_name)}
-    @permissions = Permission.all(:conditions => "parent > 0").group_by(&:parent)
+    @permissions = Permission.all.group_by(&:parent)
   end
   
   def update
