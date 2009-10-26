@@ -81,12 +81,8 @@
         %h4 Recommendations for better pricing
         - if @quote.recommendation_for_width
           %p
-            Decrease width from 
-            = @quote.width
-            mm to:
-            %strong
-              = @quote.recommendation_for_width
-              mm
+            == Decrease width from #{@quote.width}&nbsp;mm to:
+            %strong==#{@quote.recommendation_for_width}&nbsp;mm
         - if @quote.recommendations.many?
           %p.or OR
         - if @quote.rounded_recomendation_for_sheets
