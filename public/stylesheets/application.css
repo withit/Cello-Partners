@@ -318,7 +318,6 @@ body.user_sessions .contact, body.password_resets .contact {
     .other_info .recommendations, .other_info .recommendations p {
       color: white; }
     .other_info .recommendations h4 {
-      text-transform: uppercase;
       font-size: 110%; }
   .other_info p {
     width: auto; }
@@ -344,12 +343,8 @@ body.user_sessions .contact, body.password_resets .contact {
         color: white; }
       .other_info #availabilty.not_available p.phone {
         color: white; }
-        .other_info #availabilty.not_available p.phone .phone {
-          text-transform: uppercase; }
         .other_info #availabilty.not_available p.phone .number {
           font-weight: bold; }
-    .other_info #availabilty h3 {
-      text-transform: uppercase; }
 
 form.new_quote {
   float: left; }
