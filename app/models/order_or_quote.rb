@@ -7,7 +7,11 @@ class OrderOrQuote < ActiveRecord::Base
   
   def grain 
     return unless width && length
-    width > length ? "Short" : "Long"
+    case
+    when width > length then "Short" 
+    when width < length then "Long"
+    when width == length then "Square - No Grain"
+    end
   end
   
   attr_accessor :email
