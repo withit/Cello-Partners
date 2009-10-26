@@ -75,6 +75,10 @@ tbody {
           font-weight: normal;
           color: white;
           text-indent: 15px; }
+          .sidebar ul li ul li a {
+            height: 100%;
+            width: 100%;
+            display: block; }
     .sidebar ul li.active {
       background-color: #c6c6c6;
       font-weight: bold;
