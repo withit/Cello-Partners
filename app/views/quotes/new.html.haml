@@ -92,10 +92,10 @@
         - if @quote.rounded_recomendation_for_sheets
           %p
             Increase from
-            = @quote.sheets
+            = number_with_delimiter @quote.sheets
             to :
             %strong
-              = @quote.rounded_recomendation_for_sheets
+              = number_with_delimiter @quote.rounded_recomendation_for_sheets
               sheets
             = "(#{@quote.recommeded_weight} kg)"  
     - if @quote.stock_availability
