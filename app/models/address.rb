@@ -29,7 +29,7 @@ class Address < ActiveRecord::Base
     end
   end
   
-  validates_presence_of :organisation, :address1, :city, :state, :postcode, :country, :phone, :fax, :email, :web, :description
+  validates_presence_of :organisation, :address1, :city, :state, :postcode, :country, :phone, :description
   [:address1, :city, :state, :postcode, :country].each do |attribute|
     define_method attribute do
       send("st_#{attribute}")
