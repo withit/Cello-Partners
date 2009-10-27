@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra'
-require 'ruby-odbc-0.9997/odbc'
+#require 'ruby-odbc-0.9997/odbc'
 require 'active_record'
 
 ActiveRecord::Base.establish_connection(

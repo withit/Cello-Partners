@@ -9,6 +9,15 @@ development:
   username: cellop
   password: enco9384
 
+staging:
+  adapter: mysql
+  database: cello
+  host: fermat.wi.com.au
+  #username: root
+  #password: netgpa2010
+  username: cellop
+  password: enco9384
+
 katherine:
   adapter: mysql
   database: cello_dev
