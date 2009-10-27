@@ -1,5 +1,5 @@
 %h2 User Management: Edit User
-= button_to 'Delete', @user, :method => :delete
+= button_to 'Delete', @user, :method => :delete, :confirm => 'Are you sure you want to delete this user?'
 %p Please ament the details below and press 'Update User'
 - form_for @user do |f|
   %table
