@@ -145,6 +145,13 @@ class Quote < OrderOrQuote
     errors.add(:length, "can't be more than #{Setting.max_length}mm") if length.to_i > Setting.max_length.to_i
   end
   
+  def ensure_width_is_less_than_max_width_with_surcharge_if_surchage
+    if (length.to_i > Setting.max_length_without_surcharge.to_i) && (width.to_i > Setting.max_width_with_surcharge.to_i)
+      errors.add(:width, "can't be more than #{Setting.max_width_with_surcharge}mm if surcharge is in effect")
+    end
+  end
+  
+  validate :ensure_width_is_less_than_max_width_with_surcharge_if_surchage
   validate :ensure_less_than_max_length
   
   def ensure_that_there_is_a_reel_width_enough
