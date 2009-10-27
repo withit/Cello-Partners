@@ -123,6 +123,10 @@ class User < ActiveRecord::Base
     roles.count(:conditions => "name like 'Cello%'").zero?
   end
   
+  def is_cello_admin?
+    !roles.count(:conditions => "name like 'Cello Admin%'").zero?
+  end
+  
   def articles
     Article.scoped(:joins => {:sections => :roles}, :select => 'distinct article.*', :conditions => ['shell_groups.Group_ID in (?)', role_ids.uniq])
   end

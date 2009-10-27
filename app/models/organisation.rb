@@ -47,10 +47,10 @@ class Organisation < ActiveRecord::Base
   end
   
   def price_group_options user
-     if user.is_customer?
-        PricingGroupName.find_all_by_name('Standard')
+     if user.is_cello_admin?
+        PricingGroupName.find_all_by_status(true)
      else
-       PricingGroupName.find_all_by_status(true)
+       PricingGroupName.find_all_by_name('Standard')
      end
   end
 end

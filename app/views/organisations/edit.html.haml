@@ -16,7 +16,10 @@
       %td The customer code may be up to 10 characters long
     %tr.even
       %td Price Group
-      %td= form.object.price_group_label
+      - if current_user.is_cello_admin?
+        %td= form.collection_select :pricing_group_id, form.object.price_group_options(current_user), :id, :name
+      - else
+        %td= form.object.price_group_label
       %td The Price Group determines which products and what prices are available to the customer.
     %tr.odd
       %td Cello rep
