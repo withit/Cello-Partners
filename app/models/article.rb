@@ -156,32 +156,32 @@ class Article < ActiveRecord::Base
 
       if document.file
         FileUtils.mkdir_p("#{RAILS_ROOT}/public/documents/#{id}")
-        FileUtils.mv(document.file.path, path)
+        FileUtils.cp(document.file.path, path)
       end
     end
     
     if image_1.present? && image_1_filename.present? && image_1_extention.present?
       path = "#{RAILS_ROOT}/public/documents/#{id}/#{image_1_filename}#{image_1_extention}"
       FileUtils.mkdir_p("#{RAILS_ROOT}/public/documents/#{id}")
-      FileUtils.mv(image_1.path, path)
+      FileUtils.cp(image_1.path, path)
     end
     
     if image_2.present? && image_2_filename.present? && image_2_extention.present?
       path = "#{RAILS_ROOT}/public/documents/#{id}/#{image_2_filename}#{image_2_extention}"
       FileUtils.mkdir_p("#{RAILS_ROOT}/public/documents/#{id}")
-      FileUtils.mv(image_2.path, path)
+      FileUtils.cp(image_2.path, path)
     end
     
     if image_3.present? && image_3_filename.present? && image_3_extention.present?
       path = "#{RAILS_ROOT}/public/documents/#{id}/#{image_3_filename}#{image_3_extention}"
       FileUtils.mkdir_p("#{RAILS_ROOT}/public/documents/#{id}")
-      FileUtils.mv(image_3.path, path)
+      FileUtils.cp(image_3.path, path)
     end
     
     if image_4.present? && image_4_filename.present? && image_4_extention.present?
       path = "#{RAILS_ROOT}/public/documents/#{id}/#{image_4_filename}#{image_4_extention}"
       FileUtils.mkdir_p("#{RAILS_ROOT}/public/documents/#{id}")
-      FileUtils.mv(image_4.path, path)
+      FileUtils.cp(image_4.path, path)
     end
   end
   
