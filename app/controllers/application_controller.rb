@@ -16,12 +16,17 @@ class ApplicationController < ActionController::Base
   end
   
   def require_login
-    deny_access unless current_user && authorize_for_action
+    redirect_to_login unless current_user
+    deny_access unless authorize_for_action
+  end
+  
+  def redirect_to_login
+    redirect_to login_path
   end
   
   def deny_access
-    flash[:warning] = "Not authorized"
-    redirect_to login_path
+    flash.now[:warning] = "Not authorized"
+    render 'flashes/show'
   end
   
   def current_user_session

@@ -1,4 +1,5 @@
 - form_for :order, @order, :url => quote_orders_path(@quote) do |f|
+  = f.error_messages
   %h2 Create order
   %table
     %tbody
@@ -58,7 +59,7 @@
         %td= @order.notes
       %tr.even
         %td= f.label :required_date
-        %td= f.text_field :required_date
+        %td= f.text_field :required_date_as_string
       %tr.odd
         %td= f.label :your_ref, 'Your Ref/Order No'
         %td= f.text_field :your_ref
@@ -69,7 +70,9 @@
       - f.fields_for :address do |a|
         %tr.odd
           %td= a.label :addr1, 'Address1'
-          %td= a.text_field :st_address1
+          %td
+            = a.text_field :st_address1
+            = hidden_field_tag "order[address_attributes][skip_validation]", '1'
         %tr.even
           %td= a.label :addr2, 'Address2'
           %td= a.text_field :st_address2
@@ -85,7 +88,7 @@
     %tbody
       %tr.even
         %td= f.label :authorizer_name
-        %td=# f.text_field :authorizer_name
+        %td= f.text_field :authorizer_name
       %tr.odd
         %td= f.label :email, 'Email Confirmation'
         %td= f.text_field :email
