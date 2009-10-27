@@ -44,7 +44,7 @@ class Quote < OrderOrQuote
   
   def reels
     return unless grade_abbrev && calliper
-    Reel.reel_size_greater_than(width).find_all_by_grade_abbrev_and_calliper(grade_abbrev, calliper)
+    Reel.reel_size_greater_than_or_equal_to(width).find_all_by_grade_abbrev_and_calliper(grade_abbrev, calliper)
   end
   
   def prices    
