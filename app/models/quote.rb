@@ -147,7 +147,7 @@ class Quote < OrderOrQuote
   
   def ensure_width_is_less_than_max_width_with_surcharge_if_surchage
     if (length.to_i > Setting.max_length_without_surcharge.to_i) && (width.to_i > Setting.max_width_with_surcharge.to_i)
-      errors.add(:width, "can't be more than #{Setting.max_width_with_surcharge}mm if surcharge is in effect")
+      errors.add(:width, "can't be more than #{Setting.max_width_with_surcharge}mm if length is over #{Setting.max_length_without_surcharge}mm")
     end
   end
   
