@@ -3,11 +3,13 @@
 %table
   - @articles.each do |article|
     %tr{:class => cycle('odd','even')}
-      %td= link_to 'edit',[:edit, article]
+      - if article.can_be_edited_by?(current_user)
+        %td= link_to 'edit',[:edit, article]
       %td
         = link_to article.title, article
         %br
         = h article.abstract
-      %td visible
-      %td= link_to 'Delete', article, :method => 'delete'
+      - if article.can_be_edited_by?(current_user)
+        %td visible
+        %td= link_to 'Delete', article, :method => 'delete'
         
