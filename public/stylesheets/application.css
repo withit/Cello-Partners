@@ -120,6 +120,9 @@ tbody {
       -webkit-box-shadow: 2px 2px 2px #888;
       text-decoration: none; }
 
+a#quote_button img {
+  border: 0px; }
+
 body.user_sessions .main, body.password_resets .main {
   width: 100%; }
 body.user_sessions form.new_user_session, body.user_sessions div.reset_password, body.password_resets form.new_user_session, body.password_resets div.reset_password {
