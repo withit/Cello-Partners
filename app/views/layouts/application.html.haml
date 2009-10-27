@@ -12,18 +12,20 @@
       %h1 Cello
     .container
       - if current_user
-        .sidebar
-          %ul#menu
-            - current_user.menu_items.each do |root_item|
-              %li
-                %a{:href => '#'}= h root_item.label
-                - unless root_item.children.empty?
-                  %ul
-                    - root_item.children.each do |child_item|
-                      %li
-                        = link_to((h  child_item.label), (child_item.url || '#'))
+        .sidebar-outer
+          .sidebar
+            %ul#menu
+              - current_user.menu_items.each do |root_item|
+                %li
+                  %a{:href => '#'}= h root_item.label
+                  - unless root_item.children.empty?
+                    %ul
+                      - root_item.children.each do |child_item|
+                        %li
+                          = link_to((h  child_item.label), (child_item.url || '#'))
                         
-          #logout= link_to 'Logout', logout_path
+            #logout= link_to 'Logout', logout_path
+          = link_to(image_tag('quote-button.jpg', :alt => 'Create quote'),new_quote_path,  :id => 'quote_button') if current_user.can_access?('quotes','nrform')  
       .main
         = yield
     .footer
