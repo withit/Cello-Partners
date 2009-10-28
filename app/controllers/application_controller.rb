@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
   
   def require_login
-    redirect_to_login unless current_user
+    redirect_to_login && return unless current_user
     deny_access unless authorize_for_action
   end
   
