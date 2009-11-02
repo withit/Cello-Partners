@@ -39,3 +39,13 @@ production:
   database: db/production.sqlite3
   pool: 5
   timeout: 5000
+  
+sap_production:
+  adapter: odbc
+  
+  
+sap_development:
+  username: sa
+  password: dg90p
+  adapter: odbc
+  dsn: cello_sap
