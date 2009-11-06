@@ -35,14 +35,17 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: odbc
+  dsn: cello2
+  username: cellop
+  password: enco9384
+  database: cello
   
 sap_production:
   adapter: odbc
-  
+  username: sa
+  password: c3ll0pap3r
+  dsn: sap
   
 sap_development:
   username: sa
