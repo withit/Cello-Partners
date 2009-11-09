@@ -1,5 +1,5 @@
 class Stock < ActiveResource::Base
-  self.site = "http://localhost:4567/"
+  self.site = "http://localhost"
   self.format = :json
   
   def available

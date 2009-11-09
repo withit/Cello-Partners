@@ -53,4 +53,6 @@ class Organisation < ActiveRecord::Base
        PricingGroupName.find_all_by_name('Standard')
      end
   end
+  
+  default_scope :order => 'name'
 end

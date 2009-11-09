@@ -9,4 +9,6 @@ class Grade < ActiveRecord::Base
     grade = find_by_grade_abbrev(abbrev)
     grade ? grade.callipers : []
   end
+  
+  default_scope :order => :name
 end
