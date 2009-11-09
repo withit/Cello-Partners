@@ -12,12 +12,12 @@ role :db,  "192.168.8.10", :primary => true # This is where Rails migrations wil
 # if you're still using the script/reapear helper you will need
 # these http://github.com/rails/irs_process_scripts
 
-set :deploy_to "/Library/WebServer/#{application}"
+set :deploy_to, "/Library/WebServer/#{application}"
 
-set :mongrel_cmd '/usr/bin/mongrel_rails_persist"
+set :mongrel_cmd, '/usr/bin/mongrel_rails_persist'
 set :mongrel_ports, 3000..3002
 set :user, 'admin'
-set :group 'admin'
+set :group, 'admin'
 
 namespace :deploy do
   task :start, :roles => :app  do
