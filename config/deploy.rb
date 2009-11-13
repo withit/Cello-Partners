@@ -23,7 +23,7 @@ namespace :deploy do
   task :start, :roles => :app  do
     mongrel_ports.each do |port|
       sudo "#{mongrel_command} start -p #{port} -e production \
-        --user #{user} --group #{group}"
+        --user #{user} --group #{group} -c #{current_path}"
     end
   end
   task :stop, :roles => :app  do
