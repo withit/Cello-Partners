@@ -319,6 +319,6 @@ class Article < ActiveRecord::Base
   end
   
   def can_be_edited_by?(user)
-    user.can_access?("article_publishing", "edit")
+    user.can_access?("article_publishing", "editform")
   end
 end
