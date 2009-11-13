@@ -9,7 +9,7 @@ module Sap
     set_table_name "OITW"
 
     def self.find_by_item_code code
-      find(:first, :conditions => {:ItemCode => code})
+      find(:first, :conditions => ["ItemCode = ? and OnHand > 0", code])
     end
     
     def available
