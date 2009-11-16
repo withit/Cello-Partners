@@ -14,7 +14,7 @@ class Quote < OrderOrQuote
   end
   
   def grade_options
-    organisation.grades
+    organisation.grade_options
   end
   
   def gross_weight

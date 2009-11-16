@@ -55,4 +55,13 @@ class Organisation < ActiveRecord::Base
   end
   
   default_scope :order => 'name'
+  
+  def grade_options
+    Grade.all(:select => 'distinct product_grades.*', :conditions => [
+      "shell_organisations.pricing_group_id = pricing_groups.group_name_id and 
+       pricing_groups.price_id = pricing_lines.id and 
+       pricing_lines.name = pricing_data.name and 
+       pricing_data.grade_abbrev = product_grades.grade_abbrev and
+      product_grades.status = 1 and shell_organisations.id = ?", id], :from => "shell_organisations, pricing_groups, pricing_lines, product_grades, pricing_data", :order => 'pricing_groups.sort')
+  end
 end
