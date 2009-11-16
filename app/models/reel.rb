@@ -119,11 +119,11 @@ class Reel < ActiveRecord::Base
   end
   
   def alt_stock_1
-    Sap::Stock.find_by_item_code(sap_code) unless sap_alt_code_1.blank?
+    Sap::Stock.find_by_item_code(sap_alt_code_1) unless sap_alt_code_1.blank?
   end
   
   def alt_stock_2
-    Sap::Stock.find_by_item_code(sap_code) unless sap_alt_code_2.blank?
+    Sap::Stock.find_by_item_code(sap_alt_code_2) unless sap_alt_code_2.blank?
   end
   
 end
