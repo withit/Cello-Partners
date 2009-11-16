@@ -100,7 +100,7 @@ class Reel < ActiveRecord::Base
   end
   
   def status weight
-    return unless primary_stock
+    return :not_available unless primary_stock
     if weight > available
       :not_available
     elsif (available - weight) < primary_stock.MinStock
