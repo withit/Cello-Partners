@@ -78,5 +78,9 @@ class OrderOrQuote < ActiveRecord::Base
   def rep_name
     organisation && organisation.rep_name
   end
+  
+  def full_address
+    address && (address.first_line + address.second_line)
+  end
 
 end
