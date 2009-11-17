@@ -33,5 +33,6 @@ config.action_mailer.smtp_settings = {
   :address => 'mail.cello.com.au',
   :port => 25,
   :user_name => 'sales',
-  :password => 'tampere'
+  :password => 'tampere',
+  :domain => 'cello.com.au'
 }
