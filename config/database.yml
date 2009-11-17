@@ -8,7 +8,7 @@ development:
   #password: netgpa2010
   username: cellop
   password: enco9384
-
+  
 staging:
   adapter: mysql
   database: cello
@@ -35,11 +35,12 @@ test:
   timeout: 5000
 
 production:
-  adapter: odbc
-  dsn: cello2
+  adapter: mysql
   username: cellop
   password: enco9384
   database: cello
+  reconnect: true
+  host: 192.168.8.24
   
 sap_production:
   adapter: odbc
@@ -52,3 +53,4 @@ sap_development:
   password: dg90p
   adapter: odbc
   dsn: cello_sap
+  reconnect: true
