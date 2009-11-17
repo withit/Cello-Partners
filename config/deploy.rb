@@ -37,6 +37,10 @@ namespace :deploy do
     stop
     start
   end
+  desc "Update the crontab file"
+  task :update_crontab, :roles => :db do
+    run "cd #{release_path} && whenever --update-crontab #{application}"
+  end
 end
 
 task :symlink_documents, :roles => :app do
@@ -49,3 +53,6 @@ after 'deploy:update_code', :symlink_documents
 #     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
 #   end
 # end
+
+after "deploy:symlink", "deploy:update_crontab"
+
