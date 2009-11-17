@@ -4,6 +4,7 @@ class Notifier < ActionMailer::Base
     from       "partners@cello.com.au"
     subject    "Cello quote for #{quote.grade_name} #{quote.calliper} um #{quote.gsm} gsm"
     body       :quote => quote
+    content_type "text/html"
   end
 
   def password_reset user
@@ -11,6 +12,7 @@ class Notifier < ActionMailer::Base
     from       "partners@cello.com.au"
     subject    "Cello password reset for #{user.username}"
     body       :user => user
+    
   end
   
   def quote_report quotes
@@ -18,6 +20,7 @@ class Notifier < ActionMailer::Base
     from        "partners@cello.com.au"
     subject     "Today's Quotes - #{Date.yesterday}"
     body    :quotes => quotes
+    content_type "text/html"
   end
 
   def order_report orders
@@ -25,6 +28,7 @@ class Notifier < ActionMailer::Base
     from        "partners@cello.com.au"
     subject     "Today's Orders - #{Date.yesterday}"
     body    :orders => orders
+    content_type "text/html"
   end
 
 end
