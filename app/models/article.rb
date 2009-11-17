@@ -155,7 +155,7 @@ class Article < ActiveRecord::Base
       end
 
       if document.file
-        FileUtils.mkdir_p("#{RAILS_ROOT}/public/documents/#{id}")
+        FileUtils.mkdir_p("#{RAILS_ROOT}/documents/#{id}")
         FileUtils.cp(document.file.path, path)
       end
     end
