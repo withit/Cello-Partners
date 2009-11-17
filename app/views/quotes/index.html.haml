@@ -94,5 +94,8 @@
         %td= h quote.sheets
         %td= number_to_currency(quote.price)
         %td= h quote.notes
-        %td= link_to "#{quote.type} Details", quote
+        - if quote.is_a? Quote
+          %td= link_to "Quote Details", new_quote_order_path(quote)
+        - else
+          %td= link_to "Order Details", quote
   = will_paginate @quotes, :seperator => ' | '

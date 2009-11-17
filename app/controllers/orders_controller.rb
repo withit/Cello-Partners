@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
     @quote = Quote.find(params[:quote_id])
     @order = @quote.orders.build(params[:order])
     if @order.save
+      Notifier.deliver_quote(@order)
       redirect_to_flash_message
     else
       render 'new'
