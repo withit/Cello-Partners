@@ -1,5 +1,6 @@
 %h2 
   Orders 
+  = Date::DAYNAMES[Date.yesterday.wday]
   = Date.yesterday
 %table{:border => 0}
   %tr{:valign => 'top', :align => 'left'}
@@ -20,13 +21,15 @@
     %th cust #
     %th cello #
   - @orders.each do |order|
-    %tr{:valign => "top"}
+    %tr{:valign => "top", :style => "color: #{color_for(order.stock_status)}"}
       %td= order.rep_name
       %td= order.organisation_name
       %td= order.creator_name
       %td= order.grade_name
+      %td= order.calliper
       %td= order.gsm
       %td= order.reel
+      %td= order.sheets
       %td= order.width
       %td= order.length
       %td= number_to_currency order.price

@@ -1,4 +1,5 @@
 class Notifier < ActionMailer::Base
+  helper :orders
   def quote quote
     recipients quote.email.blank? ? (UserSession.find && UserSession.find.user).email : quote.email
     from       "partners@cello.com.au"
@@ -19,7 +20,7 @@ class Notifier < ActionMailer::Base
   def quote_report quotes
     recipients  Settings.reports.mail_to
     from        "partners@cello.com.au"
-    subject     "Today's Quotes - #{Date.yesterday}"
+    subject     "Today's Quotes - #{Date::DAYNAMES[Date.yesterday.wday]} #{Date.yesterday}"
     body    :quotes => quotes
     content_type "text/html"
   end
@@ -27,7 +28,7 @@ class Notifier < ActionMailer::Base
   def order_report orders
     recipients  Settings.reports.mail_to
     from        "partners@cello.com.au"
-    subject     "Today's Orders - #{Date.yesterday}"
+    subject     "Today's Orders - #{Date::DAYNAMES[Date.yesterday.wday]} #{Date.yesterday}"
     body    :orders => orders
     content_type "text/html"
   end

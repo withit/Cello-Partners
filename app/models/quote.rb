@@ -176,7 +176,7 @@ class Quote < OrderOrQuote
   def stock_availability
     stock_status
   end
-  
+
   def set_stock_availability
     self.stock_status = find_reel.status(kilos) if find_reel && kilos
   end
