@@ -68,7 +68,7 @@ class OrderOrQuote < ActiveRecord::Base
   end
   
   def total_price
-    price * 1000 + setup_surcharge.to_i
+    ((price.to_f / 1000) * sheets.to_i) + setup_surcharge.to_i
   end
   
   def self.report
