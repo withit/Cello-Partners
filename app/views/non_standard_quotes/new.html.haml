@@ -60,12 +60,9 @@
         per 1,000 sheets + GST
         = submit_tag 'Calculate'
     %tr.odd
-      %td Setup Surcharge
-      %td= f.text_field :setup_surcharge
-    %tr.even
       %td= f.label :notes
       %td= f.text_area :notes
-    %tr.odd#email_row{:style => "display: none;"}
+    %tr.even#email_row{:style => "display: none;"}
       %td= f.label :email
       %td
         = f.text_field :email
