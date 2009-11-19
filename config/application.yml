@@ -4,7 +4,7 @@ development:
 
 staging:
   reports:
-    mail_to: "cello.notify@wi.com.au,d.gellert@cello.com.au"
+    mail_to: "lachlan.sylvester@wi.com.au"
 
 production:
   reports:
