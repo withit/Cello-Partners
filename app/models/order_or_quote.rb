@@ -83,4 +83,10 @@ class OrderOrQuote < ActiveRecord::Base
     address && (address.first_line + address.second_line)
   end
   serialize :stock_status
+  
+  after_save :send_out_of_stock_notification
+  
+  def send_out_of_stock_notification 
+    Notifier.deliver_out_of_stock_alert(self) if (stock_status == :not_available && (status == 1 || self.class == Order))
+  end
 end

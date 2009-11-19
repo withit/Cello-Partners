@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
   end
   
   def save_quote?
-    params[:commit] == 'Create Quote'
+    params[:commit] == 'Save Quote'
   end
   
   def send_email?

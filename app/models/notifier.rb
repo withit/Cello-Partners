@@ -33,4 +33,11 @@ class Notifier < ActionMailer::Base
     content_type "text/html"
   end
 
+  def out_of_stock_alert quote
+    recipients  Settings.reports.mail_to
+    from       "partners@cello.com.au"
+    subject    "Out of stock #{quote.class.to_s.downcase} processed for #{quote.organisation_name} : #{quote.grade_name} #{quote.calliper} um #{quote.gsm} gsm"
+    body       :quote => quote
+    content_type "text/html"
+  end
 end

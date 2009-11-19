@@ -1,0 +1,88 @@
+!!!
+%html{:lang => 'en'}
+  %head
+  %body
+    %h1 
+      Out of Stock
+      = @quote.class.to_s.downcase
+      processed
+    %table{:border => 0}
+      %tr
+        %td Grade
+        %td= @quote.grade_name
+      %tr
+        %td Size
+        %td= @quote.size
+      %tr
+        %td Grain
+        %td= @quote.grain
+      %tr
+        %td Calliper
+        %td= @quote.calliper
+      %tr
+        %td Grammage
+        %td= @quote.gsm
+      %tr
+        %td Ex reels
+        %td 
+          = @quote.reel
+          mm
+      %tr
+        %td Sheets
+        %td= @quote.sheets
+      %tr
+        %td Price (AUD)
+        %td
+          = number_to_currency(@quote.price)
+          per 1,000 sheets
+      %tr
+        %td Setup Surcharge
+        %td= number_to_currency(@quote.setup_surcharge)
+      %tr
+        %td Total Price
+        %td= number_to_currency(@quote.total_price)
+      %tr
+        %td Notes
+        %td=h @quote.notes
+      %tr
+        %td Organsiation 
+        %td= @quote.organisation_name
+      - if @quote.is_a?(Order)
+        %tr 
+          %td Customer Reference
+          %td= h @quote.your_ref
+        %tr
+          %td Required Date
+          %td= @quote.required_date
+        %tr
+          %td Delivery Address
+          %td= h @quote.full_address
+      %tr
+        %td Creator
+        %td= @quote.creator_name
+      %tr
+        %td Cello ref
+        %td= @quote.id
+      %tr
+        %td Created
+        %td= @quote.created_on
+    %p 
+      Pricing is subject to confirmation at the 
+      time of ordering, and stock availabilty
+    %p 
+      If you have any queries regarding this message, 
+      please contact your cello representative, the cello 
+      sales desk on 1300 65 45 25, or simply reply to this email
+    %p Thank you.
+    %hr{:align => 'left', :width => '20%'}
+    cello paper
+    %br
+    Tel&nbsp;1300 65 45 25
+    %br
+    Fax&nbsp; 1300 65 45 15
+    %br
+    Email&nbsp;sales@cello.com.au
+    %br
+    Web&nbsp;www.partners.cello.com.au
+    %br
+    %hr{:align => 'left', :width => '20%'}
