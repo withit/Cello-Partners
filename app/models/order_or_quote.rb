@@ -87,6 +87,6 @@ class OrderOrQuote < ActiveRecord::Base
   after_save :send_out_of_stock_notification
   
   def send_out_of_stock_notification 
-    Notifier.deliver_out_of_stock_alert(self) if (stock_status == :not_available && (status == 1 || self.class == Order))
+    Notifier.deliver_out_of_stock_alert(self) if (stock_status == :not_available)
   end
 end
