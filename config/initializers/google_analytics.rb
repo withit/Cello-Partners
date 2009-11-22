@@ -1,0 +1,1 @@
+Rubaidh::GoogleAnalytics.tracker_id = 'UA-3670309-13'
