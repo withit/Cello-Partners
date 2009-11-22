@@ -12,7 +12,7 @@
       :font-size 110%
   p
     :width auto
-  #availabilty
+  #limited_availability, #available_availablity, #not_available_availability
     :margin-top 18px
     :padding 8px
     :border 8px solid white
@@ -20,22 +20,22 @@
     :text-align center
     p
       :color black
-    &.limited
-      :background-color #FCA61B
-      h3
-        :color #235800
-    &.available
-      :background-color #96D56C
-      h3
-        :color #285D05
-    &.not_available
-      :background-color #EE1C25
-      h3 
-        :color white
-      p.phone
-        :color white
-        .number
-          :font-weight bold
+  #limited_availability
+    :background-color #FCA61B
+    h3
+      :color #235800
+  #available_availablity
+    :background-color #96D56C
+    h3
+      :color #285D05
+  #not_available_availability
+    :background-color #EE1C25
+    h3 
+      :color white
+    p.phone
+      :color white
+      .number
+        :font-weight bold
 form.new_quote
   :float left
   
