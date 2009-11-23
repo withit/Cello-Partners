@@ -19,7 +19,7 @@
     %th Kilos
     %th Quote #
   - @quotes.each do |quote|
-    %tr{:valign => 'top'}
+    %tr{:valign => 'top', :style => "color: #{color_for(quote.stock_status)}"}
       %td= quote.rep_name
       %td= quote.organisation_name
       %td= quote.creator_name
