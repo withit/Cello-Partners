@@ -92,7 +92,7 @@
         %td= h quote.calliper
         %td= h quote.gsm
         %td= h quote.sheets
-        %td= number_to_currency(quote.price)
+        %td= number_to_currency(quote.price_per_1000_sheets_including_surcharge)
         %td= h quote.notes
         - if quote.is_a? Quote
           %td= link_to "Quote Details", new_quote_order_path(quote)

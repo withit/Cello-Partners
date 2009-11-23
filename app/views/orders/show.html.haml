@@ -49,7 +49,7 @@
       %tr.odd
         %td Cost/ 1000
         %td
-          %span.price= number_to_currency @order.price
+          %span.price= number_to_currency @order.price_per_1000_sheets_including_surcharge
           per 1,000 sheets + GST
       %tr.even
         %td{:colspan => 2}

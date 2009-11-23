@@ -29,7 +29,7 @@
       %tr
         %td Price (AUD)
         %td
-          = number_to_currency(@quote.price)
+          = number_to_currency(@quote.price_per_1000_sheets_including_surcharge)
           per 1,000 sheets
       %tr
         %td Total Price
