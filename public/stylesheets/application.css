@@ -332,30 +332,30 @@ body.user_sessions .contact, body.password_resets .contact {
       font-size: 110%; }
   .other_info p {
     width: auto; }
-  .other_info #availabilty {
+  .other_info #limited_availability, .other_info #available_availablity, .other_info #not_available_availability {
     margin-top: 18px;
     padding: 8px;
     border: 8px solid white;
     outline: 1px solid #026898;
     text-align: center; }
-    .other_info #availabilty p {
+    .other_info #limited_availability p, .other_info #available_availablity p, .other_info #not_available_availability p {
       color: black; }
-    .other_info #availabilty.limited {
-      background-color: #FCA61B; }
-      .other_info #availabilty.limited h3 {
-        color: #235800; }
-    .other_info #availabilty.available {
-      background-color: #96D56C; }
-      .other_info #availabilty.available h3 {
-        color: #285D05; }
-    .other_info #availabilty.not_available {
-      background-color: #EE1C25; }
-      .other_info #availabilty.not_available h3 {
-        color: white; }
-      .other_info #availabilty.not_available p.phone {
-        color: white; }
-        .other_info #availabilty.not_available p.phone .number {
-          font-weight: bold; }
+  .other_info #limited_availability {
+    background-color: #FCA61B; }
+    .other_info #limited_availability h3 {
+      color: #235800; }
+  .other_info #available_availablity {
+    background-color: #96D56C; }
+    .other_info #available_availablity h3 {
+      color: #285D05; }
+  .other_info #not_available_availability {
+    background-color: #EE1C25; }
+    .other_info #not_available_availability h3 {
+      color: white; }
+    .other_info #not_available_availability p.phone {
+      color: white; }
+      .other_info #not_available_availability p.phone .number {
+        font-weight: bold; }
 
 form.new_quote {
   float: left; }
