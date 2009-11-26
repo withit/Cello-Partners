@@ -72,7 +72,7 @@ class OrderOrQuote < ActiveRecord::Base
   end
   
   def self.report
-    find(:all, :include => [:creator, {:organisation => :rep}],:joins => [:creator, :organisation], :conditions => ["updated_date > ?", Date.yesterday], :order => 'shell_users.LastName, shell_organisations.name, orders.id')
+    find(:all, :include => [:creator, {:organisation => :rep}],:joins => {:organisation => :rep}, :conditions => ["updated_date > ?", Date.yesterday], :order => 'shell_users.LastName, shell_organisations.name, orders.id')
   end
   
   def rep_name
