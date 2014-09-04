@@ -12,7 +12,7 @@ if RUBY_VERSION >= "1.9.3"
     def self.source_index
       sources
     end
-    
+
     def self.cache
       sources
     end
