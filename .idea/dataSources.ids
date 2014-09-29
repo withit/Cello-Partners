@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Rails Cello-Partners: staging" uuid="c4e59ec0-9d67-4471-8191-aa9e45dfd229">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails Cello-Partners: katherine" uuid="68d914a0-aa06-49fd-94e6-4f9ec5222c09">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails Cello-Partners: production" uuid="365385b0-70c0-47f8-9adc-214988b0a7c0">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2879250030">
+    <data-source source="LOCAL" name="Rails Cello-Partners: staging" uuid="c4e59ec0-9d67-4471-8191-aa9e45dfd229">
+      <driver-ref>mysql</driver-ref>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://fermat.wi.com.au/cello</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails Cello-Partners: katherine" uuid="68d914a0-aa06-49fd-94e6-4f9ec5222c09">
+      <driver-ref>mysql</driver-ref>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://katherine.wi.com.au/cello_dev</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails Cello-Partners: production" uuid="365385b0-70c0-47f8-9adc-214988b0a7c0">
+      <driver-ref>mysql</driver-ref>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://192.168.8.24/cello</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+
