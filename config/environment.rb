@@ -38,7 +38,7 @@ Rails::Initializer.run do |config|
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
   config.gem 'haml'
   config.gem 'searchlogic'
-#  config.gem 'mislav-will_paginate', :lib => 'will_paginate'
+  config.gem 'mislav-will_paginate', :lib => 'will_paginate'
   config.gem "fastercsv"
 #  config.gem 'binarylogic-settingslogic', :lib => 'settingslogic'
   config.gem 'javan-whenever', :lib => false, :source => 'http://gems.github.com'
