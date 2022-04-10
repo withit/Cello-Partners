@@ -30,7 +30,9 @@ config.action_view.cache_template_loading            = true
 config.action_mailer.delivery_method = :smtp
 
 config.action_mailer.smtp_settings = {
-  :address => 'cello-com-au.mail.protection.outlook.com',
+  :address => 'mail.cello.com.au',
   :port => 25,
+  :user_name => 'sales',
+  :password => 'tampere',
   :domain => 'cello.com.au'
 }

@@ -6,7 +6,8 @@ class Reel < ActiveRecord::Base
   end
   
   def calliper_with_units
-    "#{calliper} μm"
+    #"#{calliper} μm"
+    "#{calliper} um"
   end
   
   def pages_per_unit_length page_width

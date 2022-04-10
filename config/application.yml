@@ -12,7 +12,7 @@ staging:
 
 production:
   reports:
-    mail_to: board.stock.group@mail.cello.com.au
+    mail_to: board.stock.group@cello.com.au
   out_of_stock_alert:
     mail_to: sales@cello.com.au
     

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20140929102400) do
 
   create_table "app_settings", :primary_key => "ID", :force => true do |t|
     t.string  "Label", :default => "", :null => false
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.integer  "kilos"
     t.decimal  "rate",                             :precision => 10, :scale => 4
     t.integer  "setup_surcharge"
+    t.string   "stock_status"
   end
 
   create_table "org_addresses", :force => true do |t|
@@ -157,6 +158,10 @@ ActiveRecord::Schema.define(:version => 0) do
     t.integer  "gsm"
     t.integer  "reel_size"
     t.datetime "date_uploaded"
+    t.string   "sap_code"
+    t.string   "sap_alt_code_1"
+    t.string   "sap_alt_code_2"
+    t.string   "reel_info"
   end
 
   create_table "sections", :force => true do |t|

@@ -31,6 +31,9 @@
   %tr.odd
     %td Alt SAP Code 2
     %td Varchar(255)
+  %tr.even
+    %td Reel Notes
+    %td Varchar(512)
 %p The current date will automatically be added to each record inserted.
 %p If a record exists, the timestamp of that record will be updated to the current date
 - form_for Reel.new, :url => upload_reels_path, :html => {:multipart => true} do |f|

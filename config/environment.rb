@@ -40,7 +40,7 @@ Rails::Initializer.run do |config|
   config.gem 'searchlogic'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate'
   config.gem "fastercsv"
-#  config.gem 'binarylogic-settingslogic', :lib => 'settingslogic'
+  config.gem 'binarylogic-settingslogic', :lib => 'settingslogic'
   config.gem 'javan-whenever', :lib => false, :source => 'http://gems.github.com'
   config.gem 'google_analytics'
 

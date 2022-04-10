@@ -37,12 +37,22 @@ test:
   timeout: 5000
 
 production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: cello_production
+  pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+
+old-production:
   adapter: mysql
   username: cellop
   password: enco9384
   database: cello
   reconnect: true
-  host: 192.168.8.24
+  #host: 192.168.8.24
   
 sap_production:
   adapter: odbc

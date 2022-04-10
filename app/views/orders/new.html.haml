@@ -13,7 +13,7 @@
         %td= f.label :calliper
         %td
           = @order.calliper
-          μm
+          um
       %tr.even
         %td= f.label :sheets, 'No of sheets'
         %td= @order.sheets
@@ -57,6 +57,13 @@
       %tr.odd
         %td= f.label :notes
         %td= @order.notes
+      %tr.odd
+        %td Reel Notes
+        - if @order.parent.find_reel
+          - unless @order.parent.find_reel.reel_info.nil?
+            %td= @order.parent.find_reel.reel_info
+          - else
+            %td " "
       %tr.even
         %td= f.label :required_date
         %td= f.text_field :required_date_as_string

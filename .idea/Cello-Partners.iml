@@ -208,6 +208,10 @@
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="Default" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ENVIRONMENT_TYPE" VALUE="development" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="LAUNCH_JS" VALUE="false" />
+      <RunnerSettings RunnerId="RubyDebugRunner" />
+      <RunnerSettings RunnerId="RubyRunner" />
+      <ConfigurationWrapper RunnerId="RubyDebugRunner" />
+      <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
   </component>
@@ -220,6 +224,7 @@
     <orderEntry type="library" scope="PROVIDED" name="actionmailer (v2.3.12, RVM: ruby-1.9.3-p547 [rails23]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionpack (v2.3.12, RVM: ruby-1.9.3-p547 [rails23]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activerecord (v2.3.12, RVM: ruby-1.9.3-p547 [rails23]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activerecord-odbc-adapter (v2.0, RVM: ruby-1.9.3-p547 [rails23]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activeresource (v2.3.12, RVM: ruby-1.9.3-p547 [rails23]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v2.3.12, RVM: ruby-1.9.3-p547 [rails23]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="chronic (v0.10.2, RVM: ruby-1.9.3-p547 [rails23]) [gem]" level="application" />

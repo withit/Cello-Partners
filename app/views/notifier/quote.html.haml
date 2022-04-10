@@ -24,6 +24,16 @@
           = @quote.reel
           mm
       %tr
+        %td Reel Notes
+        %td
+          - if @quote.is_a?(Quote)
+            - unless @quote.find_reel.reel_info.nil?
+              = @quote.find_reel.reel_info
+            %p
+          - if @quote.is_a?(Order)
+            - unless @quote.parent.find_reel.reel_info.nil?
+              = @quote.parent.find_reel.reel_info
+      %tr
         %td Sheets
         %td= @quote.sheets
       %tr

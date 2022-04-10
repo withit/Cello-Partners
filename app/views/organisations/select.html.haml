@@ -1,10 +1,10 @@
 - form_tag new_quote_path,:method => 'get', :id => "customer_select" do
 
   %h2= @heading || "Quote"
-  %h3 
+  %h3
     = @subheading || (controller.action_name == 'new' ? "Create Quote" : "List Quotes" )
     \- Cello
-  %p 
+  %p
     Please select a customer
     = text_field_tag :customer_name
   = collection_select :customer, :name, Organisation.all(:order => 'name'), :id, :name, {:prompt => '---Please Select---'}, :multiple => true
