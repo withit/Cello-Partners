@@ -27,10 +27,37 @@ config.action_view.cache_template_loading            = true
 # Enable threaded mode
 # config.threadsafe!
 
+
+
+
+# more details are at https://support.google.com/a/answer/176600?hl=en#zippy=%2Cuse-the-gmail-smtp-server
+# https://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration
+
+#config.action_mailer.smtp_settings = {
+#  address:              'smtp.gmail.com',
+#  port:                 587,
+#  domain:               'example.com',
+#  user_name:            '<username>',
+#  password:             '<password>',
+#  authentication:       'plain',
+#  enable_starttls_auto: true,
+#  open_timeout:         5,
+#  read_timeout:         5 }
+
 config.action_mailer.delivery_method = :smtp
 
 config.action_mailer.smtp_settings = {
-  :address => 'cello-com-au.mail.protection.outlook.com',
-  :port => 25,
-  :domain => 'cello.com.au'
+    :address => 'cello-com-au.mail.protection.outlook.com',
+    :port => 25,
+    :domain => 'cello.com.au'
 }
+
+#config.action_mailer.smtp_settings = {
+#  :address => Setting.smtp_relay_address,
+#  :port => Setting.smtp_relay_port,
+#  :domain => Setting.smtp_relay_domain,
+#  :user_name => Setting.smtp_relay_user_name,
+#  :password => Setting.smtp_relay_password,
+#  :enable_starttls_auto => Setting.smtp_relay_enable_starttls_auto,
+#  :logger => Setting.smtp_relay_logger
+#}

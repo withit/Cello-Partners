@@ -10,7 +10,7 @@ export PATH
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
 
 
-# 
+#
 # RVM INtegration from https://rvm.io/integration/cron
 
 #
@@ -18,10 +18,10 @@ export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
 source /Users/itadmin/.rvm/environments/ruby-1.9.3-p547@rails23
 
 #
-# ONly production
-export RAILS_ENV=production
+# Only production
+# (commented out for now, because I want it to run in test & development)
+# export RAILS_ENV=production
 
 #
 # Get out the reports
 rake report:all
-

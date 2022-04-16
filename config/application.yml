@@ -1,8 +1,14 @@
+test:
+  reports:
+    mail_to: Setting.smtp_prod_reports_mailto
+  out_of_stock_alert:
+    mail_to: Setting.smtp_prod_out_of_stock_alert_mailto
+
 development:
   reports:
-    mail_to: test@wi.com.au
+    mail_to: Setting.smtp_prod_reports_mailto
   out_of_stock_alert:
-    mail_to: "lachlan.sylvester@wi.com.au"
+    mail_to: Setting.smtp_prod_out_of_stock_alert_mailto
 
 staging:
   reports:
@@ -12,7 +18,6 @@ staging:
 
 production:
   reports:
-    mail_to: board.stock.group@cello.com.au
+    mail_to: Setting.smtp_prod_reports_mailto
   out_of_stock_alert:
-    mail_to: sales@cello.com.au
-    
+    mail_to: Setting.smtp_prod_out_of_stock_alert_mailto
